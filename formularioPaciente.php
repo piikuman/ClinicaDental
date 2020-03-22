@@ -53,7 +53,7 @@
   		}
 	?>
 	
-	<h2>Añadir Paciente</h2>
+	<h2>Añadir Paciente Exito</h2>
 	<form id="altaPaciente" method="post" action="validacionPaciente.php" novalidate>
 			<p><i>Los campos obligatorios están marcados con </i><em>*</em></p>
 			<fieldset><legend><h2>Datos personales</h2></legend>
