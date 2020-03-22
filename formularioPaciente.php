@@ -53,9 +53,9 @@
   		}
 	?>
 	
-	<h2>Añadir Paciente Exito</h2>
+	<h2>Añadir Paciente</h2>
 	<form id="altaPaciente" method="post" action="validacionPaciente.php" novalidate>
-			<p><i>Los campos obligatorios están marcados con </i><em>*</em></p>
+			<p><i>Los campos obligatorios están marcados con </i><em>*</em> por favor rellenelos</p>
 			<fieldset><legend><h2>Datos personales</h2></legend>
 				<div></div><label for="nif">NIF<em>*</em></label>
 				<input id="nif" name="nif" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $formulario['nif'];?>" required>
