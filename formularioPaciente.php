@@ -92,8 +92,10 @@
 			<input id="telefonoTutor" name="telefonoTutor" type="text" size="80" value="<?php echo $formulario['telefonoTutor'];?>"/>
 			</div>
 		</fieldset>
-
-		<div><input type="submit" value="Enviar" /></div>
+		
+		<div><button type="submit"><img src="images/botonOkey.png" width="20" height="20"></button>
+			<button type="submit"><img src="images/cancelButton.png" width="20" height="20"></button>
+		</div>
 
 	</form>
 	
