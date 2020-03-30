@@ -46,7 +46,7 @@
 	?>
 	
 	<form id="altaUsuario" method="get" action="validacionPaciente.php" novalidate>
-		<p><i>Los campos obligatorios están marcados con </i><em>*</em></p>
+		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos personales</legend>
 			<div></div><label for="dni">DNI<em>*</em></label>
 			<input id="dni" name="dni" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $formulario['dni'];?>" required>
