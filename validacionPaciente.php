@@ -28,7 +28,7 @@
 	function validarDatosUsuario($nuevoUsuario){
 		
 		if($nuevoUsuario["dni"]=="") 
-			$errores[] = "<p>El NIF no puede estar vacío</p>";
+			$errores[] = "<p>El DNI no puede estar vacío</p>";
 		else if(!preg_match("/^[0-9]{8}[A-Z]$/", $nuevoUsuario["dni"])){
 			$errores[] = "<p>El DNI debe contener 8 números y una letra mayúscula: " . $nuevoUsuario["dni"]. "</p>";
 		}	
