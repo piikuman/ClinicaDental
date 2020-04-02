@@ -6,7 +6,7 @@
 		
 	// Comprobar que hemos llegado a esta página porque se ha rellenado el formulario
 	if (isset($_SESSION["formulario"])) {
-		$nuevoUsuario = $_SESSION["formulario"];
+		$nuevaCita = $_SESSION["formulario"];
 		$_SESSION["formulario"] = null;
 		$_SESSION["errores"] = null;
 	}
@@ -21,7 +21,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Gestión de Biblioteca: Alta de Usuario realizada con éxito</title>
+  <title>Gestión de Citas: Cita apuntada con exito</title>
 </head>
 
 <body>
@@ -30,9 +30,9 @@
 	?>
 
 	<main>
-		<?php if (alta_usuario($conexion, $nuevoUsuario)) {  
+		<?php if (alta_usuario($conexion, $nuevaCita)) {  
 		?>
-				<h1>Hola <?php echo $nuevoUsuario["nombre"]; ?>, gracias por registrarte</h1>
+				<h1>Cita <?php echo $nuevaCita[""]; ?>, gracias por registrarte</h1>
 				<div >	
 			   		Pulsa <a href="verPaciente.php">aquí</a> para acceder a la gestión de biblioteca.
 				</div>

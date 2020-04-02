@@ -17,7 +17,7 @@
 		Header('Location: formularioCitas.php');
 	} else Header('Location: altaCitas.php');
 
-	function validarDatosUsuario($nuevaCita){
+	function validarDatosCita($nuevaCita){
 		
 		if($nuevaCita["fechaCita"]=="") 
 			$errores[] = "<p>La fecha de la cita no puede estar vacia</p>";
