@@ -37,7 +37,7 @@
   		}
 	?>
 	
-	<form id="altaUsuario" method="get" action="validacionCitas.php" novalidate>
+	<form id="altaCita" method="get" action="validacionCitas.php" novalidate>
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos personales</legend>
 			

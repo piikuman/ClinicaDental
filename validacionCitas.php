@@ -10,7 +10,7 @@
 
 	$_SESSION["formulario"] = $nuevaCita;
 
-	$errores = validarDatosUsuario($nuevaCita);
+	$errores = validarDatosCita($nuevaCita);
 	
 	if (count($errores)>0) {
 		$_SESSION["errores"] = $errores;

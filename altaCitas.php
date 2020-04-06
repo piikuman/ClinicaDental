@@ -30,16 +30,16 @@
 	?>
 
 	<main>
-		<?php if (alta_usuario($conexion, $nuevaCita)) {  
+		<?php if (alta_cita($conexion, $nuevaCita)) {  
 		?>
 				<h1>Cita <?php echo $nuevaCita[""]; ?>, gracias por registrarte</h1>
 				<div >	
 			   		Pulsa <a href="verPaciente.php">aquí</a> para acceder a la gestión de biblioteca.
 				</div>
 		<?php } else { ?>
-				<h1>El usuario ya existe en la base de datos.</h1>
+				<h1>La cita ya esta ocupada.</h1>
 				<div >	
-					Pulsa <a href="formularioPaciente.php">aquí</a> para volver al formulario.
+					Pulsa <a href="formularioCitas.php">aquí</a> para volver al formulario.
 				</div>
 		<?php } ?>
 
