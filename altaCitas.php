@@ -3,6 +3,7 @@
 
 	require_once("gestionBD.php");
 	require_once("gestionarCitas.php");
+	require_once("gestionarPacientes.php");
 		
 	// Comprobar que hemos llegado a esta página porque se ha rellenado el formulario
 	if (isset($_SESSION["formulario"])) {
@@ -32,7 +33,7 @@
 	<main>
 		<?php if (alta_cita($conexion, $nuevaCita)) {  
 		?>
-				<h1>Cita <?php echo $nuevaCita[""]; ?>, gracias por registrarte</h1>
+				<h1>Cita <?php echo $nuevaCita["fechaCita"]; ?>, gracias por registrarte</h1>
 				<div >	
 			   		Pulsa <a href="verPaciente.php">aquí</a> para acceder a la gestión de biblioteca.
 				</div>
