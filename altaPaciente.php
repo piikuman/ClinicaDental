@@ -30,7 +30,7 @@
 	?>
 
 	<main>
-		<?php if (alta_usuario($conexion, $nuevoUsuario)) {  
+		<?php if (altaPaciente($conexion, $nuevoUsuario)) {  
 		?>
 				<h1>Hola <?php echo $nuevoUsuario["nombre"]; ?>, gracias por registrarte</h1>
 				<div >	

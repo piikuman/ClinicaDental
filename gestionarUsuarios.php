@@ -1,6 +1,6 @@
 <?php
-  
- function altaPaciente($conexion,$usuario) {
+
+function alta_usuario($conexion,$usuario) {
 		
 	$fechaNacimiento = date('d/m/Y', strtotime($usuario["fechaNacimiento"]));
 	$fechaAlta = date('d/m/Y', strtotime($usuario["fechaAlta"]));
@@ -27,21 +27,12 @@
     }	
 }
 
-function consultarTodosPacientes($conexion) {
-	$consulta = "SELECT * FROM PACIENTE"
-		. " ORDER BY APELLIDOS, NOMBRE";
-    return $conexion->query($consulta);
+function consultarUsuario($conexion,$email,$pass) {
+ 	$consulta = "SELECT COUNT(*) AS TOTAL FROM USUARIO WHERE CORREO=:email AND PASS=:pass";
+	$stmt = $conexion->prepare($consulta);
+	$stmt->bindParam(':email',$email);
+	$stmt->bindParam(':pass',$pass);
+	$stmt->execute();
+	return $stmt->fetchColumn();
+	
 }
-
-function getInfoPaciente($conexion, $OID_PACIENTE) {
-	try {
-		$stmt = $conexion -> prepare('SELECT NOMBRE, APELLIDOS, DNI, FECHA_NACIMIENTO,CORREO,POBLACION,DIRECCION,FECHAALTA,SEGURO,NOMBRE_TUTOR,TELEFONO_TUTOR FROM PACIENTE WHERE OID_PACIENTE = :OID_PACIENTE');
-		$stmt -> bindParam(":OID_PACIENTE", $OID_PACIENTE);
-		$stmt -> execute();
-		return $stmt -> fetch();
-	} catch(PDOException $e) {
-		$_SESSION["excepcion"] = $e -> GetMessage();
-		header("Location: excepcion.php");
-	}
-}
-?>
