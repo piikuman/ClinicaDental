@@ -3,7 +3,7 @@
 
 	require_once("gestionBD.php");
 	require_once("gestionarCitas.php");
-	require_once("gestionarPacientes.php");
+	require_once("gestionarPaciente.php");
 		
 	// Comprobar que hemos llegado a esta página porque se ha rellenado el formulario
 	if (isset($_SESSION["formulario"])) {
