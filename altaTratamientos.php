@@ -2,8 +2,6 @@
 	session_start();
 
 	require_once("gestionBD.php");
-	require_once("gestionarCitas.php");
-	require_once("gestionarPaciente.php");
 	require_once("gestionarTratamientos.php");
 		
 	// Comprobar que hemos llegado a esta página porque se ha rellenado el formulario
@@ -13,7 +11,7 @@
 		$_SESSION["errores"] = null;
 	}
 	else 
-		Header("Location: formularioCitas.php");	
+		Header("Location: formularioTratamientos.php");	
 
 	$conexion = crearConexionBD(); 
 
@@ -23,7 +21,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Gestión de Citas: Cita apuntada con exito</title>
+  <title>Gestión de Tratamientos: Tratamiento apuntado con exito</title>
 </head>
 
 <body>
@@ -32,16 +30,16 @@
 	?>
 
 	<main>
-		<?php if (alta_cita($conexion, $nuevaCita)) {  
+		<?php if (alta_tratamiento($conexion, $nuevoTratamiento)) {  
 		?>
-				<h1>Cita de la hora <?php echo $nuevaCita["fechaCita"]; ?> apuntada correctamente</h1>
+				<h1>Tratamiento <?php echo $nuevoTratamiento["nombre"]; ?> registrado correctamente</h1>
 				<div >	
-			   		Pulsa <a href="verPaciente.php">aquí</a> para acceder a la gestión de biblioteca.
+			   		Pulsa <a href="verTratamiento.php">aquí</a> para acceder a la gestión de biblioteca.
 				</div>
 		<?php } else { ?>
-				<h1>La cita ya esta ocupada.</h1>
+				<h1>El tratamiento ya existe.</h1>
 				<div >	
-					Pulsa <a href="formularioCitas.php">aquí</a> para volver al formulario.
+					Pulsa <a href="formularioTratamientos.php">aquí</a> para volver al formulario.
 				</div>
 		<?php } ?>
 

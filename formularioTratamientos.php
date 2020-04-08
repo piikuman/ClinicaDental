@@ -2,9 +2,8 @@
 	session_start();
 
 	if (!isset($_SESSION['formulario'])) {
-		$formulario['fechaCita'] = "";
-		$formulario['horaCita'] = "";
-		$formulario['consulta'] = "";
+		$formulario['nombre'] = "";
+		$formulario['coste'] = "";
 	
 		$_SESSION['formulario'] = $formulario;
 	}
@@ -20,7 +19,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="css/estilo.css" />
-  <title>Gestión de Citas: Creación de citas</title>
+  <title>Gestión de Tratamientos: Creación de tratamientos</title>
 </head>
 
 <body>
@@ -36,23 +35,20 @@
     		echo "</div>";
   		}
 	?>
-	<h1>Gestión de Citas</h1>
+	<h1>Gestión de Tratamientos</h1>
 	
-	<form id="altaCita" method="get" action="validacionCitas.php" novalidate>
+	<form id="altaTratamiento" method="get" action="validacionTratamientos.php" novalidate>
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos personales</legend>
 			
-			<div<<label for="fechaCita">Fecha:<em>*</em></label>
-			<input type="date" id="fechaCita" name="fechaCita" value="<?php echo $formulario['fechaCita'];?>" required/>
+			<div<<label for="nombre">Nombre: <em>*</em></label>
+			<input type="text" id="nombre" name="nombre" size="15" value="<?php echo $formulario['nombre'];?>" required/>
 			</div>
 
-			<div><label for="horaCita">Hora:<em>*</em></label>
-			<input id="horaCita" name="horaCita" type="text" size="17" value="<?php echo $formulario['horaCita'];?>" required/><br>
+			<div><label for="coste">Coste: <em>*</em></label>
+			<input id="coste" name="coste" type="text" size="17" value="<?php echo $formulario['coste'];?>" required/> €<br>
 			</div>
-			
-			<div><label for="consulta">Consulta:<em>*</em></label>
-			<input id="consulta" name="consulta" type="text" size="14" value="<?php echo $formulario['consulta'];?>" required/>
-			</div>
+
 		</fieldset>
 		
 		<div><button type="submit"><img src="images/botonOkey.png" width="20" height="20"></button>
