@@ -30,11 +30,11 @@
 	?>
 
 	<main>
-		<?php if (alta_usuario($conexion, $nuevoUsuario)) {  
+		<?php if (altaPaciente($conexion, $nuevoUsuario)) {  
 		?>
 				<h1>Hola <?php echo $nuevoUsuario["nombre"]; ?>, gracias por registrarte</h1>
 				<div >	
-			   		Pulsa <a href="verPaciente.php">aquí</a> para acceder a la gestión de biblioteca.
+			   		Pulsa <a href="listaPaciente.php">aquí</a> para acceder a la lista de pacientes..
 				</div>
 		<?php } else { ?>
 				<h1>El usuario ya existe en la base de datos.</h1>
