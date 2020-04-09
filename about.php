@@ -7,7 +7,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Gestión de biblioteca: Libros</title>
+  <title>Acerce de</title>
 </head>
 
 <body>
@@ -17,37 +17,37 @@
 ?>
 <main>
 
-<h3>Introducción a la Ingeniería del Software y los Sistemas de Información</h2>
+<h2>Información de la aplicación</h2>
 
-<h4>Objetivos y competencias<sup><a href="#fn1" id="r1">[1]</a></sup></h3>
+<p>Esta web está desarrollado por cuatro alumnos de Ingeniería Informática del 
+Software para la gestión de la clínica dental Isabel Lledó de Gines, Sevilla.</p>
 
-<ul>
-<li>Conocer los conceptos básicos de la Ingeniería del Software.</li>
-<li>Conocer los conceptos básicos de los Sistemas de Información.</li>
-<li>Conocer los conceptos básicos de Gestión de Proyectos.</li>
-<li>Conocer los conceptos básicos de Control de Versiones.</li>
-<li>Ser capaz de manejar una herramienta de gestión de proyectos.</li>
-<li>Ser capaz de manejar una herramienta de control de versiones.</li>
-<li>Ser capaz de estudiar un dominio de problema, unos procesos de negocio y elaborar unos requisitos básicos.</li>
-<li>Ser capaz de analizar requisitos mediante el desarrollo de modelos conceptuales.</li>
-<li>Conocer el Modelo Relacional de datos.</li>
-<li>Ser capaz de transformar modelos conceptuales en modelos relacionales.</li>
-<li>Conocer el lenguaje SQL.</li>
-<li>Ser capaz de manejar un SGBD relacional avanzado.</li>
-<li>Ser capaz de desarrollar un esquema SQL complejo.</li>
-<li>Conocer los conceptos básicos de las aplicaciones web.</li>
-<li>Conocer tecnologías de cliente web: HTML, CSS y Javascript.</li>
-<li>Ser capaz de desarrollar una interfaz de usuario sencilla con HTML, CSS y Javascript.</li>
-<li>Conocer tecnologías de procesamiento en servidor web.</li>
-<li>Ser capaz de desarrollar una aplicación web con acceso a una base de datos relacional.</li>
+<h3>Objetivos</h3>
+
+<ul>Los objetivos que nos hemos propuesto llevar a cabo e implementar en un futuro en
+nuestra web son los siguientes:
+<li><h4>Obj-1.</h4> Gestión y administración de citas de la clínica: Lograr unificar de forma
+sencilla y clara todas las citas realizadas. En esta sección, cada cita tendrá
+asociada su hora de consulta, la persona que atenderá al paciente y el
+tratamiento a realizar. Si a la hora de introducir una cita su hora asociada ya
+está ocupada, un mensaje notificará al usuario.</li>
+<br/>
+<li><h4>Obj-2.</h4> Gestión de pacientes: Crear un registro de pacientes junto con sus
+datos, para poder almacenar de manera eficiente y ágil todos los datos de los
+pacientes y poder editarlos. Con esta serie de datos podremos crear una visión
+general del desarrollo estadístico del negocio que será muy útil para el
+propietario.</li>
+<br/>
+<li><h4>Obj-3.</h4> Contabilidad: Gestión de los pagos de las citas, dependiendo de los
+tratamientos que se realicen en esa cita.</li>
+<br/>
+<li><h4>Obj-4.</h4> Gestión de empleados: Creación de registro de empleados con sus
+datos básicos y especialidad facilitando la asignación de los mismos a una cita
+dependiendo de los tratamientos que se deban realizar en la misma.</li>
 </ul>
+<br/>
 
-<p>Para más información, visitar la <a href="http://www.lsi.us.es/docencia/pagina_asignatura.php?id=96" target="_blank">página de la asignatura</a></p>
-
-<section id="footnotes" class="footnotes">
- <p id="fn1"><a href="#r1">[1]</a> Extraído del programa docente de la asignatura.</p>
-</section>
-
+<p>Para más información de como hemos hecho la aplicación, visitar la <a href="https://rodas5.us.es/items/3596dcbf-8628-40d9-b9af-403962c55488/1/" target="_blank"> página de la asignatura</a></p>
 </main>
 
 <?php	

@@ -5,13 +5,10 @@
 	require_once("gestionarPaciente.php");
 	require_once("paginacionConsulta.php");
 	
-		if (!isset($_SESSION['login']))
-			Header("Location: login.php");
-		else{
-			$conexion = crearConexionBD();
-			$pacientes = consultarTodosPacientes($conexion);
-			cerrarConexionBD($conexion);
-		}
+	$conexion = crearConexionBD();
+	$pacientes = consultarTodosPacientes($conexion);
+	cerrarConexionBD($conexion);
+	
 ?>
 
 <!DOCTYPE html>
