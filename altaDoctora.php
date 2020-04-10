@@ -2,9 +2,9 @@
 	session_start();
 
 	require_once("gestionBD.php");
-	require_once("gestionarPaciente.php");
+	require_once("gestionarDoctora.php");
 		
-	// Comprobar que hemos llegado a esta página porque se ha rellenado el formulario
+	
 	if (isset($_SESSION["formulario"])) {
 		$nuevoUsuario = $_SESSION["formulario"];
 		$_SESSION["formulario"] = null;
@@ -21,7 +21,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Gestión de Biblioteca: Alta de Usuario realizada con éxito</title>
+  <title>Gestión de Doctora: Alta de doctora realizada con éxito</title>
 </head>
 
 <body>
@@ -30,14 +30,14 @@
 	?>
 
 	<main>
-		<?php if (alta_usuario($conexion, $nuevoUsuario)) {  
+		<?php if (altaDoctora($conexion, $nuevoUsuario)) {  
 		?>
 				<h1>Hola <?php echo $nuevoUsuario["nombre"]; ?>, gracias por registrarte</h1>
 				<div >	
-			   		Pulsa <a href="verPaciente.php">aquí</a> para acceder a la gestión de biblioteca.
+			   		Pulsa <a href="verPaciente.php">aquí</a> para acceder a la lista de doctoras.
 				</div>
 		<?php } else { ?>
-				<h1>El usuario ya existe en la base de datos.</h1>
+				<h1>Esta doctora ya existe en la base de datos.</h1>
 				<div >	
 					Pulsa <a href="formularioPaciente.php">aquí</a> para volver al formulario.
 				</div>
