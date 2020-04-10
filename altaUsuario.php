@@ -2,7 +2,7 @@
 	session_start();
 
 	require_once("gestionBD.php");
-	require_once("gestionarPaciente.php");
+	require_once("gestionarUsuario.php");
 		
 	if (isset($_SESSION["formulario"])) {
 		$nuevoUsuario = $_SESSION["formulario"];
@@ -10,7 +10,7 @@
 		$_SESSION["errores"] = null;
 	}
 	else 
-		Header("Location: formularioPaciente.php");	
+		Header("Location: formularioUsuario.php");	
 
 	$conexion = crearConexionBD(); 
 
@@ -20,7 +20,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Gestión de Pacientes: Alta de paciente realizada con éxito</title>
+  <title>Gestión de Usuarios: Alta de Usuario realizada con éxito</title>
 </head>
 
 <body>
@@ -29,16 +29,16 @@
 	?>
 
 	<main>
-		<?php if (altaPaciente($conexion, $nuevoUsuario)) {  
+		<?php if (altaUsuario($conexion, $nuevoUsuario)) {  
 		?>
-				<h1>Hola <?php echo $nuevoUsuario["nombre"]; ?>, gracias por registrarte</h1>
+				<h1>Hola <?php echo $nuevoUsuario["correo"]; ?>, gracias por registrarte</h1>
 				<div >	
-			   		Pulsa <a href="listaPaciente.php">aquí</a> para acceder a la lista de pacientes.
+			   		Pulsa <a href="administracion.php">aquí</a> para acceder a la lista de usuarios.
 				</div>
 		<?php } else { ?>
 				<h1>El usuario ya existe en la base de datos.</h1>
 				<div >	
-					Pulsa <a href="formularioPaciente.php">aquí</a> para volver al formulario.
+					Pulsa <a href="formularioUsuario.php">aquí</a> para volver al formulario.
 				</div>
 		<?php } ?>
 
