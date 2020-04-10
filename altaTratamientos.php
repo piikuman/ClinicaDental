@@ -30,7 +30,7 @@
 	?>
 
 	<main>
-		<?php if (alta_tratamiento($conexion, $nuevoTratamiento)) {  
+		<?php if (altaTratamiento($conexion, $nuevoTratamiento)) {  
 		?>
 				<h1>Tratamiento <?php echo $nuevoTratamiento["nombre"]; ?> registrado correctamente</h1>
 				<div >	

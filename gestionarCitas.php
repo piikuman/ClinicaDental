@@ -23,4 +23,16 @@
 		. " ORDER BY FECHACITA, HORACITA";
     return $conexion->query($consulta);
 }
+ 
+ function getInfoCitas($conexion, $OID_CITA) {
+	try {
+		$stmt = $conexion -> prepare('SELECT FECHACITA, HORACITA, CONSULTA FROM CITA WHERE OID_CITA = :OID_CITA');
+		$stmt -> bindParam(":OID_CITA", $OID_CITA);
+		$stmt -> execute();
+		return $stmt -> fetch();
+	} catch(PDOException $e) {
+		$_SESSION["excepcion"] = $e -> GetMessage();
+		header("Location: excepcion.php");
+	}
+}
 ?>

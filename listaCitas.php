@@ -39,7 +39,7 @@
   	  <tr>
   	  	<form id='formMostrar' method='POST' action='mostrarCitas.php' >
 			<input type='hidden' name='OID_CITA' value='<?php echo $citas["OID_CITA"]?>'>
-	    <th><input type='submit' value='<?php echo $citas["OID_PCITA"]; ?>'></th>
+	    <th><input type='submit' value='<?php echo $citas["OID_CITA"]; ?>'></th>
 		</form>
     	    <td><?php echo $citas["fechaCita"]; ?></td>
 	    	<td><?php echo $citas["horaCita"]; ?></td>
