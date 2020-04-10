@@ -1,6 +1,6 @@
 <?php
   
- function alta_cita($conexion,$cita) {
+ function altaCita($conexion,$cita) {
 		
 	$fechaCita = date('d/m/Y', strtotime($cita["fechaCita"]));
 	
@@ -16,5 +16,11 @@
 		return false;
 		header("Location: excepcion.php");
     }	
+}
+ 
+ function consultarTodasCitas($conexion) {
+	$consulta = "SELECT * FROM CITA"
+		. " ORDER BY FECHACITA, HORACITA";
+    return $conexion->query($consulta);
 }
 ?>

@@ -32,7 +32,7 @@
 	?>
 
 	<main>
-		<?php if (alta_cita($conexion, $nuevaCita)) {  
+		<?php if (altaCita($conexion, $nuevaCita)) {  
 		?>
 				<h1>Cita de la hora <?php echo $nuevaCita["fechaCita"]; ?> apuntada correctamente</h1>
 				<div >	
