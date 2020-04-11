@@ -1,21 +1,31 @@
 <?php
 	session_start();
 
-	if (isset($_SESSION["formulario"])) {
-		$nuevoTratamiento["nombre"] = $_REQUEST["nombre"];
-		$nuevoTratamiento["coste"] = $_REQUEST["coste"];
+	if(isset($_REQUEST['OID_TRATAMIENTO'])){
+		$tratamiento["OID_TRATAMIENTO"] = $_REQUEST["OID_TRATAMIENTO"];
+		$tratamiento["nombre"] = $_REQUEST["nombre"];
+		$tratamiento["coste"] = $_REQUEST["coste"];
+		
+		$_SESSION["tratamiento"] = $tratamiento;
+		
+	}else if (isset($_SESSION["formulario"])) {
+		$tratamiento["nombre"] = $_REQUEST["nombre"];
+		$tratamiento["coste"] = $_REQUEST["coste"];
+
+		$_SESSION["formulario"] = $tratamiento;
+	
 	}
 	else Header("Location: formularioTratamientos.php");
 
-	$_SESSION["formulario"] = $nuevoTratamiento;
-
-	$errores = validarDatosTratamiento($nuevoTratamiento);
+	$errores = validarDatosTratamiento($tratamiento);
 	
 	if (count($errores)>0) {
 		$_SESSION["errores"] = $errores;
 		Header('Location: formularioTratamientos.php');
-	} else Header('Location: altaTratamientos.php');
-
+	} else {
+		if (isset($_REQUEST["actualizar"])) Header("Location: actualizarTratamientos.php");
+		else if (isset($_REQUEST["añadir"])) Header('Location: altaTratamientos.php');
+	}
 	function validarDatosTratamiento($nuevoTratamiento){
 		
 		if($nuevoTratamiento["nombre"]=="") 
