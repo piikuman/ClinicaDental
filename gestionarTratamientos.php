@@ -33,6 +33,22 @@ function getInfoTratamiento($conexion, $codigo) {
 	}
 }
 
+function actualizarCita($conexion,$cita) {
+		
+	$fechaCita = date('d/m/Y', strtotime($cita["fechaCita"]));
+	
+	try {
+		$consulta = 'CALL ACTUALIZAR_TRATAMIENTO(:Oidtratamiento,:nombreT, :costeT)';
+		$stmt=$conexion->prepare($consulta);
+		$stmt->bindParam(':Oidtratamiento',$cita["OID_TRATAMIENTO"]);
+		$stmt->bindParam(':nombreT',$tratamiento["nombre"]);
+		$stmt->bindParam(':costeT',$tratamiento["coste"]);
+		$stmt -> execute();
+		return "";
+	} catch(PDOException $e) {
+		return $e->getMessage();
+    }
+ }
  function eliminarTratamiento($conexion,$codigo) {
 		
 	try {

@@ -34,7 +34,25 @@
 		$_SESSION["excepcion"] = $e -> GetMessage();
 		header("Location: excepcion.php");
 	}
-}
+ }
+ 
+ function actualizarCita($conexion,$cita) {
+		
+	$fechaCita = date('d/m/Y', strtotime($cita["fechaCita"]));
+	
+	try {
+		$consulta = 'CALL ACTUALIZAR_CITA(:Oidcita,:fecC, :horaC, :cons)';
+		$stmt=$conexion->prepare($consulta);
+		$stmt->bindParam(':Oidcita',$cita["OID_CITA"]);
+		$stmt->bindParam(':fecC',$fechaCita);
+		$stmt->bindParam(':horaC',$cita["horaCita"]);
+		$stmt->bindParam(':cons',$cita["consulta"]);
+		$stmt -> execute();
+		return "";
+	} catch(PDOException $e) {
+		return $e->getMessage();
+    }
+ }
  
  function eliminarCita($conexion,$codigo) {
 		
@@ -47,5 +65,5 @@
 	} catch(PDOException $e) {
 		return $e->getMessage();
     }
-}
+ }
 ?>
