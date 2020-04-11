@@ -3,7 +3,7 @@
 
 	require_once("gestionBD.php");
 	require_once("gestionarDoctora.php");
-	require_once("paginacionConsulta.php");
+	require_once("paginacionConsulta.php"); 
 	
 	$conexion = crearConexionBD();
 	$pacientes = consultarTodasDoctoras($conexion); //consultarTodosPacientes---
