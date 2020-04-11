@@ -34,10 +34,10 @@ if (!isset($_SESSION['login'])){
 						<div>
 							<h2><b>Datos tratamiento</b></h2>
 							<hr></hr>
-							<p><b>Nombre:</b> <?php echo $datos["nombre"]; ?> </p>
-							<input id="nombre" name="nombre" type="hidden" value="<?php echo $datos["nombre"]; ?>"/>
-							<p><b>Coste:</b> <?php echo $datos["coste"]; ?></p>
-							<input id="coste" name="coste" type="hidden" value="<?php echo $datos["coste"]; ?>"/>
+							<p><b>Nombre:</b> <?php echo $datos["NOMBRE"]; ?> </p>
+							<input id="nombre" name="nombre" type="hidden" value="<?php echo $datos["NOMBRE"]; ?>"/>
+							<p><b>Coste:</b> <?php echo $datos["COSTE"]; ?></p>
+							<input id="coste" name="coste" type="hidden" value="<?php echo $datos["COSTE"]; ?>"/>
 						</div>
 				<button id="actualizar" name="actualizar" type="submit" size="4"><img src="images/botonEditar.png" width="20" height="20"></button>
 				<button id="eliminar" name="eliminar" type="submit" size="4"><img src="images/botonEliminar.png" width="20" height="20"></button>

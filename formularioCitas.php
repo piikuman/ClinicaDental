@@ -1,18 +1,21 @@
 <?php
 	session_start();
 
-	if (!isset($_SESSION['formulario'])) {
+	if(isset($_SESSION['cita'])){
+		$cita = $_SESSION['cita'];
+		unset($_SESSION['cita']);
+	} else if(!isset($_SESSION['formulario'])) {
 		$formulario['fechaCita'] = "";
 		$formulario['horaCita'] = "";
 		$formulario['consulta'] = "";
 	
 		$_SESSION['formulario'] = $formulario;
-	}
-	else
+	} else
 		$formulario = $_SESSION['formulario'];
 			
 	if (isset($_SESSION["errores"]))
 		$errores = $_SESSION["errores"];
+		unset($_SESSION["errores"]);
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +23,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="css/estilo.css" />
-  <title>Gestión de Citas: Creación de citas</title>
+  <title>Formulario de Citas</title>
 </head>
 
 <body>
@@ -36,11 +39,11 @@
     		echo "</div>";
   		}
 	?>
-	<h1>Gestión de Citas</h1>
-	
-	<form id="altaCita" method="get" action="validacionCitas.php" novalidate>
+	<?php if(!isset($cita)){ ?>
+	<h1>Añadir nueva cita</h1>	
+	<form id="altaCita" method="post" action="validacionCitas.php" novalidate>
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
-		<fieldset><legend>Datos personales</legend>
+		<fieldset><legend>Datos cita</legend>
 			
 			<div<<label for="fechaCita">Fecha:<em>*</em></label>
 			<input type="date" id="fechaCita" name="fechaCita" value="<?php echo $formulario['fechaCita'];?>" required/>
@@ -60,11 +63,33 @@
 		</div>
 
 	</form>
-	
+	<?php }else{ ?>
+	<h1>Actualizar cita <?php echo $cita['OID_CITA'];?></h1>	
+	<form id="actualizarCita" method="post" action="validacionCitas.php">
+		<input id="OID_CITA" name="OID_CITA" type="hidden" value="<?php echo $cita['OID_CITA']?>" />
+		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
+		<fieldset><legend>Datos cita</legend>
+		<div<<label for="fechaCita">Fecha:<em>*</em></label>
+			<input type="date" id="fechaCita" name="fechaCita" value="<?php echo $cita['fechaCita'];?>" required/>
+			</div>
+
+			<div><label for="horaCita">Hora:<em>*</em></label>
+			<input id="horaCita" name="horaCita" type="text" size="17" value="<?php echo $cita['horaCita'];?>" required/><br>
+			</div>
+			
+			<div><label for="consulta">Consulta:<em>*</em></label>
+			<input id="consulta" name="consulta" type="text" size="14" value="<?php echo $cita['consulta'];?>" required/>
+			</div>
+		</fieldset>
+		
+		<div>
+			<button id="actualizar" name="actualizar" type="submit"><img src="images/botonEditar.png" width="20" height="20"></button>
+		</div>	
+	</form>
+	<?php } ?>
 	<?php
 		include_once("pie.php");
 	?>
 	
 	</body>
 </html>
-

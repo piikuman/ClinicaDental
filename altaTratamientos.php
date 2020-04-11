@@ -6,7 +6,7 @@
 		
 	// Comprobar que hemos llegado a esta página porque se ha rellenado el formulario
 	if (isset($_SESSION["formulario"])) {
-		$nuevaCita = $_SESSION["formulario"];
+		$nuevoTratamiento = $_SESSION["formulario"];
 		$_SESSION["formulario"] = null;
 		$_SESSION["errores"] = null;
 	}
@@ -34,7 +34,7 @@
 		?>
 				<h1>Tratamiento <?php echo $nuevoTratamiento["nombre"]; ?> registrado correctamente</h1>
 				<div >	
-			   		Pulsa <a href="verTratamiento.php">aquí</a> para acceder a la gestión de biblioteca.
+			   		Pulsa <a href="listaTratamientos.php">aquí</a> para acceder a la gestión de biblioteca.
 				</div>
 		<?php } else { ?>
 				<h1>El tratamiento ya existe.</h1>

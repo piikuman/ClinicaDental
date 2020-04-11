@@ -36,12 +36,12 @@
 			foreach($tratamientos as $tratamiento){
 		?>
   	  <tr>
-  	  	<form id='formMostrar' method='POST' action='mostrarTratamientos.php' >
-			<input type='hidden' name='OID_TRATAMIENTO' value='<?php echo $tratamiento["OID_TRATAMEINTO"]?>'>
+  	  	<form id='formMostrarTratamiento' method='POST' action='mostrarTratamientos.php' >
+			<input type='hidden' name='OID_TRATAMIENTO' value='<?php echo $tratamiento["OID_TRATAMIENTO"]?>'>
 	    <th><input type='submit' value='<?php echo $tratamiento["OID_TRATAMIENTO"]; ?>'></th>
 		</form>
-    	    <td><?php echo $citas["nombre"]; ?></td>
-	    	<td><?php echo $citas["coste"]; ?></td>
+    	    <td><?php echo $tratamiento["NOMBRE"]; ?></td>
+	    	<td><?php echo $tratamiento["COSTE"]; ?></td>
 	  </tr>
 	  <?php } ?>	
 	</table>
