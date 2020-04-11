@@ -9,7 +9,7 @@
 		require_once("gestionarCitas.php");
 		
 		$conexion = crearConexionBD();		
-		$excepcion = eliminarCitas($conexion,$cita["OID_CITA"]);
+		$excepcion = eliminarCita($conexion,$cita["OID_CITA"]);
 		cerrarConexionBD($conexion);
 			
 		if ($excepcion<>"") {

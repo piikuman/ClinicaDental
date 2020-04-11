@@ -3,8 +3,8 @@
 
 	require_once("gestionBD.php");
 	require_once("gestionarCitas.php");
-	require_once("gestionarPaciente.php");
-	require_once("gestionarTratamientos.php");
+	//require_once("gestionarPaciente.php");
+	//require_once("gestionarTratamientos.php");
 		
 	// Comprobar que hemos llegado a esta página porque se ha rellenado el formulario
 	if (isset($_SESSION["formulario"])) {
@@ -34,9 +34,9 @@
 	<main>
 		<?php if (altaCita($conexion, $nuevaCita)) {  
 		?>
-				<h1>Cita de la hora <?php echo $nuevaCita["fechaCita"]; ?> apuntada correctamente</h1>
+				<h1>Cita con fecha  <?php echo $nuevaCita["fechaCita"]; ?> apuntada correctamente.</h1>
 				<div >	
-			   		Pulsa <a href="verPaciente.php">aquí</a> para acceder a la gestión de biblioteca.
+			   		Pulsa <a href="listaCitas.php">aquí</a> para acceder a la gestión de citas.
 				</div>
 		<?php } else { ?>
 				<h1>La cita ya esta ocupada.</h1>

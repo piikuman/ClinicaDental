@@ -10,7 +10,7 @@ if (!isset($_SESSION['login'])){
 } else {
 	$conexion = crearConexionBD();
 	$codigo = $_REQUEST['OID_CITA'];
-	$codigo2 = $_REQUEST['OID_PACIENTE'];
+	//$codigo2 = $_REQUEST['OID_PACIENTE'];
 	$datos = getInfoCita($conexion, $codigo);
 	cerrarConexionBD($conexion);
 }
@@ -30,22 +30,20 @@ if (!isset($_SESSION['login'])){
 		<main>
 			<article>
 				<div>
-					<h1><b>Cita del dia <?php echo $datos["fechaCita"]; ?> con hora <?php echo $datos["horaCita"]; ?></b></h1>
+					<h1><b>Cita del dia <?php echo $datos["FECHACITA"]; ?> con hora <?php echo $datos["HORACITA"]; ?></b></h1>
 					<form id='actualizarCitas' method='POST' action='controladorCitas.php'>
 					<input id="OID_CITA" name="OID_CITA" type="hidden" value="<?php echo $codigo?>"	
 						<div>
 							<h2><b>Datos cita</b></h2>
 							<hr></hr>
-							<p><b>Codigo paciente:</b> <?php echo $codigo2 ?> </p>
-							<input id="OID_PACIENTE" name="OID_PACIENTE" type="hidden" value=" <?php echo $codigo2 ?>"/>
 							<p><b>Codigo de la cita:</b> <?php echo $codigo ?> </p>
 							<input id="OID_CITA" name="OID_CITA" type="hidden" value=" <?php echo $codigo ?>"/>
-							<p><b>Fecha Cita:</b> <?php echo $datos["fechaCita"]; ?> </p>
-							<input id="fechaCita" name="fechaCita" type="hidden" value="<?php echo $datos["fechaCita"]; ?>"/>
-							<p><b>Hora cita:</b> <?php echo $datos["horaCita"]; ?></p>
-							<input id="horaCita" name="horaCita" type="hidden" value="<?php echo $datos["horaCita"]; ?>"/>
-							<p><b>Consulta:</b> <?php echo $datos["consulta"]; ?></p>
-							<input id="consulta" name="consulta" type="hidden" value="<?php echo $datos["consulta"]; ?>"/>
+							<p><b>Fecha Cita:</b> <?php echo $datos["FECHACITA"]; ?> </p>
+							<input id="fechaCita" name="fechaCita" type="hidden" value="<?php echo $datos["FECHACITA"]; ?>"/>
+							<p><b>Hora cita:</b> <?php echo $datos["HORACITA"]; ?></p>
+							<input id="horaCita" name="horaCita" type="hidden" value="<?php echo $datos["HORACITA"]; ?>"/>
+							<p><b>Consulta:</b> <?php echo $datos["CONSULTA"]; ?></p>
+							<input id="consulta" name="consulta" type="hidden" value="<?php echo $datos["CONSULTA"]; ?>"/>
 						</div>
 				<button id="actualizar" name="actualizar" type="submit" size="4"><img src="images/botonEditar.png" width="20" height="20"></button>
 				<button id="eliminar" name="eliminar" type="submit" size="4"><img src="images/botonEliminar.png" width="20" height="20"></button>

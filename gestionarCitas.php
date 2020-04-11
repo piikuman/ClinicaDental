@@ -24,7 +24,7 @@
     return $conexion->query($consulta);
 }
  
- function getInfoCitas($conexion, $OID_CITA) {
+ function getInfoCita($conexion, $OID_CITA) {
 	try {
 		$stmt = $conexion -> prepare('SELECT FECHACITA, HORACITA, CONSULTA FROM CITA WHERE OID_CITA = :OID_CITA');
 		$stmt -> bindParam(":OID_CITA", $OID_CITA);
@@ -34,5 +34,18 @@
 		$_SESSION["excepcion"] = $e -> GetMessage();
 		header("Location: excepcion.php");
 	}
+}
+ 
+ function eliminarCita($conexion,$codigo) {
+		
+	try {
+		$consulta = 'CALL ELIMINAR_CITA(:Oidcita)';
+		$stmt=$conexion->prepare($consulta);
+		$stmt->bindParam(':Oidcita',$codigo);
+		$stmt->execute();
+		return "";
+	} catch(PDOException $e) {
+		return $e->getMessage();
+    }
 }
 ?>

@@ -41,9 +41,9 @@
 			<input type='hidden' name='OID_CITA' value='<?php echo $citas["OID_CITA"]?>'>
 	    <th><input type='submit' value='<?php echo $citas["OID_CITA"]; ?>'></th>
 		</form>
-    	    <td><?php echo $citas["fechaCita"]; ?></td>
-	    	<td><?php echo $citas["horaCita"]; ?></td>
-	    	<td><?php echo $citas["consulta"]; ?></td>
+    	    <td><?php echo $citas["FECHACITA"]; ?></td>
+	    	<td><?php echo $citas["HORACITA"]; ?></td>
+	    	<td><?php echo $citas["CONSULTA"]; ?></td>
 	  </tr>
 	  <?php } ?>	
 	</table>
