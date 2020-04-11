@@ -6,7 +6,7 @@
 	require_once("paginacionConsulta.php"); 
 	
 	$conexion = crearConexionBD();
-	$pacientes = consultarTodasDoctoras($conexion); //consultarTodosPacientes---
+	$pacientes = consultarTodasDoctoras($conexion); 
 	cerrarConexionBD($conexion);
 	
 ?>
@@ -37,13 +37,13 @@
 			foreach($doctoras as $doctora){
 		?>
   	  <tr>
-  	  	<form id='formMostrar' method='POST' action='mostrarDoctora.php' > //---->siguiente
+  	  	<form id='formMostrar' method='POST' action='mostrarDoctora.php' > 
 			<input type='hidden' name='OID_DOCTORA' value='<?php echo $doctora["OID_DOCTORA"]?>'>
 	    <th><input type='submit' value='<?php echo $paciente["OID_DOCTORA"]; ?>'></th>
 		</form>
-    	    <td><?php echo $paciente["APELLIDOS"]; ?></td>
-	    	<td><?php echo $paciente["NOMBRE"]; ?></td>
-	    	<td><?php echo $paciente["DNI"]; ?></td>
+    	    <td><?php echo $doctora["APELLIDOS"]; ?></td>
+	    	<td><?php echo $doctora["NOMBRE"]; ?></td>
+	    	<td><?php echo $doctora["DNI"]; ?></td>
 	  </tr>
 	  <?php } ?>	
 	</table>

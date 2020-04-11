@@ -11,6 +11,7 @@
 		$nuevoUsuario["fechaAlta"] = $_REQUEST["fechaAlta"];
 		$nuevoUsuario["telefono"] = $_REQUEST["telefono"];
 		$nuevoUsuario["sueldo"] = $_REQUEST["sueldo"];
+		$nuevoUsuario["codigoDoctora"] = $_REQUEST["codigoDoctora"];
 		
 	}
 	else Header("Location: formularioDoctora.php");

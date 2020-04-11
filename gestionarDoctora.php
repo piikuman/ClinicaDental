@@ -16,6 +16,7 @@
 		$stmt->bindParam(':fecA',$fechaAlta);
 		$stmt->bindParam(':tel',$usuario["telefono"]);
 		$stmt->bindParam(':sueldo',$usuario["sueldo"]);
+		$stmt->bindParam(':codigoDoctora', $usuario["codigoDoctora"]);
 		$stmt -> execute();
 		return true;
 	} catch(PDOException $e) {

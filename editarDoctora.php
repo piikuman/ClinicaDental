@@ -14,6 +14,7 @@ if (isset($_REQUEST["OID_DOCTORA"])) {
 	$dato["fechaAlta"] = $_REQUEST["fechaAlta"];
 	$dato["sueldo"] = $_REQUEST["sueldo"];
 	$dato["telefono"] = $_REQUEST["telefono"];
+	$dato["codigoDoctora"] = $_REQUEST["codigoDoctora"];
 	$codigo = $dato["OID_DOCTORA"];
 } else {
 	header("Location: formularioEditarDoctora.php");

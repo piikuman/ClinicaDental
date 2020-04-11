@@ -57,6 +57,8 @@ if (!isset($_SESSION['login'])){
 							<?php if(!($datos["SEGURO"]=="" || $datos["SEGURO"]==null)){ ?>
 							<p><b>Sueldo:</b> <?php echo $datos["SUELDO"]; ?></p>
 							<input id="sueldo" name="sueldo" type="hidden" value="<?php echo $datos["SUELDO"]; ?>"/>
+							<p><b>CodigoDoctora:</b> <?php echo $datos["CODIGODOCTORA"]; ?></p>
+							<input id="codigoDoctora" name="codigoDoctora" type="hidden" value="<?php echo $datos["CODIGODOCTORA"]; ?>"/>
 							<?php } ?>
 						</div>
 				<button id="actualizar" name="actualizar" type="submit" size="4"><img src="images/botonEditar.png" width="20" height="20"></button>

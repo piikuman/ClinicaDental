@@ -11,7 +11,8 @@
 		$formulario['fechaAlta'] = "";
 		$formulario['sueldo'] = "";
 		$formulario['telefono'] = "";
-	
+		$formulario['codigoDoctora']= "";
+		
 		$_SESSION['formulario'] = $formulario;
 	}
 	else
@@ -26,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="css/estilo.css" />
-  <title>Gestión de Doctoras: Alta de Doctoras</title> 
+  <title>Gestión de Doctora: Alta de Doctora</title> 
 </head>
 
 <body>
@@ -75,11 +76,15 @@
 			</div>
 			
 			<div><label for="sueldo">Sueldo:</label>
-			<input id="sueldo" name="sueldo" type=number size="80" value="<?php echo $formulario['sueldo'];?>"/>
+			<input id="sueldo" name="sueldo" type="text" size="80" value="<?php echo $formulario['sueldo'];?>"/>
 			</div>
 			
 			<div><label for="telefono">Telefono:</label>
-			<input id="telefono" name="telefonoTutor" type="text" size="80" value="<?php echo $formulario['telefono'];?>"/>
+			<input id="telefono" name="telefono" type="text" size="80" value="<?php echo $formulario['telefono'];?>"/>
+			</div>
+			
+			<div><label for="codigoDoctora">codigoDoctora:</label>
+			<input id="codigoDoctora" name="codigoDoctora" type="text" size="80" value="<?php echo $formulario['codigoDoctora'];?>"/>
 			</div>
 		</fieldset>
 		

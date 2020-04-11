@@ -2,7 +2,7 @@
 	session_start();	
 	
 	if (isset($_SESSION["doctora"])) {
-		$paciente = $_SESSION["doctora"];
+		$doctora = $_SESSION["doctora"];
 		unset($_SESSION["doctora"]);
 		
 		require_once("gestionBD.php");
