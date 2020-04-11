@@ -6,7 +6,7 @@
 	$fechaAlta = date('d/m/Y', strtotime($usuario["fechaAlta"]));
 	
 	try {
-		$consulta = 'CALL INSERTAR_PACIENTE(:nombre, :ape, :dni, :dir, :poblacion, :fec, :fecA, :tel, :sueldo)';	
+		$consulta = 'CALL INSERTAR_PACIENTE(:nombre, :ape, :dni, :dir, :poblacion, :fec, :fecA, :tel, :sueldo,:codigoDoctora)';	
 		$stmt=$conexion->prepare($consulta);
 		$stmt->bindParam(':nombre',$usuario["nombre"]);
 		$stmt->bindParam(':ape',$usuario["apellidos"]);
