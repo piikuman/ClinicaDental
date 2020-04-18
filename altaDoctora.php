@@ -6,7 +6,7 @@
 		
 	
 	if (isset($_SESSION["formulario"])) {
-		$nuevoUsuario = $_SESSION["formulario"];
+		$nuevaDoctora = $_SESSION["formulario"];
 		$_SESSION["formulario"] = null;
 		$_SESSION["errores"] = null;
 	}
@@ -30,16 +30,16 @@
 	?>
 
 	<main>
-		<?php if (altaDoctora($conexion, $nuevoUsuario)) {  
+		<?php if (altaDoctora($conexion, $nuevaDoctora)) {  
 		?>
-				<h1>Hola <?php echo $nuevoUsuario["nombre"]; ?>, gracias por registrarte</h1>
+				<h1>Hola <?php echo $nuevaDoctora["nombre"]; ?>, gracias por registrarte</h1>
 				<div >	
 			   		Pulsa <a href="verPaciente.php">aquí</a> para acceder a la lista de doctoras.
 				</div>
 		<?php } else { ?>
 				<h1>Esta doctora ya existe en la base de datos.</h1>
 				<div >	
-					Pulsa <a href="formularioPaciente.php">aquí</a> para volver al formulario.
+					Pulsa <a href="formularioDoctora.php">aquí</a> para volver al formulario.
 				</div>
 		<?php } ?>
 

@@ -11,32 +11,23 @@
 	?>
 
 	<main>
-		<h1>Datos de  <?php echo $nuevoUsuario["nombre"]; ?></h1>
+		<h1>Datos de  <?php echo $nuevaDoctora["nombre"]; ?></h1>
 			<div id="div_volver">	
 			   Pulsa <a href="formularioDoctora.php">aquí</a> para volver al formulario de altas de doctoras.
 			</div>
 			
-			<h2>El paciente <?php echo $nuevoUsuario["nombre"]; ?> ha sido dado de alta con éxito con los siguientes datos:</h2>
+			<h2>El paciente <?php echo $nuevaDoctora["nombre"]; ?> ha sido dado de alta con éxito con los siguientes datos:</h2>
 			<ul>
-				<li><?php echo "NIF: " . $nuevoUsuario["dni"]; ?></li>
-				<li><?php echo "Nombre: " . $nuevoUsuario["nombre"]; ?></li>
-				<li><?php echo "Apellidos: " . $nuevoUsuario["apellidos"]; ?></li>
-				<li><?php echo "Telefono: " . $nuevoUsuario["telefono"]; ?></li>
-				<li><?php echo "Fecha de Nacimiento: " . getFechaFormateada($nuevoUsuario["fechaNacimiento"]); ?></li>
-				<li><?php echo "Fecha de Alta: " . getFechaFormateada($nuevoUsuario["fechaAlta"]); ?></li>
-				<li><?php echo "Direccion: " . $nuevoUsuario["direccion"]; ?></li>
-				<li><?php echo "Poblacion: " . getPoblacion($nuevoUsuario["poblacion"]);?></li>
-				// aquí solo he añadido los campos personales, no sé si he de añadir el codigoDoctora y el sueldo(?) 
-				<li><?php
-				if($nuevoUsuario["nombreTutor"]!=""){	
-					echo "Nombre tutor: " . $nuevoUsuario["nombreTutor"];
-				}
-				;?></li>
-				<li><?php
-				if($nuevoUsuario["telefonoTutor"]!=""){	
-					echo "Telefono tutor: " . $nuevoUsuario["telefonoTutor"];
-				}
-				?></li>
+				<li><?php echo "NIF: " . $nuevaDoctora["dni"]; ?></li>
+				<li><?php echo "Nombre: " . $nuevaDoctora["nombre"]; ?></li>
+				<li><?php echo "Apellidos: " . $nuevaDoctora["apellidos"]; ?></li>
+				<li><?php echo "Telefono: " . $nuevaDoctora["telefono"]; ?></li>
+				<li><?php echo "Fecha de Nacimiento: " . getFechaFormateada($nuevaDoctora["fechaNacimiento"]); ?></li>
+				<li><?php echo "Fecha de Alta: " . getFechaFormateada($nuevaDoctora["fechaAlta"]); ?></li>
+				<li><?php echo "Direccion: " . $nuevaDoctora["direccion"]; ?></li>
+				<li><?php echo "Poblacion: " . getPoblacion($nuevaDoctora["poblacion"]);?></li>
+				<li><?php echo "Sueldo: " . getSueldo($nuevaDoctora["sueldo"]);?></li>
+				<li><?php echo "CodigoDoctora: " . getCodigoDoctora($nuevaDoctora["codigoDoctora"]);?></li>
 			</ul>
 			
 </main>
