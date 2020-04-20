@@ -21,7 +21,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Gestión de Biblioteca: Alta de Usuario realizada con éxito</title>
+  <title>Gestión de Biblioteca: Alta de Paciente realizada con éxito</title>
 </head>
 
 <body>
