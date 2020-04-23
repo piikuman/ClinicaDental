@@ -1,6 +1,6 @@
 <?php
   
- function alta_usuario($conexion,$usuario) {
+ function altaPaciente($conexion,$usuario) {
 		
 	$fechaNacimiento = date('d/m/Y', strtotime($usuario["fechaNacimiento"]));
 	$fechaAlta = date('d/m/Y', strtotime($usuario["fechaAlta"]));
@@ -25,5 +25,63 @@
 		return false;
 		header("Location: excepcion.php");
     }	
+}
+
+function consultarTodosPacientes($conexion) {
+	$consulta = "SELECT * FROM PACIENTE"
+		. " ORDER BY APELLIDOS, NOMBRE";
+    return $conexion->query($consulta);
+}
+
+function getInfoPaciente($conexion, $OID_PACIENTE) {
+	try {
+		$stmt = $conexion -> prepare('SELECT NOMBRE, APELLIDOS, DNI, FECHA_NACIMIENTO,CORREO,POBLACION,DIRECCION,FECHAALTA,SEGURO,NOMBRE_TUTOR,TELEFONO_TUTOR FROM PACIENTE WHERE OID_PACIENTE = :OID_PACIENTE');
+		$stmt -> bindParam(":OID_PACIENTE", $OID_PACIENTE);
+		$stmt -> execute();
+		return $stmt -> fetch();
+	} catch(PDOException $e) {
+		$_SESSION["excepcion"] = $e -> GetMessage();
+		header("Location: excepcion.php");
+	}
+}
+
+function actualizarPaciente($conexion,$paciente) {
+		
+	$fechaNacimiento = date('d/m/Y', strtotime($paciente["fechaNacimiento"]));
+	$fechaAlta = date('d/m/Y', strtotime($paciente["fechaAlta"]));
+		
+	try {
+		$consulta = 'CALL ACTUALIZAR_PACIENTE(:Oidpaciente,:nombre, :ape, :dni, :fec, :correo, :poblacion, :dir, :fecA, :seguro, :nTutor, :tTutor)';
+		$stmt=$conexion->prepare($consulta);
+		$stmt->bindParam(':Oidpaciente',$paciente["OID_PACIENTE"]);
+		$stmt->bindParam(':nombre',$paciente["nombre"]);
+		$stmt->bindParam(':ape',$paciente["apellidos"]);
+		$stmt->bindParam(':dni',$paciente["dni"]);
+		$stmt->bindParam(':fec',$fechaNacimiento);
+		$stmt->bindParam(':correo',$paciente["correo"]);
+		$stmt->bindParam(':poblacion',$paciente["poblacion"]);
+		$stmt->bindParam(':dir',$paciente["direccion"]);
+		$stmt->bindParam(':fecA',$fechaAlta);
+		$stmt->bindParam(':seguro',$paciente["seguro"]);
+		$stmt->bindParam(':nTutor',$paciente["nombreTutor"]);
+		$stmt->bindParam(':tTutor',$paciente["telefonoTutor"]);
+		$stmt->execute();
+		return "";
+	} catch(PDOException $e) {
+		return $e->getMessage();
+    }
+}
+
+function eliminarPaciente($conexion,$codigo) {
+		
+	try {
+		$consulta = 'CALL ELIMINAR_PACIENTE(:Oidpaciente)';
+		$stmt=$conexion->prepare($consulta);
+		$stmt->bindParam(':Oidpaciente',$codigo);
+		$stmt->execute();
+		return "";
+	} catch(PDOException $e) {
+		return $e->getMessage();
+    }
 }
 ?>
