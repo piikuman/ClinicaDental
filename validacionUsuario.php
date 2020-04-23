@@ -30,6 +30,7 @@
 	}
 	
 	function validarDatosUsuario($usuario){
+		$errores=array();
 		
 		if($usuario["password"]=="") 
 			$errores[] = "<p>La contraseña no puede estar vacío</p>";
