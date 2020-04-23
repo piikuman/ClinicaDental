@@ -2,7 +2,7 @@
 	session_start();
   	
   	include_once("gestionBD.php");
- 	include_once("gestionarUsuarios.php");
+ 	include_once("gestionarUsuario.php");
 	
 	if (isset($_POST['submit'])){
 		$email= $_POST['email'];

@@ -46,12 +46,13 @@
 	}
 	
 	function validarDatosUsuario($paciente){
+		$errores=array();
 		
 		if($paciente["dni"]=="") 
 			$errores[] = "<p>El DNI no puede estar vacío</p>";
 		else if(!preg_match("/^[0-9]{8}[A-Z]$/", $paciente["dni"])){
 			$errores[] = "<p>El DNI debe contener 8 números y una letra mayúscula: " . $paciente["dni"]. "</p>";
-		}	
+		}
 			
 		if($paciente["nombre"]=="") 
 			$errores[] = "<p>El nombre no puede estar vacío</p>";
