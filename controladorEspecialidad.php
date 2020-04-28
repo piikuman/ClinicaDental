@@ -2,7 +2,7 @@
 	session_start();
 	
 	if (isset($_REQUEST["OID_ESPECIALIDAD"])) {
-		$especialidad["OID_ESPSCIALIDAD"] = $_REQUEST["OID_ESPECIALIDAD"];
+		$especialidad["OID_ESPECIALIDAD"] = $_REQUEST["OID_ESPECIALIDAD"];
 		$especialidad["nombre"] = $_REQUEST["nombre"];
 		
 

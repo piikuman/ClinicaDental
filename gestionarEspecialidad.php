@@ -15,7 +15,7 @@
     }	
 }
 
-function consultarTodosEspecialidades($conexion) {
+function consultarTodasEspecialidades($conexion) {
 	$consulta = "SELECT * FROM ESPECIALIDAD"
 		. " ORDER BY NOMBRE";
     return $conexion->query($consulta);
@@ -38,7 +38,7 @@ function actualizarEspecialidad($conexion,$especialidad) {
 	try {
 		$consulta = 'CALL ACTUALIZAR_ESPECIALIDAD(:Oidespecialidad,:nombreEsp)';
 		$stmt=$conexion->prepare($consulta);
-		$stmt->bindParam(':Oidpaciente',$especialidad["OID_ESPECIALIDAD"]);
+		$stmt->bindParam(':Oidespecialidad',$especialidad["OID_ESPECIALIDAD"]);
 		$stmt->bindParam(':nombreEsp',$especialidad["nombre"]);
 		$stmt->execute();
 		return "";

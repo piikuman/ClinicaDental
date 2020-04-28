@@ -6,7 +6,7 @@
 		unset($_SESSION["especialidad"]);
 		
 		require_once("gestionBD.php");
-		require_once("gestionarTratamientos.php");
+		require_once("gestionarEspecialidad.php");
 		
 		$conexion = crearConexionBD();		
 		$excepcion = eliminarEspecialidad($conexion,$especialidad["OID_ESPECIALIDAD"]);

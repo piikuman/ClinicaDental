@@ -2,11 +2,11 @@
 	session_start();
 	
 	require_once("gestionBD.php");
-	require_once("gestionarPaciente.php");
+	require_once("gestionarEspecialidad.php");
 	require_once("paginacionConsulta.php");
 	
 	$conexion = crearConexionBD();
-	$pacientes = consultarTodosPacientes($conexion);
+	$especialidades = consultarTodasEspecialidades($conexion);
 	cerrarConexionBD($conexion);
 
 ?>

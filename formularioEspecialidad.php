@@ -45,7 +45,7 @@
 		<fieldset><legend>Datos Especialidad</legend>
 			
 			<div<<label for="nombre">Nombre:<em>*</em></label>
-			<input type="text" id="nombreEspecialidad" name="nombreEspecialidad" value="<?php echo $formulario['nombreEspecialidad'];?>" required/>
+			<input type="text" id="nombre" name="nombre" value="<?php echo $formulario['nombre'];?>" required/>
 			</div>
 
 			
@@ -64,7 +64,7 @@
 		<fieldset><legend>Datos especialidad</legend>
 			
 			<div<<label for="nombre">Nombre:<em>*</em></label>
-			<input type="text" id="nombreEspacialidad" name="nombreEspecialidad" value="<?php echo $especialidad['nombreEspecialidad'];?>" required/>
+			<input type="text" id="nombre" name="nombre" value="<?php echo $especialidad['nombre'];?>" required/>
 		</div>
 			
 		</fieldset>
