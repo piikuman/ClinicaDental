@@ -41,7 +41,6 @@
 	    <th><input type='submit' value='<?php echo $tratamiento["OID_TRATAMIENTO"]; ?>'></th>
 		</form>
     	    <td><?php echo $tratamiento["NOMBRE"]; ?></td>
-	    	<td><?php echo $tratamiento["COSTE"]; ?></td>
 	  </tr>
 	  <?php } ?>	
 	</table>

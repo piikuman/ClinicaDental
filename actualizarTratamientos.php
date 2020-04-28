@@ -6,7 +6,7 @@
 		unset($_SESSION["tratamiento"]);
 		
 		require_once("gestionBD.php");
-		require_once("gestionarTratameintos.php");
+		require_once("gestionarTratamientos.php");
 		
 		$conexion = crearConexionBD();		
 		$excepcion = actualizarTratamientos($conexion,$tratamiento);
