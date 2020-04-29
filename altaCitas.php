@@ -7,9 +7,9 @@
 	//require_once("gestionarTratamientos.php");
 		
 	// Comprobar que hemos llegado a esta página porque se ha rellenado el formulario
-	if (isset($_SESSION["formulario"])) {
-		$nuevaCita = $_SESSION["formulario"];
-		$_SESSION["formulario"] = null;
+	if (isset($_SESSION["formularioCita"])) {
+		$nuevaCita = $_SESSION["formularioCita"];
+		$_SESSION["formularioCita"] = null;
 		$_SESSION["errores"] = null;
 	}
 	else 

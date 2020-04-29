@@ -23,6 +23,7 @@
 			
 		if (isset($_REQUEST["actualizar"])) Header("Location: formularioPaciente.php");
 		else if (isset($_REQUEST["eliminar"])) Header("Location: eliminarPaciente.php");
+		else Header("Location: listaPaciente.php");
 	}
 	else 
 		Header("Location: mostrarPaciente.php");

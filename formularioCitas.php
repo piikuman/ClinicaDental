@@ -4,14 +4,14 @@
 	if(isset($_SESSION['cita'])){
 		$cita = $_SESSION['cita'];
 		unset($_SESSION['cita']);
-	} else if(!isset($_SESSION['formulario'])) {
-		$formulario['fechaCita'] = "";
-		$formulario['horaCita'] = "";
-		$formulario['consulta'] = "";
+	} else if(!isset($_SESSION['formularioCita'])) {
+		$formularioCita['fechaCita'] = "";
+		$formularioCita['horaCita'] = "";
+		$formularioCita['consulta'] = "";
 	
-		$_SESSION['formulario'] = $formulario;
+		$_SESSION['formularioCita'] = $formularioCita;
 	} else
-		$formulario = $_SESSION['formulario'];
+		$formularioCita = $_SESSION['formularioCita'];
 			
 	if (isset($_SESSION["errores"]))
 		$errores = $_SESSION["errores"];
@@ -46,20 +46,19 @@
 		<fieldset><legend>Datos cita</legend>
 			
 			<div<<label for="fechaCita">Fecha:<em>*</em></label>
-			<input type="date" id="fechaCita" name="fechaCita" value="<?php echo $formulario['fechaCita'];?>" required/>
+			<input type="date" id="fechaCita" name="fechaCita" value="<?php echo $formularioCita['fechaCita'];?>" required/>
 			</div>
 
 			<div><label for="horaCita">Hora:<em>*</em></label>
-			<input id="horaCita" name="horaCita" type="text" size="17" value="<?php echo $formulario['horaCita'];?>" required/><br>
+			<input id="horaCita" name="horaCita" type="text" size="17" value="<?php echo $formularioCita['horaCita'];?>" required/><br>
 			</div>
 			
 			<div><label for="consulta">Consulta:<em>*</em></label>
-			<input id="consulta" name="consulta" type="text" size="14" value="<?php echo $formulario['consulta'];?>" required/>
+			<input id="consulta" name="consulta" type="text" size="14" value="<?php echo $formularioCita['consulta'];?>" required/>
 			</div>
 		</fieldset>
 		
-		<div><button type="submit"><img src="images/botonOkey.png" width="20" height="20"></button>
-			<button type="submit"><img src="images/cancelButton.png" width="20" height="20"></button>
+		<div><button id="añadir" name="añadir" type="submit"><img src="images/botonOkey.png" width="20" height="20"></button>
 		</div>
 
 	</form>

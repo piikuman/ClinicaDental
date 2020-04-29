@@ -4,9 +4,9 @@
 	require_once("gestionBD.php");
 	require_once("gestionarPaciente.php");
 		
-	if (isset($_SESSION["formulario"])) {
-		$nuevoUsuario = $_SESSION["formulario"];
-		$_SESSION["formulario"] = null;
+	if (isset($_SESSION["formularioPaciente"])) {
+		$nuevoUsuario = $_SESSION["formularioPaciente"];
+		$_SESSION["formularioPaciente"] = null;
 		$_SESSION["errores"] = null;
 	}
 	else 

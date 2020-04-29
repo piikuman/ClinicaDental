@@ -2,6 +2,7 @@
 	session_start();
 
 	if(isset($_REQUEST['OID_PACIENTE'])){
+		
 		$paciente["OID_PACIENTE"] = $_REQUEST["OID_PACIENTE"];
 		$paciente["dni"] = $_REQUEST["dni"];
 		$paciente["nombre"] = $_REQUEST["nombre"];
@@ -17,7 +18,7 @@
 		
 		$_SESSION["paciente"] = $paciente;
 		
-	}else if (isset($_SESSION["formulario"])) {
+	}else if (isset($_SESSION["formularioPaciente"])) {
 		$paciente["dni"] = $_REQUEST["dni"];
 		$paciente["nombre"] = $_REQUEST["nombre"];
 		$paciente["apellidos"] = $_REQUEST["apellidos"];
@@ -30,7 +31,7 @@
 		$paciente["nombreTutor"] = $_REQUEST["nombreTutor"];
 		$paciente["telefonoTutor"] = $_REQUEST["telefonoTutor"];
 		
-		$_SESSION["formulario"] = $paciente;
+		$_SESSION["formularioPaciente"] = $paciente;
 	
 	}
 	else Header("Location: formularioPaciente.php");

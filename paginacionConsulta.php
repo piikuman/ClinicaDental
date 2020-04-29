@@ -6,7 +6,7 @@ function consultaPaginada( $conn, $query, $pag_num, $pag_size )
 		$ultima  = $pag_num * $pag_size;
 		$consulta_paginada = 
 			 "SELECT * FROM ( "
-				."SELECT ROWNUM RNUM, AUX.* FROM ( $pacientes ) AUX "
+				."SELECT ROWNUM RNUM, AUX.* FROM ( $query ) AUX "
 				."WHERE ROWNUM <= :ultima"
 			.") "
 			."WHERE RNUM >= :primera";
@@ -17,6 +17,22 @@ function consultaPaginada( $conn, $query, $pag_num, $pag_size )
 		$stmt->execute();
 		return $stmt;
 	}	
+	catch ( PDOException $e ) {
+		$_SESSION['excepcion'] = $e->GetMessage();
+		header("Location: excepcion.php");
+	}
+} 
+
+function totalConsulta( $conn, $query )
+{
+	try {
+		$total_consulta = "SELECT COUNT(*) AS TOTAL FROM ($query)";
+
+		$stmt = $conn->query($total_consulta);
+		$result = $stmt->fetch();
+		$total = $result['TOTAL'];
+		return  $total;
+	}
 	catch ( PDOException $e ) {
 		$_SESSION['excepcion'] = $e->GetMessage();
 		header("Location: excepcion.php");

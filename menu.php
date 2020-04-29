@@ -1,15 +1,15 @@
+<link rel="stylesheet" type="text/css" href="css/estilo.css"/>
 <aside>
-	<nav>
-		<ul class="topnav" id="myTopnav">
-			<li><a href="inicio.php">Inicio</a></li>
-			<li><a href="listaPaciente.php">Pacientes</a></li>
-			<li><a href="listaCitas.php">Citas</a></li>
-			<li><a href="listaTratamientos.php">Tratamientos</a></li>
-			<li><a href="administracion.php">Administración</a></li>
-		  	<li><a href="about.php">Sobre nosotros</a></li>
-			<?php if (isset($_SESSION['login'])) {	?>
-				<a href="logout.php"><img src="images/botonEditar.png" width="20" height="20"> </a>
-			<?php } ?> </img>
+	<nav id="menu">
+		<ul>
+			<a href="inicio.php" class="menu">Inicio</a>
+			<a href="listaPaciente.php" class="menu">Pacientes</a>
+			<a href="listaCitas.php" class="menu">Citas</a>
+			<a href="listaDoctora.php" class="menu">Doctoras</a>
+			<a href="listaTratamientos.php" class="menu">Tratamientos</a>
+			<a href="administracion.php" class="menu">Administración</a>
+		  	<a href="about.php" class="menu">Sobre nosotros</a>
 		</ul>
+		
 	</nav>
 </aside>

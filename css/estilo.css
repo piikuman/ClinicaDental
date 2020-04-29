@@ -1,3 +1,42 @@
+/*Gnereal*/
+
+html{
+ 	background-image: "ClinicaDentalG3\images\logo.png";
+}
+
+body{
+	color : black;
+	font-family: Helvetica;
+}
+
+#menu{
+    list-style-type: none;
+ 	font-size: 20px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+ 	background-color: silver;
+}
+
+a.menu{
+	text-decoration: none;
+	color:#000000;
+}
+
+#cabecera{
+	padding:40px;
+}
+
+#pie{
+	float:left;
+	padding:50px;
+}
+
+#disconect{
+	float:right;
+}
+
+
 
 /* Mensajes de Error */
 div.error {
