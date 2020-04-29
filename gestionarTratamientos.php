@@ -24,7 +24,7 @@ function consultarTodosTratamientos($conexion) {
 
 function getInfoTratamiento($conexion, $codigo) {
 	try {
-		$stmt = $conexion -> prepare('SELECT NOMBRE, COSTE FROM TRATAMIENTO WHERE OID_TRATAMIENTO = :OID');
+		$stmt = $conexion -> prepare('SELECT NOMBRE, COSTE, OID_ESPECIALIDAD FROM TRATAMIENTO WHERE OID_TRATAMIENTO = :OID');
 		$stmt -> bindParam(":OID", $codigo);
 		$stmt -> execute();
 		return $stmt -> fetch();
@@ -34,14 +34,15 @@ function getInfoTratamiento($conexion, $codigo) {
 	}
 }
 
-function actualizarTratamiento($conexion,$tratamiento) {
+function actualizarTratamiento($conexion,$tratamiento,$especialidad) {
 	
 	try {
-		$consulta = 'CALL ACTUALIZAR_TRATAMIENTO(:Oidtratamiento,:nombreT, :costeT)';
+		$consulta = 'CALL ACTUALIZAR_TRATAMIENTO(:Oidtratamiento,:nombreT, :costeT,:esp)';
 		$stmt=$conexion->prepare($consulta);
 		$stmt->bindParam(':Oidtratamiento',$tratamiento["OID_TRATAMIENTO"]);
 		$stmt->bindParam(':nombreT',$tratamiento["nombre"]);
 		$stmt->bindParam(':costeT',$tratamiento["coste"]);
+		$stmt->bindParam(':esp',$especialidad);
 		$stmt -> execute();
 		return "";
 	} catch(PDOException $e) {

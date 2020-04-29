@@ -34,7 +34,7 @@
 	}
 	else Header("Location: formularioDoctora.php");
 
-	$errores = validarDatosUsuario($doctora);
+	$errores = validarDatosDoctora($doctora);
 	
 	if (count($errores)>0) {
 		$_SESSION["errores"] = $errores;
@@ -44,7 +44,7 @@
 		else if (isset($_REQUEST["añadir"])) Header('Location: altaDoctora.php');
 	}
 	
-	function validarDatosUsuario($doctora){
+	function validarDatosDoctora($doctora){
 		
 		if($doctora["dni"]=="") 
 			$errores[] = "<p>El DNI no puede estar vacío</p>";

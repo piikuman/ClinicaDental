@@ -9,7 +9,7 @@
 	$conexion = crearConexionBD();
 	
 	if (isset($_SESSION["formularioDoctora"])) {
-		$doctora = $_SESSION["formularioDoctora"];
+		$nuevaDoctora = $_SESSION["formularioDoctora"];
 		$_SESSION["formularioDoctora"] = null;
 		$_SESSION["errores"] = null;
 		$especialidad = buscaEspecialidad($conexion, "Especialidad");

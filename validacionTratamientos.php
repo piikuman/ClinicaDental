@@ -5,6 +5,7 @@
 		$tratamiento["OID_TRATAMIENTO"] = $_REQUEST["OID_TRATAMIENTO"];
 		$tratamiento["nombre"] = $_REQUEST["nombre"];
 		$tratamiento["coste"] = $_REQUEST["coste"];
+		$tratamiento["especialidad"] = $_REQUEST["especialidad"];
 		
 		$_SESSION["tratamiento"] = $tratamiento;
 		
