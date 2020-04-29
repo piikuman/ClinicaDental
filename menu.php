@@ -7,6 +7,7 @@
 			<a href="listaCitas.php" class="menu">Citas</a>
 			<a href="listaDoctora.php" class="menu">Doctoras</a>
 			<a href="listaTratamientos.php" class="menu">Tratamientos</a>
+			<a href="listaEspecialidad.php" class="menu">Especialidades</a>
 			<a href="administracion.php" class="menu">Administración</a>
 		  	<a href="about.php" class="menu">Sobre nosotros</a>
 		</ul>
