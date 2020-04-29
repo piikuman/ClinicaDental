@@ -5,9 +5,9 @@
 	require_once("gestionarTratamientos.php");
 		
 	// Comprobar que hemos llegado a esta página porque se ha rellenado el formulario
-	if (isset($_SESSION["formulario"])) {
-		$nuevoTratamiento = $_SESSION["formulario"];
-		$_SESSION["formulario"] = null;
+	if (isset($_SESSION["formularioTratamiento"])) {
+		$nuevoTratamiento = $_SESSION["formularioTratamiento"];
+		$_SESSION["formularioTratamiento"] = null;
 		$_SESSION["errores"] = null;
 	}
 	else 
@@ -34,7 +34,7 @@
 		?>
 				<h1>Tratamiento <?php echo $nuevoTratamiento["nombre"]; ?> registrado correctamente</h1>
 				<div >	
-			   		Pulsa <a href="listaTratamientos.php">aquí</a> para acceder a la gestión de biblioteca.
+			   		Pulsa <a href="listaTratamientos.php">aquí</a> para acceder a la lista de tratamientos.
 				</div>
 		<?php } else { ?>
 				<h1>El tratamiento ya existe.</h1>

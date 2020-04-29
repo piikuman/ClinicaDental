@@ -8,11 +8,11 @@
 		
 		$_SESSION["tratamiento"] = $tratamiento;
 		
-	}else if (isset($_SESSION["formulario"])) {
+	}else if (isset($_SESSION["formularioTratamiento"])) {
 		$tratamiento["nombre"] = $_REQUEST["nombre"];
 		$tratamiento["coste"] = $_REQUEST["coste"];
 
-		$_SESSION["formulario"] = $tratamiento;
+		$_SESSION["formularioTratamiento"] = $tratamiento;
 	
 	}
 	else Header("Location: formularioTratamientos.php");

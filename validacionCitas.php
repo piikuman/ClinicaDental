@@ -9,12 +9,12 @@
 		
 		$_SESSION["cita"] = $cita;
 		
-	}else if (isset($_SESSION["formulario"])) {
+	}else if (isset($_SESSION["formularioCita"])) {
 		$cita["fechaCita"] = $_REQUEST["fechaCita"];
 		$cita["horaCita"] = $_REQUEST["horaCita"];
 		$cita["consulta"] = $_REQUEST["consulta"];
 
-		$_SESSION["formulario"] = $cita;
+		$_SESSION["formularioCita"] = $cita;
 	
 	}
 	else Header("Location: formularioCitas.php");

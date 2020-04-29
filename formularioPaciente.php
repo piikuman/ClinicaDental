@@ -4,22 +4,22 @@
 	if(isset($_SESSION['paciente'])){
 		$paciente = $_SESSION['paciente'];
 		unset($_SESSION['paciente']);
-	} else if(!isset($_SESSION['formulario'])) {
-		$formulario['nombre'] = "";
-		$formulario['apellidos'] = "";
-		$formulario['dni'] = "";
-		$formulario['fechaNacimiento'] = "";
-		$formulario['correo'] = "";
-		$formulario['poblacion'] = "";
-		$formulario['direccion'] = "";
-		$formulario['fechaAlta'] = "";
-		$formulario['seguro'] = "";
-		$formulario['nombreTutor'] = "";
-		$formulario['telefonoTutor'] = "";
+	} else if(!isset($_SESSION['formularioPaciente'])) {
+		$formularioPaciente['nombre'] = "";
+		$formularioPaciente['apellidos'] = "";
+		$formularioPaciente['dni'] = "";
+		$formularioPaciente['fechaNacimiento'] = "";
+		$formularioPaciente['correo'] = "";
+		$formularioPaciente['poblacion'] = "";
+		$formularioPaciente['direccion'] = "";
+		$formularioPaciente['fechaAlta'] = "";
+		$formularioPaciente['seguro'] = "";
+		$formularioPaciente['nombreTutor'] = "";
+		$formularioPaciente['telefonoTutor'] = "";
 	
-		$_SESSION['formulario'] = $formulario;
+		$_SESSION['formularioPaciente'] = $formularioPaciente;
 	} else
-		$formulario = $_SESSION['formulario'];
+		$formularioPaciente = $_SESSION['formularioPaciente'];
 			
 	if (isset($_SESSION["errores"]))
 		$errores = $_SESSION["errores"];
@@ -53,47 +53,47 @@
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos personales</legend>
 			<div><label for="dni">DNI<em>*</em></label>
-			<input id="dni" name="dni" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $formulario['dni'];?>" required>
+			<input id="dni" name="dni" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $formularioPaciente['dni'];?>" required>
 			</div>
 
 			<div><label for="nombre">Nombre:<em>*</em></label>
-			<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $formulario['nombre'];?>" required/>
+			<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $formularioPaciente['nombre'];?>" required/>
 			</div>
 
 			<div><label for="apellidos">Apellidos:</label>
-			<input id="apellidos" name="apellidos" type="text" size="80" value="<?php echo $formulario['apellidos'];?>"/>
+			<input id="apellidos" name="apellidos" type="text" size="80" value="<?php echo $formularioPaciente['apellidos'];?>"/>
 			</div>
 			
 			<div><label for="fechaNacimiento">Fecha de nacimiento:</label>
-			<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $formulario['fechaNacimiento'];?>"/>
+			<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $formularioPaciente['fechaNacimiento'];?>"/>
 			</div>
 
 			<div><label for="correo">Correo:<em>*</em></label>
-			<input id="correo" name="correo"  type="correo" placeholder="usuario@dominio.extension" value="<?php echo $formulario['correo'];?>" required/><br>
+			<input id="correo" name="correo"  type="correo" placeholder="usuario@dominio.extension" value="<?php echo $formularioPaciente['correo'];?>" required/><br>
 			</div>
 			
 			<div><label for="poblacion">Poblacion:</label>
-			<input id="poblacion" name="poblacion" type="text" size="80" value="<?php echo $formulario['poblacion'];?>"/>
+			<input id="poblacion" name="poblacion" type="text" size="80" value="<?php echo $formularioPaciente['poblacion'];?>"/>
 			</div>
 			
 			<div><label for="direccion">Direccion:</label>
-			<input id="direccion" name="direccion" type="text" size="80" value="<?php echo $formulario['direccion'];?>"/>
+			<input id="direccion" name="direccion" type="text" size="80" value="<?php echo $formularioPaciente['direccion'];?>"/>
 			</div>
 			
 			<div><label for="fechaAlta">Fecha Alta:</label>
-			<input id="fechaAlta" name="fechaAlta" type="date" size="80" value="<?php echo $formulario['fechaAlta'];?>"/>
+			<input id="fechaAlta" name="fechaAlta" type="date" size="80" value="<?php echo $formularioPaciente['fechaAlta'];?>"/>
 			</div>
 			
 			<div><label for="seguro">Seguro:</label>
-			<input id="seguro" name="seguro" type="text" size="80" value="<?php echo $formulario['seguro'];?>"/>
+			<input id="seguro" name="seguro" type="text" size="80" value="<?php echo $formularioPaciente['seguro'];?>"/>
 			</div>
 			
 			<div><label for="nombreTutor">Nombre Tutor:</label>
-			<input id="nombreTutor" name="nombreTutor" type="text" size="80" value="<?php echo $formulario['nombreTutor'];?>"/>
+			<input id="nombreTutor" name="nombreTutor" type="text" size="80" value="<?php echo $formularioPaciente['nombreTutor'];?>"/>
 			</div>
 			
 			<div><label for="telefonoTutor">Telefono Tutor:</label>
-			<input id="telefonoTutor" name="telefonoTutor" type="text" size="80" value="<?php echo $formulario['telefonoTutor'];?>"/>
+			<input id="telefonoTutor" name="telefonoTutor" type="text" size="80" value="<?php echo $formularioPaciente['telefonoTutor'];?>"/>
 			</div>
 		</fieldset>
 		

@@ -4,13 +4,13 @@
 	if(isset($_SESSION['tratamiento'])){
 		$tratamiento = $_SESSION['tratamiento'];
 		unset($_SESSION['tratamiento']);
-	} else if(!isset($_SESSION['formulario'])) {
-		$formulario['nombre'] = "";
-		$formulario['coste'] = "";
+	} else if(!isset($_SESSION['formularioTratamiento'])) {
+		$formularioTratamiento['nombre'] = "";
+		$formularioTratamiento['coste'] = "";
 	
-		$_SESSION['formulario'] = $formulario;
+		$_SESSION['formularioTratamiento'] = $formularioTratamiento;
 	} else
-		$formulario = $_SESSION['formulario'];
+		$formulario = $_SESSION['formularioTratamiento'];
 			
 	if (isset($_SESSION["errores"]))
 		$errores = $_SESSION["errores"];
@@ -45,17 +45,16 @@
 		<fieldset><legend>Datos tratamiento</legend>
 			
 			<div<<label for="nombre">Nombre:<em>*</em></label>
-			<input type="text" id="nombre" name="nombre" value="<?php echo $formulario['nombre'];?>" required/>
+			<input type="text" id="nombre" name="nombre" value="<?php echo $formularioTratamiento['nombre'];?>" required/>
 			</div>
 
 			<div><label for="coste">Coste:<em>*</em></label>
-			<input id="coste" name="coste" type="text" size="17" value="<?php echo $formulario['coste'];?>" required/>€<br>
+			<input id="coste" name="coste" type="text" size="17" value="<?php echo $formularioTratamiento['coste'];?>" required/>€<br>
 			</div>
 			
 		</fieldset>
 		
-		<div><button type="submit"><img src="images/botonOkey.png" width="20" height="20"></button>
-			<button type="submit"><img src="images/cancelButton.png" width="20" height="20"></button>
+		<div><button id="añadir" name="añadir" type="submit"><img src="images/botonOkey.png" width="20" height="20"></button>
 		</div>
 
 	</form>

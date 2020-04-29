@@ -33,14 +33,12 @@ function getInfoTratamiento($conexion, $codigo) {
 	}
 }
 
-function actualizarCita($conexion,$cita) {
-		
-	$fechaCita = date('d/m/Y', strtotime($cita["fechaCita"]));
+function actualizarTratamiento($conexion,$tratamiento) {
 	
 	try {
 		$consulta = 'CALL ACTUALIZAR_TRATAMIENTO(:Oidtratamiento,:nombreT, :costeT)';
 		$stmt=$conexion->prepare($consulta);
-		$stmt->bindParam(':Oidtratamiento',$cita["OID_TRATAMIENTO"]);
+		$stmt->bindParam(':Oidtratamiento',$tratamiento["OID_TRATAMIENTO"]);
 		$stmt->bindParam(':nombreT',$tratamiento["nombre"]);
 		$stmt->bindParam(':costeT',$tratamiento["coste"]);
 		$stmt -> execute();
