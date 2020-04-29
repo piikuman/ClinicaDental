@@ -5,6 +5,7 @@
 	require_once("gestionarUsuario.php");
 	require_once("paginacionConsulta.php");
 	
+	
 	if (isset($_SESSION["paginacion"])){
 		$paginacion = $_SESSION["paginacion"];
 	}
@@ -23,10 +24,10 @@
 	
 	$conexion = crearConexionBD();
 	$query = "SELECT * FROM USUARIO ORDER BY OID_USUARIO, CORREO";
-	$totalPacientes = totalConsulta($conexion, $query);
-	$totalPaginas = (int)($totalPacientes / $pagTam);
+	$totalUsuarios = totalConsulta($conexion, $query);
+	$totalPaginas = (int)($totalUsuarios / $pagTam);
 
-	if ($totalPacientes % $pagTam > 0){
+	if ($totalUsuarios % $pagTam > 0){
 		$totalPaginas++;
 	}	
 
@@ -38,7 +39,7 @@
 	$paginacion["PAG_TAM"] = $pagTam;
 	$_SESSION["paginacion"] = $paginacion;
 
-	$usuarios = consultaPaginada($conexion, $query, $paginaSeleccionada, $pagTam);
+	$ususarios = consultaPaginada($conexion, $query, $paginaSeleccionada, $pagTam);
 	cerrarConexionBD($conexion);
 ?>
 
