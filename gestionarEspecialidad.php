@@ -58,4 +58,17 @@ function eliminarEspecialidad($conexion,$codigo) {
 		return $e->getMessage();
     }
 }
+
+function buscaEspecialidad($conexion,$nombre) {
+		
+	try {
+		$consulta = 'SELECT OID_ESPECIALIDAD FROM ESPECIALIDAD WHERE NOMBRE = :NOMBRE';
+		$stmt=$conexion->prepare($consulta);
+		$stmt->bindParam(':NOMBRE',$nombre);
+		$stmt->execute();
+		return "";
+	} catch(PDOException $e) {
+		return $e->getMessage();
+    }
+}
 ?>

@@ -16,6 +16,7 @@
 		$formularioDoctora['sueldo'] = "";
 		$formularioDoctora['telefono'] = "";
 		$formularioDoctora['codigoDoctora']= "";
+		$formularioDoctora['especialidad']= "";
 		
 		$_SESSION['formularioDoctora'] = $formularioDoctora;
 	}
@@ -93,6 +94,10 @@
 			<div><label for="codigoDoctora">Codigo doctora:</label>
 			<input id="codigoDoctora" name="codigoDoctora" type="text" size="80" value="<?php echo $formularioDoctora['codigoDoctora'];?>"/>
 			</div>
+			
+			<div><label for="especialidad">Especialidad:</label>
+			<input id="especialidad" name="especialidad" type="text" size="80" value="<?php echo $formularioDoctora['especialidad'];?>"/>
+			</div>
 		</fieldset>
 		
 		<div>
@@ -139,6 +144,10 @@
 			
 			<div><label for="sueldo">Sueldo:</label>
 			<input id="sueldo" name="sueldo" type="text" size="80" value="<?php echo $doctora['sueldo'];?>"/>
+			</div>
+			
+			<div><label for="especialidad">Especialidad:</label>
+			<input id="especialidad" name="especialidad" type="text" size="80" value="<?php echo $doctora['especialidad'];?>"/>
 			</div>
 			</fieldset>
 		<div>
