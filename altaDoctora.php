@@ -3,17 +3,19 @@
 
 	require_once("gestionBD.php");
 	require_once("gestionarDoctora.php");
+	require_once("gestionarEspecialidad.php");
 		
 	
+	$conexion = crearConexionBD();
+	
 	if (isset($_SESSION["formularioDoctora"])) {
-		$nuevaDoctora = $_SESSION["formularioDoctora"];
+		$doctora = $_SESSION["formularioDoctora"];
 		$_SESSION["formularioDoctora"] = null;
 		$_SESSION["errores"] = null;
+		$especialidad = buscaEspecialidad($conexion, "Especialidad");
 	}
 	else 
-		Header("Location: formularioPaciente.php");	
-
-	$conexion = crearConexionBD(); 
+		Header("Location: formularioDoctora.php");	 
 
 ?>
 
@@ -30,7 +32,9 @@
 	?>
 
 	<main>
-		<?php if (altaDoctora($conexion, $nuevaDoctora)) {  
+		<?php
+			 
+			 if (altaDoctora($conexion, $doctora, $especialidad["OID_ESPECIALIDAD"])) {  
 		?>
 				<h1>Hola <?php echo $nuevaDoctora["nombre"]; ?>, gracias por registrarte</h1>
 				<div >	

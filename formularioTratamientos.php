@@ -7,6 +7,7 @@
 	} else if(!isset($_SESSION['formularioTratamiento'])) {
 		$formularioTratamiento['nombre'] = "";
 		$formularioTratamiento['coste'] = "";
+		$formularioTratamiento['especialidad'] = "";
 	
 		$_SESSION['formularioTratamiento'] = $formularioTratamiento;
 	} else
@@ -50,6 +51,10 @@
 
 			<div><label for="coste">Coste:<em>*</em></label>
 			<input id="coste" name="coste" type="text" size="17" value="<?php echo $formularioTratamiento['coste'];?>" required/>€<br>
+			</div>
+			
+			<div><label for="especialidad">Coste:<em>*</em></label>
+			<input id="especialidad" name="especialidad" type="text" size="17" value="<?php echo $formularioTratamiento['especialidad'];?>" required/>€<br>
 			</div>
 			
 		</fieldset>

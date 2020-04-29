@@ -1,12 +1,12 @@
 <?php
   
- function altaDoctora($conexion,$usuario) {
+ function altaDoctora($conexion,$usuario,$especialidad) {
 		
 	$fechaNacimiento = date('d/m/Y', strtotime($usuario["fechaNacimiento"]));
 	$fechaAlta = date('d/m/Y', strtotime($usuario["fechaAlta"]));
 	
 	try {
-		$consulta = 'CALL INSERTAR_DOCTORA(:nombre, :ape, :dni, :fec, :poblacion, :dir, :fecA, :tel, :sueldo, :codigoDoctora)';	
+		$consulta = 'CALL INSERTAR_DOCTORA(:nombre, :ape, :dni, :fec, :poblacion, :dir, :fecA, :tel, :sueldo, :codigoDoctora, :oid_especialidad)';	
 		$stmt=$conexion->prepare($consulta);
 		$stmt->bindParam(':nombre',$usuario["nombre"]);
 		$stmt->bindParam(':ape',$usuario["apellidos"]);
@@ -18,6 +18,7 @@
 		$stmt->bindParam(':tel',$usuario["telefono"]);
 		$stmt->bindParam(':sueldo',$usuario["sueldo"]);
 		$stmt->bindParam(':codigoDoctora', $usuario["codigoDoctora"]);
+		$stmt->bindParam(':oid_especialidad', $especialidad);
 		$stmt -> execute();
 		return true;
 	} catch(PDOException $e) {

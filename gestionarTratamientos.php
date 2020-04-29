@@ -1,12 +1,13 @@
 <?php
   
- function altaTratamiento($conexion,$tratamiento) {
+ function altaTratamiento($conexion,$tratamiento,$especialidad) {
 	
 	try {
-		$consulta = 'CALL INSERTAR_TRATAMIENTO(:nombreT, :costeT)';	
+		$consulta = 'CALL INSERTAR_TRATAMIENTO(:nombreT, :costeT, :esp)';	
 		$stmt=$conexion->prepare($consulta);
 		$stmt->bindParam(':nombreT',$tratamiento["nombre"]);
 		$stmt->bindParam(':costeT',$tratamiento["coste"]);
+		$stmt->bindParam(':esp',$especialidad);
 		$stmt -> execute();
 		return true;
 	} catch(PDOException $e) {
