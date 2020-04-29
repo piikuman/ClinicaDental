@@ -12,6 +12,7 @@
 		$doctora["fechaAlta"] = $_REQUEST["fechaAlta"];
 		$doctora["telefono"] = $_REQUEST["telefono"];
 		$doctora["codigoDoctora"] = $_REQUEST["codigoDoctora"];
+		$doctora["especialidad"] = $_REQUEST["especialidad"];
 		
 		$_SESSION["doctora"] = $doctora;
 		
@@ -26,6 +27,7 @@
 		$doctora["fechaAlta"] = $_REQUEST["fechaAlta"];
 		$doctora["telefono"] = $_REQUEST["telefono"];
 		$doctora["codigoDoctora"] = $_REQUEST["codigoDoctora"];
+		$doctora["especialidad"] = $_REQUEST["especialidad"];
 		
 		$_SESSION["formularioDoctora"] = $doctora;
 	
