@@ -5,10 +5,41 @@
 	require_once("gestionarUsuario.php");
 	require_once("paginacionConsulta.php");
 	
-	$conexion = crearConexionBD();
-	$usuarios = consultarTodosUsuarios($conexion);
-	cerrarConexionBD($conexion);
+	if (isset($_SESSION["paginacion"])){
+		$paginacion = $_SESSION["paginacion"];
+	}
 	
+	$paginaSeleccionada = isset($_GET["PAG_NUM"]) ? (int)$_GET["PAG_NUM"] : (isset($paginacion) ? (int)$paginacion["PAG_NUM"] : 1);
+	$pagTam = isset($_GET["PAG_TAM"]) ? (int)$_GET["PAG_TAM"] : (isset($paginacion) ? (int)$paginacion["PAG_TAM"] : 3);
+
+	if ($paginaSeleccionada < 1){
+		$paginaSeleccionada = 1;
+	}	
+	if ($pagTam < 1){
+		$pagTam = 3;
+	}
+	
+	unset($_SESSION["paginacion"]);
+	
+	$conexion = crearConexionBD();
+	$query = "SELECT * FROM USUARIO ORDER BY OID_USUARIO, CORREO";
+	$totalPacientes = totalConsulta($conexion, $query);
+	$totalPaginas = (int)($totalPacientes / $pagTam);
+
+	if ($totalPacientes % $pagTam > 0){
+		$totalPaginas++;
+	}	
+
+	if ($paginaSeleccionada > $totalPaginas){
+		$paginaSeleccionada = $totalPaginas;
+	}	
+
+	$paginacion["PAG_NUM"] = $paginaSeleccionada;
+	$paginacion["PAG_TAM"] = $pagTam;
+	$_SESSION["paginacion"] = $paginacion;
+
+	$usuarios = consultaPaginada($conexion, $query, $paginaSeleccionada, $pagTam);
+	cerrarConexionBD($conexion);
 ?>
 
 <!DOCTYPE html>

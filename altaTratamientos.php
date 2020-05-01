@@ -3,6 +3,7 @@
 
 	require_once("gestionBD.php");
 	require_once("gestionarTratamientos.php");
+	require_once("gestionarEspecialidad.php");
 		
 	// Comprobar que hemos llegado a esta página porque se ha rellenado el formulario
 	if (isset($_SESSION["formularioTratamiento"])) {
@@ -13,7 +14,8 @@
 	else 
 		Header("Location: formularioTratamientos.php");	
 
-	$conexion = crearConexionBD(); 
+	$conexion = crearConexionBD();
+	$especialidad = buscaEspecialidad($conexion, $nuevoTratamiento["especialidad"]); 
 
 ?>
 
@@ -30,7 +32,7 @@
 	?>
 
 	<main>
-		<?php if (altaTratamiento($conexion, $nuevoTratamiento)) {  
+		<?php if (altaTratamiento($conexion, $nuevoTratamiento, $especialidad["OID_ESPECIALIDAD"])) {  
 		?>
 				<h1>Tratamiento <?php echo $nuevoTratamiento["nombre"]; ?> registrado correctamente</h1>
 				<div >	

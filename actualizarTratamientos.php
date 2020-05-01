@@ -7,9 +7,11 @@
 		
 		require_once("gestionBD.php");
 		require_once("gestionarTratamientos.php");
+		require_once("gestionarEspecialidad.php");
 		
-		$conexion = crearConexionBD();		
-		$excepcion = actualizarTratamiento($conexion,$tratamiento);
+		$conexion = crearConexionBD();
+		$especialidad = buscaEspecialidad($conexion, $tratamiento["especialidad"]); 		
+		$excepcion = actualizarTratamiento($conexion,$tratamiento,$especialidad["OID_ESPECIALIDAD"]);
 		cerrarConexionBD($conexion);
 			
 		if ($excepcion<>"") {

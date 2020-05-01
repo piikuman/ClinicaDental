@@ -1,12 +1,12 @@
 <?php
   
- function altaDoctora($conexion,$usuario) {
+ function altaDoctora($conexion,$usuario,$especialidad) {
 		
 	$fechaNacimiento = date('d/m/Y', strtotime($usuario["fechaNacimiento"]));
 	$fechaAlta = date('d/m/Y', strtotime($usuario["fechaAlta"]));
 	
 	try {
-		$consulta = 'CALL INSERTAR_DOCTORA(:nombre, :ape, :dni, :fec, :poblacion, :dir, :fecA, :tel, :sueldo, :codigoDoctora)';	
+		$consulta = 'CALL INSERTAR_DOCTORA(:nombre, :ape, :dni, :fec, :poblacion, :dir, :fecA, :tel, :sueldo, :codigoDoctora, :oid_especialidad)';	
 		$stmt=$conexion->prepare($consulta);
 		$stmt->bindParam(':nombre',$usuario["nombre"]);
 		$stmt->bindParam(':ape',$usuario["apellidos"]);
@@ -18,6 +18,7 @@
 		$stmt->bindParam(':tel',$usuario["telefono"]);
 		$stmt->bindParam(':sueldo',$usuario["sueldo"]);
 		$stmt->bindParam(':codigoDoctora', $usuario["codigoDoctora"]);
+		$stmt->bindParam(':oid_especialidad', $especialidad);
 		$stmt -> execute();
 		return true;
 	} catch(PDOException $e) {
@@ -34,7 +35,7 @@
  
  function getInfoDoctora($conexion, $CODIGODOCTORA) {
 	try {
-		$stmt = $conexion -> prepare('SELECT NOMBRE, APELLIDOS, DNI, DIRECCION, POBLACION, FECHA_NACIMIENTO, TELEFONO, FECHAALTA, SUELDO FROM DOCTORA WHERE CODIGODOCTORA = :CODIGODOCTORA');
+		$stmt = $conexion -> prepare('SELECT OID_DOCTORA, NOMBRE, APELLIDOS, DNI, DIRECCION, POBLACION, FECHA_NACIMIENTO, TELEFONO, FECHAALTA, SUELDO, OID_ESPECIALIDAD FROM DOCTORA WHERE CODIGODOCTORA = :CODIGODOCTORA');
 		$stmt -> bindParam(":CODIGODOCTORA", $CODIGODOCTORA);
 		$stmt -> execute();
 		return $stmt -> fetch();
@@ -44,14 +45,15 @@
 	}
  }
  
- function actualizarDoctora($conexion,$doctora) {
+ function actualizarDoctora($conexion,$doctora,$especialidad) {
 		
 	$fechaNacimiento = date('d/m/Y', strtotime($doctora["fechaNacimiento"]));
 	$fechaAlta = date('d/m/Y', strtotime($doctora["fechaAlta"]));
 	
 	try {
-		$consulta = 'CALL ACTUALIZAR_DOCTORA(:nombre, :ape, :dni, :fec, :poblacion, :dir, :fecA, :tel, :sueldo, :codigoDoctora)';
+		$consulta = 'CALL ACTUALIZAR_DOCTORA(:codigoDoctora, :nombre, :ape, :dni, :fec, :poblacion, :dir, :fecA, :tel, :sueldo, :esp)';
 		$stmt=$conexion->prepare($consulta);
+		$stmt->bindParam(':codigoDoctora', $doctora["OID_DOCTORA"]);
 		$stmt->bindParam(':nombre',$doctora["nombre"]);
 		$stmt->bindParam(':ape',$doctora["apellidos"]);
 		$stmt->bindParam(':dni',$doctora["dni"]);
@@ -61,7 +63,7 @@
 		$stmt->bindParam(':fecA',$fechaAlta);
 		$stmt->bindParam(':tel',$doctora["telefono"]);
 		$stmt->bindParam(':sueldo',$doctora["sueldo"]);
-		$stmt->bindParam(':codigoDoctora', $doctora["codigoDoctora"]);
+		$stmt->bindParam(':esp', $especialidad);
 		$stmt -> execute();
 		return "";
 	} catch(PDOException $e) {
