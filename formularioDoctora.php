@@ -107,7 +107,7 @@
 	<?php }else{ ?>
 	<h1>Actualizar doctora <?php echo $doctora['codigoDoctora'];?></h1>	
 	<form id="actualizarDoctora" method="post" action="validacionDoctora.php">
-		<input id="codigoDoctora" name="codigoDoctora" type="hidden" value="<?php echo $doctora['codigoDoctora']?>" />
+		<input id="OID_DOCTORA" name="OID_DOCTORA" type="hidden" value="<?php echo $doctora['OID_DOCTORA']?>"/>
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos personales</legend>
 		<div><label for="dni">DNI<em>*</em></label>

@@ -38,7 +38,7 @@
 		?>
   	  <tr>
   	  	<form id='formMostrar' method='POST' action='mostrarDoctora.php' > 
-			<input type='hidden' name='CODIGODOCTORA' value='<?php echo $doctora["CODIGODOCTORA"]?>'>
+			<input type='hidden' name='codigoDoctora' value='<?php echo $doctora["CODIGODOCTORA"]?>'>
 	    <th><input type='submit' value='<?php echo $doctora["CODIGODOCTORA"]; ?>'></th>
 		</form>
     	    <td><?php echo $doctora["APELLIDOS"]; ?></td>

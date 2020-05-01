@@ -1,7 +1,7 @@
 <?php
 	session_start();
 
-	if(isset($_REQUEST['codigoDoctora'])){
+	if(isset($_REQUEST['OID_DOCTORA'])){
 		$doctora["dni"] = $_REQUEST["dni"];
 		$doctora["nombre"] = $_REQUEST["nombre"];
 		$doctora["apellidos"] = $_REQUEST["apellidos"];
@@ -11,8 +11,8 @@
 		$doctora["direccion"] = $_REQUEST["direccion"];
 		$doctora["fechaAlta"] = $_REQUEST["fechaAlta"];
 		$doctora["telefono"] = $_REQUEST["telefono"];
-		$doctora["codigoDoctora"] = $_REQUEST["codigoDoctora"];
 		$doctora["especialidad"] = $_REQUEST["especialidad"];
+		$doctora["OID_DOCTORA"] = $_REQUEST["OID_DOCTORA"];
 		
 		$_SESSION["doctora"] = $doctora;
 		
@@ -34,7 +34,7 @@
 	}
 	else Header("Location: formularioDoctora.php");
 
-	$errores = validarDatosUsuario($doctora);
+	$errores = validarDatosDoctora($doctora);
 	
 	if (count($errores)>0) {
 		$_SESSION["errores"] = $errores;
@@ -44,7 +44,7 @@
 		else if (isset($_REQUEST["añadir"])) Header('Location: altaDoctora.php');
 	}
 	
-	function validarDatosUsuario($doctora){
+	function validarDatosDoctora($doctora){
 		
 		if($doctora["dni"]=="") 
 			$errores[] = "<p>El DNI no puede estar vacío</p>";

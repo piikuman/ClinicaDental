@@ -2,6 +2,7 @@
 session_start();
 
 require_once ('gestionarTratamientos.php');
+require_once ('gestionarEspecialidad.php');
 require_once ('gestionBD.php');
 
 if (!isset($_SESSION['login'])){
@@ -10,6 +11,7 @@ if (!isset($_SESSION['login'])){
 	$conexion = crearConexionBD();
 	$codigo = $_REQUEST['OID_TRATAMIENTO'];
 	$datos = getInfoTratamiento($conexion, $codigo);
+	$especialidad = getInfoEspecialidad($conexion, $datos["OID_ESPECIALIDAD"]);
 	cerrarConexionBD($conexion);
 }
 
@@ -38,6 +40,8 @@ if (!isset($_SESSION['login'])){
 							<input id="nombre" name="nombre" type="hidden" value="<?php echo $datos["NOMBRE"]; ?>"/>
 							<p><b>Coste:</b> <?php echo $datos["COSTE"]; ?></p>
 							<input id="coste" name="coste" type="hidden" value="<?php echo $datos["COSTE"]; ?>"/>
+							<p><b>Especialidad:</b> <?php echo $especialidad["NOMBRE"]; ?></p>
+							<input id="especialidad" name="especialidad" type="hidden" value="<?php echo $especialidad["NOMBRE"]; ?>"/>
 						</div>
 				<button id="actualizar" name="actualizar" type="submit" size="4"><img src="images/botonEditar.png" width="20" height="20"></button>
 				<button id="eliminar" name="eliminar" type="submit" size="4"><img src="images/botonEliminar.png" width="20" height="20"></button>

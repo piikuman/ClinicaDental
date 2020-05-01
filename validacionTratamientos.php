@@ -5,12 +5,14 @@
 		$tratamiento["OID_TRATAMIENTO"] = $_REQUEST["OID_TRATAMIENTO"];
 		$tratamiento["nombre"] = $_REQUEST["nombre"];
 		$tratamiento["coste"] = $_REQUEST["coste"];
+		$tratamiento["especialidad"] = $_REQUEST["especialidad"];
 		
 		$_SESSION["tratamiento"] = $tratamiento;
 		
 	}else if (isset($_SESSION["formularioTratamiento"])) {
 		$tratamiento["nombre"] = $_REQUEST["nombre"];
 		$tratamiento["coste"] = $_REQUEST["coste"];
+		$tratamiento["especialidad"] = $_REQUEST["especialidad"];
 
 		$_SESSION["formularioTratamiento"] = $tratamiento;
 	
