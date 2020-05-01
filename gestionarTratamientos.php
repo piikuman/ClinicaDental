@@ -22,6 +22,19 @@ function consultarTodosTratamientos($conexion) {
     return $conexion->query($consulta);
 }
 
+function buscaTratamiento($conexion,$nombre) {
+		
+	try {
+		$consulta = 'SELECT OID_TRATAMIENTO FROM TRATAMIENTO WHERE NOMBRE = :NOMBRE';
+		$stmt=$conexion->prepare($consulta);
+		$stmt->bindParam(':NOMBRE',$nombre);
+		$stmt->execute();
+		return $stmt -> fetch();
+	} catch(PDOException $e) {
+		return $e->getMessage();
+    }
+}
+
 function getInfoTratamiento($conexion, $codigo) {
 	try {
 		$stmt = $conexion -> prepare('SELECT NOMBRE, COSTE, OID_ESPECIALIDAD FROM TRATAMIENTO WHERE OID_TRATAMIENTO = :OID');

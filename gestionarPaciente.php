@@ -33,6 +33,19 @@ function consultarTodosPacientes($conexion) {
     return $conexion->query($consulta);
 }
 
+function buscaPaciente($conexion,$nombre) {
+		
+	try {
+		$consulta = 'SELECT OID_PACIENTE FROM PACIENTE WHERE DNI = :DNI';
+		$stmt=$conexion->prepare($consulta);
+		$stmt->bindParam(':DNI',$nombre);
+		$stmt->execute();
+		return $stmt -> fetch();
+	} catch(PDOException $e) {
+		return $e->getMessage();
+    }
+}
+
 function getInfoPaciente($conexion, $OID_PACIENTE) {
 	try {
 		$stmt = $conexion -> prepare('SELECT NOMBRE, APELLIDOS, DNI, FECHA_NACIMIENTO,CORREO,POBLACION,DIRECCION,FECHAALTA,SEGURO,NOMBRE_TUTOR,TELEFONO_TUTOR FROM PACIENTE WHERE OID_PACIENTE = :OID_PACIENTE');

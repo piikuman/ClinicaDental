@@ -1,15 +1,18 @@
 <?php
   
- function altaCita($conexion,$cita) {
+ function altaCita($conexion,$cita,$paciente,$doctora,$tratamiento) {
 		
 	$fechaCita = date('d/m/Y', strtotime($cita["fechaCita"]));
 	
 	try {
-		$consulta = 'CALL INSERTAR_CITA(:fecC, :horaC, :cons)';	
+		$consulta = 'CALL INSERTAR_CITA(:fecC, :horaC, :cons, :pa, :doc, :tratam)';	
 		$stmt=$conexion->prepare($consulta);
 		$stmt->bindParam(':fecC',$fechaCita);
 		$stmt->bindParam(':horaC',$cita["horaCita"]);
 		$stmt->bindParam(':cons',$cita["consulta"]);
+		$stmt->bindParam(':pa',$paciente);
+		$stmt->bindParam(':doc',$doctora);
+		$stmt->bindParam(':tratam',$tratamiento);
 		$stmt -> execute();
 		return true;
 	} catch(PDOException $e) {
@@ -26,7 +29,7 @@
  
  function getInfoCita($conexion, $OID_CITA) {
 	try {
-		$stmt = $conexion -> prepare('SELECT FECHACITA, HORACITA, CONSULTA FROM CITA WHERE OID_CITA = :OID_CITA');
+		$stmt = $conexion -> prepare('SELECT FECHACITA, HORACITA, CONSULTA, OID_PACIENTE, OID_DOCTORA, OID_TRATAMIENTO FROM CITA WHERE OID_CITA = :OID_CITA');
 		$stmt -> bindParam(":OID_CITA", $OID_CITA);
 		$stmt -> execute();
 		return $stmt -> fetch();
@@ -36,17 +39,20 @@
 	}
  }
  
- function actualizarCita($conexion,$cita) {
+ function actualizarCita($conexion,$cita,$paciente,$doctora,$tratamiento) {
 		
 	$fechaCita = date('d/m/Y', strtotime($cita["fechaCita"]));
 	
 	try {
-		$consulta = 'CALL ACTUALIZAR_CITA(:Oidcita,:fecC, :horaC, :cons)';
+		$consulta = 'CALL ACTUALIZAR_CITA(:Oidcita,:fecC, :horaC, :cons, :pa, :doc, :tratam)';
 		$stmt=$conexion->prepare($consulta);
 		$stmt->bindParam(':Oidcita',$cita["OID_CITA"]);
 		$stmt->bindParam(':fecC',$fechaCita);
 		$stmt->bindParam(':horaC',$cita["horaCita"]);
 		$stmt->bindParam(':cons',$cita["consulta"]);
+		$stmt->bindParam(':pa',$paciente);
+		$stmt->bindParam(':doc',$doctora);
+		$stmt->bindParam(':tratam',$tratamiento);
 		$stmt -> execute();
 		return "";
 	} catch(PDOException $e) {

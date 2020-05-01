@@ -7,9 +7,15 @@
 		
 		require_once("gestionBD.php");
 		require_once("gestionarCitas.php");
+		require_once("gestionarPaciente.php");
+		require_once("gestionarTratamientos.php");
+		require_once("gestionarDoctora.php");
 		
-		$conexion = crearConexionBD();		
-		$excepcion = actualizarCita($conexion,$cita);
+		$conexion = crearConexionBD();
+		$paciente = buscaPaciente($conexion, $cita["paciente"]);
+		$doctora = buscaDoctora($conexion, $cita["doctora"]);
+		$tratamiento = buscaTratamiento($conexion, $cita["tratamiento"]);		
+		$excepcion = actualizarCita($conexion,$cita,$paciente["OID_PACIENTE"],$doctora["OID_DOCTORA"],$tratamiento["OID_TRATAMIENTO"]);
 		cerrarConexionBD($conexion);
 			
 		if ($excepcion<>"") {

@@ -48,8 +48,20 @@
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos cita</legend>
 			
+			<div<<label for="paciente">DNI paciente:<em>*</em></label>
+			<input type="text" id="paciente" name="paciente" value="<?php echo $paciente['DNI'];?>" required/><br>
+			</div>
+			
+			<div<<label for="doctora">Codigo doctora:<em>*</em></label>
+			<input type="text" id="doctora" name="doctora" value="<?php echo $doctora['CODIGODOCTORA'];?>" required/><br>
+			</div>
+			
+			<div<<label for="tratamiento">Tratamiento:<em>*</em></label>
+			<input type="text" id="tratamiento" name="tratamiento" value="<?php echo $tratamiento['NOMBRE'];?>" required/><br>
+			</div>
+			
 			<div<<label for="fechaCita">Fecha:<em>*</em></label>
-			<input type="date" id="fechaCita" name="fechaCita" value="<?php echo $formularioCita['fechaCita'];?>" required/>
+			<input type="date" id="fechaCita" name="fechaCita" value="<?php echo $formularioCita['fechaCita'];?>" required/><br>
 			</div>
 
 			<div><label for="horaCita">Hora:<em>*</em></label>
@@ -72,7 +84,20 @@
 		<input id="OID_CITA" name="OID_CITA" type="hidden" value="<?php echo $cita['OID_CITA']?>" />
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos cita</legend>
-		<div<<label for="fechaCita">Fecha:<em>*</em></label>
+			
+			<div<<label for="paciente">DNI paciente:<em>*</em></label>
+			<input type="text" id="paciente" name="paciente" value="<?php echo $cita['paciente'];?>" required/><br>
+			</div>
+			
+			<div<<label for="doctora">Codigo doctora:<em>*</em></label>
+			<input type="text" id="doctora" name="doctora" value="<?php echo $cita['doctora'];?>" required/><br>
+			</div>
+			
+			<div<<label for="tratamiento">Tratamiento:<em>*</em></label>
+			<input type="text" id="tratamiento" name="tratamiento" value="<?php echo $cita['tratamiento'];?>" required/><br>
+			</div>
+			
+			<div><label for="fechaCita">Fecha:<em>*</em></label>
 			<input type="date" id="fechaCita" name="fechaCita" value="<?php echo $cita['fechaCita'];?>"/>
 			</div>
 

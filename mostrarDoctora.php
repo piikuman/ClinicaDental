@@ -12,7 +12,7 @@ if (!isset($_SESSION['login'])){
 	Header("Location: login.php");
 } else {
 	$conexion = crearConexionBD();
-	$codigo = $_REQUEST['codigoDoctora'];
+	$codigo = $_REQUEST['OID_DOCTORA'];
 	$datos = getInfoDoctora($conexion, $codigo);
 	$especialidad=getInfoEspecialidad($conexion,$datos["OID_ESPECIALIDAD"]);
 	cerrarConexionBD($conexion);
@@ -33,10 +33,10 @@ if (!isset($_SESSION['login'])){
 		<main>
 			<article>
 				<div>
-					<h1><b>Doctora <?php echo $codigo ?></b></h1>
+					<h1><b>Doctora <?php echo $datos["CODIGODOCTORA"] ?></b></h1>
 					<form id='actualizarDoctora' method='POST' action='controladorDoctora.php'>
-					<input id="OID_DOCTORA" name="OID_DOCTORA" type="hidden" value="<?php echo $datos["OID_DOCTORA"]?>"
-					<input id="codigoDoctora" name="codigoDoctora" type="hidden" value="<?php echo $codigo?>"		
+					<input id="OID_DOCTORA" name="OID_DOCTORA" type="hidden" value="<?php echo $codigo?>"/>
+					<input id="codigoDoctora" name="codigoDoctora" type="hidden" value="<?php echo $datos["CODIGODOCTORA"]?>"		
 						<div>
 							<h2><b>Datos personales</b></h2>
 							<hr></hr>

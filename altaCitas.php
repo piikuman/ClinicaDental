@@ -6,8 +6,9 @@
 	
 	require_once("gestionBD.php");
 	require_once("gestionarCitas.php");
-	//require_once("gestionarPaciente.php");
-	//require_once("gestionarTratamientos.php");
+	require_once("gestionarPaciente.php");
+	require_once("gestionarTratamientos.php");
+	require_once("gestionarDoctora.php");
 		
 	// Comprobar que hemos llegado a esta página porque se ha rellenado el formulario
 	if (isset($_SESSION["formularioCita"])) {
@@ -18,7 +19,11 @@
 	else 
 		Header("Location: formularioCitas.php");	
 
-	$conexion = crearConexionBD(); 
+	$conexion = crearConexionBD();
+	
+	$paciente = buscaPaciente($conexion, $nuevaCita["paciente"]);
+	$doctora = buscaDoctora($conexion, $nuevaCita["doctora"]);
+	$tratamiento = buscaTratamiento($conexion, $nuevaCita["tratamiento"]);
 
 ?>
 
@@ -35,7 +40,7 @@
 	?>
 
 	<main>
-		<?php if (altaCita($conexion, $nuevaCita)) {  
+		<?php if (altaCita($conexion, $nuevaCita, $paciente["OID_PACIENTE"], $doctora["OID_DOCTORA"], $tratamiento["OID_TRATAMIENTO"])) {  
 		?>
 				<h1>Cita con fecha  <?php echo $nuevaCita["fechaCita"]; ?> apuntada correctamente.</h1>
 				<div >	
