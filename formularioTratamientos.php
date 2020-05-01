@@ -53,8 +53,8 @@
 			<input id="coste" name="coste" type="text" size="17" value="<?php echo $formularioTratamiento['coste'];?>" required/>€<br>
 			</div>
 			
-			<div><label for="especialidad">Coste:<em>*</em></label>
-			<input id="especialidad" name="especialidad" type="text" size="17" value="<?php echo $formularioTratamiento['especialidad'];?>" required/>€<br>
+			<div><label for="especialidad">Especialidad:<em>*</em></label>
+			<input id="especialidad" name="especialidad" type="text" size="17" value="<?php echo $formularioTratamiento['especialidad'];?>" required/<br>
 			</div>
 			
 		</fieldset>
@@ -79,7 +79,7 @@
 			</div>
 			
 			<div><label for="especialidad">Especialidad:<em>*</em></label>
-			<input id="especialidad" name="especialidad" type="text" size="17" value="<?php echo $tratamiento['especialidad'];?>" required/>€<br>
+			<input id="especialidad" name="especialidad" type="text" size="17" value="<?php echo $tratamiento['especialidad'];?>" required/><br>
 			</div>
 			
 		</fieldset>

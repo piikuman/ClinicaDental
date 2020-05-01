@@ -10,9 +10,7 @@
 	
 	if (isset($_SESSION["formularioDoctora"])) {
 		$nuevaDoctora = $_SESSION["formularioDoctora"];
-		$_SESSION["formularioDoctora"] = null;
-		$_SESSION["errores"] = null;
-		$especialidad = buscaEspecialidad($conexion, "Especialidad");
+		$especialidad = buscaEspecialidad($conexion, $nuevaDoctora["especialidad"]);
 	}
 	else 
 		Header("Location: formularioDoctora.php");	 
@@ -34,7 +32,9 @@
 	<main>
 		<?php
 			 
-			 if (altaDoctora($conexion, $doctora, $especialidad["OID_ESPECIALIDAD"])) {  
+			 if (altaDoctora($conexion, $nuevaDoctora, $especialidad["OID_ESPECIALIDAD"])) {
+				$_SESSION["formularioDoctora"] = null;
+				$_SESSION["errores"] = null;  
 		?>
 				<h1>Hola <?php echo $nuevaDoctora["nombre"]; ?>, gracias por registrarte</h1>
 				<div >	

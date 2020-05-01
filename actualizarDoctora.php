@@ -7,9 +7,11 @@
 		
 		require_once("gestionBD.php");
 		require_once("gestionarDoctora.php");
+		require_once("gestionarEspecialidad.php");
 		
-		$conexion = crearConexionBD();		
-		$excepcion = actualizarDoctora($conexion,$doctora);
+		$conexion = crearConexionBD();
+		$especialidad = buscaEspecialidad($conexion,$doctora["especialidad"]);		
+		$excepcion = actualizarDoctora($conexion,$doctora,$especialidad["OID_ESPECIALIDAD"]);
 		cerrarConexionBD($conexion);
 			
 		if ($excepcion<>"") {
@@ -20,5 +22,5 @@
 		else
 			Header("Location: listaDoctora.php");
 	} 
-	else Header("Location: mostrarDoctora.php");
+	else Header("Location: listaDoctora.php");
 ?>

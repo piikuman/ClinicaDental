@@ -1,7 +1,7 @@
 <?php	
 	session_start();
 	
-	if (isset($_REQUEST["CODIGODOCTORA"])) {
+	if (isset($_REQUEST["OID_DOCTORA"])) {
 		$doctora["dni"] = $_REQUEST["dni"];
 		$doctora["nombre"] = $_REQUEST["nombre"];
 		$doctora["apellidos"] = $_REQUEST["apellidos"];
@@ -11,7 +11,9 @@
 		$doctora["fechaAlta"] = $_REQUEST["fechaAlta"];
 		$doctora["sueldo"] = $_REQUEST["sueldo"];
 		$doctora["telefono"] = $_REQUEST["telefono"];
-		$doctora["codigoDoctora"] = $_REQUEST["CODIGODOCTORA"];
+		$doctora["codigoDoctora"] = $_REQUEST["codigoDoctora"];
+		$doctora["especialidad"] = $_REQUEST["especialidad"];
+		$doctora["OID_DOCTORA"] = $_REQUEST["OID_DOCTORA"];
 		
 		$_SESSION["doctora"] = $doctora;
 			

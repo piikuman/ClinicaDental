@@ -2,14 +2,16 @@
 session_start();
 
 require_once ('gestionarDoctora.php');
+require_once ('gestionarEspecialidad.php');
 require_once ('gestionBD.php');
 
 if (!isset($_SESSION['login'])){
 	Header("Location: login.php");
 } else {
 	$conexion = crearConexionBD();
-	$codigo = $_REQUEST['CODIGODOCTORA'];
+	$codigo = $_REQUEST['codigoDoctora'];
 	$datos = getInfoDoctora($conexion, $codigo);
+	$especialidad=getInfoEspecialidad($conexion,$datos["OID_ESPECIALIDAD"]);
 	cerrarConexionBD($conexion);
 }
 
@@ -30,7 +32,8 @@ if (!isset($_SESSION['login'])){
 				<div>
 					<h1><b>Doctora <?php echo $codigo ?></b></h1>
 					<form id='actualizarDoctora' method='POST' action='controladorDoctora.php'>
-					<input id="CODIGODOCTORA" name="CODIGODOCTORA" type="hidden" value="<?php echo $codigo?>"	
+					<input id="OID_DOCTORA" name="OID_DOCTORA" type="hidden" value="<?php echo $datos["OID_DOCTORA"]?>"
+					<input id="codigoDoctora" name="codigoDoctora" type="hidden" value="<?php echo $codigo?>"		
 						<div>
 							<h2><b>Datos personales</b></h2>
 							<hr></hr>
@@ -56,6 +59,8 @@ if (!isset($_SESSION['login'])){
 							<input id="fechaAlta" name="fechaAlta" type="hidden" value="<?php echo $datos["FECHAALTA"]; ?>"/>
 							<p><b>Sueldo:</b> <?php echo $datos["SUELDO"]; ?></p>
 							<input id="sueldo" name="sueldo" type="hidden" value="<?php echo $datos["SUELDO"]; ?>"/>
+							<p><b>Especialidad:</b> <?php echo $especialidad["NOMBRE"]; ?></p>
+							<input id="sueldo" name="especialidad" type="hidden" value="<?php echo $especialidad["NOMBRE"]; ?>"/>
 						</div>
 				<button id="actualizar" name="actualizar" type="submit" size="4"><img src="images/botonEditar.png" width="20" height="20"></button>
 				<button id="eliminar" name="eliminar" type="submit" size="4"><img src="images/botonEliminar.png" width="20" height="20"></button>
