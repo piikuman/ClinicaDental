@@ -19,6 +19,9 @@
 			
 		if (isset($_REQUEST["actualizar"])) Header("Location: formularioDoctora.php");
 		else if (isset($_REQUEST["eliminar"])) Header("Location: eliminarDoctora.php");
+		else {
+			header("Location: listaDoctora.php");
+		}
 	}
 	else 
 		Header("Location: mostrarDoctora.php");

@@ -11,6 +11,9 @@
 			
 		if (isset($_REQUEST["actualizar"])) Header("Location: formularioTratamientos.php");
 		else if (isset($_REQUEST["eliminar"])) Header("Location: eliminarTratamientos.php");
+		else {
+			Header("Location: listaTratamientos.php");
+		}
 	}
 	else 
 		Header("Location: mostrarTratamientos.php");

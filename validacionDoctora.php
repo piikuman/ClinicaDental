@@ -36,12 +36,15 @@
 
 	$errores = validarDatosDoctora($doctora);
 	
+	if(isset($_REQUEST["cancelarAñadir"])) header("Location: listaDoctora.php");
+	else{
 	if (count($errores)>0) {
 		$_SESSION["errores"] = $errores;
 		Header('Location: formularioDoctora.php');
 	} else {
 		if (isset($_REQUEST["actualizar"])) Header("Location: actualizarDoctora.php");
 		else if (isset($_REQUEST["añadir"])) Header('Location: altaDoctora.php');
+	}
 	}
 	
 	function validarDatosDoctora($doctora){

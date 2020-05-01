@@ -21,13 +21,17 @@
 
 	$errores = validarDatosCita($cita);
 	
-	if (count($errores)>0) {
+	if(isset($_REQUEST["cancelarAñadir"])) header("Location: listaCitas.php");
+	else{
+		if (count($errores)>0) {
 		$_SESSION["errores"] = $errores;
 		Header('Location: formularioCitas.php');
-	} else {
+		} else {
 		if (isset($_REQUEST["actualizar"])) Header("Location: actualizarCitas.php");
 		else if (isset($_REQUEST["añadir"])) Header('Location: altaCitas.php');
+		}
 	}
+	
 	
 	function validarDatosCita($cita){
 		$errores=array();

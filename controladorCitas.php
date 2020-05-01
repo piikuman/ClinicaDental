@@ -10,6 +10,9 @@
 			
 		if (isset($_REQUEST["actualizar"])) Header("Location: formularioCitas.php");
 		else if (isset($_REQUEST["eliminar"])) Header("Location: eliminarCitas.php");
+		else {
+			Header("Location: listaCitas.php");
+		}
 	}
 	else 
 		Header("Location: mostrarCitas.php");

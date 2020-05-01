@@ -10,6 +10,9 @@
 			
 		if (isset($_REQUEST["actualizar"])) Header("Location: formularioEspecialidad.php");
 		else if (isset($_REQUEST["eliminar"])) Header("Location: eliminarEspecialidad.php");
+		else {
+			header("Location: listaEspecialidad.php");
+		}
 	}
 	else 
 		Header("Location: mostrarEspecialidad.php");

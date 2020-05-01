@@ -18,12 +18,15 @@
 
 	$errores = validarDatosEspecialidad($especialidad);
 	
+	if(isset($_REQUEST["cancelarAñadir"])) header("Location: listaEspecialidad.php");
+	else{
 	if (count($errores)>0) {
 		$_SESSION["errores"] = $errores;
 		Header('Location: formularioEspecialidad.php');
 	} else {
 		if (isset($_REQUEST["actualizar"])) Header("Location: actualizarEspecialidad.php");
 		else if (isset($_REQUEST["añadir"])) Header('Location: altaEspecialidad.php');
+	}
 	}
 	
 	function validarDatosEspecialidad($especialidad){

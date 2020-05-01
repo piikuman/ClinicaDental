@@ -10,6 +10,9 @@
 			
 		if (isset($_REQUEST["actualizar"])) Header("Location: formularioUsuario.php");
 		else if (isset($_REQUEST["eliminar"])) Header("Location: eliminarUsuario.php");
+		else {
+			header("Location: administracion.php");
+		}
 	}
 	else 
 		Header("Location: mostrarUsuario.php");

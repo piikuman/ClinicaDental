@@ -1,6 +1,9 @@
 <?php
 	session_start();
-
+	
+	if (!isset($_SESSION['login']))
+			Header("Location: login.php");
+	
 	require_once("gestionBD.php");
 	require_once("gestionarUsuario.php");
 	require_once("paginacionConsulta.php");

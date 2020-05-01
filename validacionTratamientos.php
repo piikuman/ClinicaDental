@@ -21,12 +21,15 @@
 
 	$errores = validarDatosTratamiento($tratamiento);
 	
+	if(isset($_REQUEST["cancelarAñadir"])) header("Location: listaTratamientos.php");
+	else{
 	if (count($errores)>0) {
 		$_SESSION["errores"] = $errores;
 		Header('Location: formularioTratamientos.php');
 	} else {
 		if (isset($_REQUEST["actualizar"])) Header("Location: actualizarTratamientos.php");
 		else if (isset($_REQUEST["añadir"])) Header('Location: altaTratamientos.php');
+	}
 	}
 	
 	function validarDatosTratamiento($nuevoTratamiento){

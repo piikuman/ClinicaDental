@@ -1,6 +1,9 @@
 <?php
 	session_start();
-
+	
+	if (!isset($_SESSION['login']))
+			Header("Location: login.php");
+	
 	if(isset($_SESSION['cita'])){
 		$cita = $_SESSION['cita'];
 		unset($_SESSION['cita']);
@@ -59,6 +62,7 @@
 		</fieldset>
 		
 		<div><button id="añadir" name="añadir" type="submit"><img src="images/botonOkey.png" width="20" height="20"></button>
+		<button id="cancelarAñadir" name="cancelarAñadir" type="submit" size="4"><img src="images/returnButton.png" width="20" height="20"></button>
 		</div>
 
 	</form>
@@ -69,15 +73,15 @@
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos cita</legend>
 		<div<<label for="fechaCita">Fecha:<em>*</em></label>
-			<input type="date" id="fechaCita" name="fechaCita" value="<?php echo $cita['fechaCita'];?>" required/>
+			<input type="date" id="fechaCita" name="fechaCita" value="<?php echo $cita['fechaCita'];?>"/>
 			</div>
 
 			<div><label for="horaCita">Hora:<em>*</em></label>
-			<input id="horaCita" name="horaCita" type="text" size="17" value="<?php echo $cita['horaCita'];?>" required/><br>
+			<input id="horaCita" name="horaCita" type="text" size="17" value="<?php echo $cita['horaCita'];?>"/><br>
 			</div>
 			
 			<div><label for="consulta">Consulta:<em>*</em></label>
-			<input id="consulta" name="consulta" type="text" size="14" value="<?php echo $cita['consulta'];?>" required/>
+			<input id="consulta" name="consulta" type="text" size="14" value="<?php echo $cita['consulta'];?>"/>
 			</div>
 		</fieldset>
 		
