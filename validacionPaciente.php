@@ -38,12 +38,15 @@
 
 	$errores = validarDatosUsuario($paciente);
 	
+	if(isset($_REQUEST["cancelarAñadir"])) header("Location: listaPaciente.php");
+	else{
 	if (count($errores)>0) {
 		$_SESSION["errores"] = $errores;
 		Header('Location: formularioPaciente.php');
 	} else {
 		if (isset($_REQUEST["actualizar"])) Header("Location: actualizarPaciente.php");
 		else if (isset($_REQUEST["añadir"])) Header('Location: altaPaciente.php');
+	}
 	}
 	
 	function validarDatosUsuario($paciente){

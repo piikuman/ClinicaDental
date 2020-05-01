@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+if (!isset($_SESSION['login']))
+			Header("Location: login.php");
+
 require_once ('gestionarPaciente.php');
 require_once ('gestionBD.php');
 
@@ -75,6 +78,7 @@ if (!isset($_SESSION['login'])){
 						</div>
 				<button id="actualizar" name="actualizar" type="submit" size="4"><img src="images/botonEditar.png" width="20" height="20"></button>
 				<button id="eliminar" name="eliminar" type="submit" size="4"><img src="images/botonEliminar.png" width="20" height="20"></button>
+				<button id="cancelar" name="cancelar" type="submit" size="4"><img src="images/returnButton.png" width="20" height="20"></button>
 				</form>
 			</div>					
 			</article>

@@ -21,12 +21,15 @@
 
 	$errores = validarDatosUsuario($usuario);
 	
+	if(isset($_REQUEST["cancelarAñadir"])) header("Location: administracion.php");
+	else{
 	if (count($errores)>0) {
 		$_SESSION["errores"] = $errores;
 		Header('Location: formularioUsuario.php');
 	} else {
 		if (isset($_REQUEST["actualizar"])) Header("Location: actualizarUsuario.php");
 		else if (isset($_REQUEST["añadir"])) Header('Location: altaUsuario.php');
+	}
 	}
 	
 	function validarDatosUsuario($usuario){

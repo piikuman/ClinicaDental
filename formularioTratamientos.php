@@ -1,6 +1,9 @@
 <?php
 	session_start();
-
+	
+	if (!isset($_SESSION['login']))
+			Header("Location: login.php");
+	
 	if(isset($_SESSION['tratamiento'])){
 		$tratamiento = $_SESSION['tratamiento'];
 		unset($_SESSION['tratamiento']);
@@ -46,20 +49,21 @@
 		<fieldset><legend>Datos tratamiento</legend>
 			
 			<div<<label for="nombre">Nombre:<em>*</em></label>
-			<input type="text" id="nombre" name="nombre" value="<?php echo $formularioTratamiento['nombre'];?>" required/>
+			<input type="text" id="nombre" name="nombre" value="<?php echo $formularioTratamiento['nombre'];?>"/>
 			</div>
 
 			<div><label for="coste">Coste:<em>*</em></label>
-			<input id="coste" name="coste" type="text" size="17" value="<?php echo $formularioTratamiento['coste'];?>" required/>€<br>
+			<input id="coste" name="coste" type="text" size="17" value="<?php echo $formularioTratamiento['coste'];?>"/>€<br>
 			</div>
 			
 			<div><label for="especialidad">Especialidad:<em>*</em></label>
-			<input id="especialidad" name="especialidad" type="text" size="17" value="<?php echo $formularioTratamiento['especialidad'];?>" required/<br>
+			<input id="especialidad" name="especialidad" type="text" size="17" value="<?php echo $formularioTratamiento['especialidad'];?>"/><br>
 			</div>
 			
 		</fieldset>
 		
 		<div><button id="añadir" name="añadir" type="submit"><img src="images/botonOkey.png" width="20" height="20"></button>
+			<button id="cancelarAñadir" name="cancelarAñadir" type="submit"><img src="images/returnButton.png" width="20" height="20"></button>
 		</div>
 
 	</form>

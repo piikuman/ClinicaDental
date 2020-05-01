@@ -1,6 +1,9 @@
 <?php
 	session_start();
-
+	
+	if (!isset($_SESSION['login']))
+			Header("Location: login.php");
+	
 	if(isset($_SESSION['doctora'])){
 		$doctora = $_SESSION['doctora'];
 		unset($_SESSION['doctora']);
@@ -56,11 +59,11 @@
 		<fieldset><legend>Datos personales</legend>
 			
 			<div><label for="dni">DNI<em>*</em></label>
-			<input id="dni" name="dni" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $formularioDoctora['dni'];?>" required>
+			<input id="dni" name="dni" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $formularioDoctora['dni'];?>">
 			</div>
 
 			<div><label for="nombre">Nombre:<em>*</em></label>
-			<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $formularioDoctora['nombre'];?>" required/>
+			<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $formularioDoctora['nombre'];?>"/>
 			</div>
 
 			<div><label for="apellidos">Apellidos:</label>
@@ -102,6 +105,7 @@
 		
 		<div>
 			<button id="añadir" name="añadir" type="submit"><img src="images/botonOkey.png" width="20" height="20"></button>
+		<button id="cancelarAñadir" name="cancelarAñadir" type="submit" size="4"><img src="images/returnButton.png" width="20" height="20"></button>
 		</div>
 	</form>
 	<?php }else{ ?>

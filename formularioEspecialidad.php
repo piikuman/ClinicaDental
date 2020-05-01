@@ -1,6 +1,9 @@
 <?php
 	session_start();
-
+	
+	if (!isset($_SESSION['login']))
+			Header("Location: login.php");
+	
 	if(isset($_SESSION['especialidad'])){
 		$especialidad = $_SESSION['especialidad'];
 		unset($_SESSION['especialidad']);
@@ -52,6 +55,7 @@
 		</fieldset>
 		
 		<div><button id="añadir" name="añadir" type="submit"><img src="images/botonOkey.png" width="20" height="20"></button>
+			<button id="cancelarAñadir" name="cancelarAñadir" type="submit"><img src="images/returnButton.png" width="20" height="20"></button>
 		</div>
 
 	</form>

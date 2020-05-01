@@ -1,6 +1,9 @@
 <?php
 	session_start();
-
+	
+	if (!isset($_SESSION['login']))
+			Header("Location: login.php");
+	
 	if(isset($_SESSION['usuario'])){
 		$usuario = $_SESSION['usuario'];
 		unset($_SESSION['usuario']);
@@ -44,7 +47,7 @@
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos usuario</legend>
 			<div><label for="correo">Correo:<em>*</em></label>
-			<input id="correo" name="correo"  type="correo" placeholder="usuario@dominio.extension" value="<?php echo $formulario['correo'];?>" required/><br>
+			<input id="correo" name="correo"  type="correo" placeholder="usuario@dominio.extension" value="<?php echo $formulario['correo'];?>"/><br>
 			</div>
 			
 			<div><label for="password">Password:</label>
@@ -58,6 +61,7 @@
 		
 		<div>
 			<button id="añadir" name="añadir" type="submit"><img src="images/botonOkey.png" width="20" height="20"></button>
+			<button id="cancelarAñadir" name="cancelarAñadir" type="submit"><img src="images/returnButton.png" width="20" height="20"></button>
 		</div>
 	</form>
 	<?php }else{ ?>

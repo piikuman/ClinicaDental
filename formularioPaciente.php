@@ -1,6 +1,9 @@
 <?php
 	session_start();
-
+	
+	if (!isset($_SESSION['login']))
+			Header("Location: login.php");
+	
 	if(isset($_SESSION['paciente'])){
 		$paciente = $_SESSION['paciente'];
 		unset($_SESSION['paciente']);
@@ -53,11 +56,11 @@
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos personales</legend>
 			<div><label for="dni">DNI<em>*</em></label>
-			<input id="dni" name="dni" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $formularioPaciente['dni'];?>" required>
+			<input id="dni" name="dni" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $formularioPaciente['dni'];?>">
 			</div>
 
 			<div><label for="nombre">Nombre:<em>*</em></label>
-			<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $formularioPaciente['nombre'];?>" required/>
+			<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $formularioPaciente['nombre'];?>"/>
 			</div>
 
 			<div><label for="apellidos">Apellidos:</label>
@@ -69,7 +72,7 @@
 			</div>
 
 			<div><label for="correo">Correo:<em>*</em></label>
-			<input id="correo" name="correo"  type="correo" placeholder="usuario@dominio.extension" value="<?php echo $formularioPaciente['correo'];?>" required/><br>
+			<input id="correo" name="correo"  type="correo" placeholder="usuario@dominio.extension" value="<?php echo $formularioPaciente['correo'];?>"/><br>
 			</div>
 			
 			<div><label for="poblacion">Poblacion:</label>
@@ -99,6 +102,7 @@
 		
 		<div>
 			<button id="añadir" name="añadir" type="submit"><img src="images/botonOkey.png" width="20" height="20"></button>
+			<button id="cancelarAñadir" name="cancelarAñadir" type="submit"><img src="images/returnButton.png" width="20" height="20"></button>
 		</div>
 	</form>
 	<?php }else{ ?>
