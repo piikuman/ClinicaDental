@@ -6,6 +6,9 @@
 		$cita["fechaCita"] = $_REQUEST["fechaCita"];
 		$cita["horaCita"] = $_REQUEST["horaCita"];
 		$cita["consulta"] = $_REQUEST["consulta"];
+		$cita["paciente"] = $_REQUEST["paciente"];
+		$cita["doctora"] = $_REQUEST["doctora"];
+		$cita["tratamiento"] = $_REQUEST["tratamiento"];
 		$_SESSION["cita"] = $cita;
 			
 		if (isset($_REQUEST["actualizar"])) Header("Location: formularioCitas.php");

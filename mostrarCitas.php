@@ -6,6 +6,8 @@ if (!isset($_SESSION['login']))
 
 require_once ('gestionarPaciente.php');
 require_once ('gestionarCitas.php');
+require_once ('gestionarDoctora.php');
+require_once ('gestionarTratamientos.php');
 require_once ('gestionBD.php');
 
 if (!isset($_SESSION['login'])){
@@ -13,8 +15,10 @@ if (!isset($_SESSION['login'])){
 } else {
 	$conexion = crearConexionBD();
 	$codigo = $_REQUEST['OID_CITA'];
-	//$codigo2 = $_REQUEST['OID_PACIENTE'];
 	$datos = getInfoCita($conexion, $codigo);
+	$paciente = getInfoPaciente($conexion, $datos["OID_PACIENTE"]);
+	$doctora = getInfoDoctora($conexion, $datos["OID_DOCTORA"]);
+	$tratamiento = getInfoTratamiento($conexion, $datos["OID_TRATAMIENTO"]);
 	cerrarConexionBD($conexion);
 }
 
@@ -37,10 +41,15 @@ if (!isset($_SESSION['login'])){
 					<form id='actualizarCitas' method='POST' action='controladorCitas.php'>
 					<input id="OID_CITA" name="OID_CITA" type="hidden" value="<?php echo $codigo?>"	
 						<div>
-							<h2><b>Datos cita</b></h2>
+							<h2><b>Datos de la cita</b></h2>
 							<hr></hr>
-							<p><b>Codigo de la cita:</b> <?php echo $codigo ?> </p>
 							<input id="OID_CITA" name="OID_CITA" type="hidden" value=" <?php echo $codigo ?>"/>
+							<p><b>Paciente:</b> <?php echo $paciente["NOMBRE"]; ?> <?php echo $paciente["APELLIDOS"]; ?></p>
+							<input id="paciente" name="paciente" type="hidden" value="<?php echo $paciente["DNI"]; ?>"/>
+							<p><b>Doctora:</b> <?php echo $doctora["NOMBRE"]; ?> </p>
+							<input id="doctora" name="doctora" type="hidden" value="<?php echo $doctora["CODIGODOCTORA"]; ?>"/>
+							<p><b>Tratamiento:</b> <?php echo $tratamiento["NOMBRE"]; ?> </p>
+							<input id="tratamiento" name="tratamiento" type="hidden" value="<?php echo $tratamiento["NOMBRE"]; ?>"/>
 							<p><b>Fecha Cita:</b> <?php echo $datos["FECHACITA"]; ?> </p>
 							<input id="fechaCita" name="fechaCita" type="hidden" value="<?php echo $datos["FECHACITA"]; ?>"/>
 							<p><b>Hora cita:</b> <?php echo $datos["HORACITA"]; ?></p>
