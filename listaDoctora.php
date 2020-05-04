@@ -5,8 +5,24 @@
 			Header("Location: login.php");
 	
 	require_once("gestionBD.php");
-	require_once("gestionarDoctora.php");
-	require_once("paginacionConsulta.php"); 
+	require_once("gestionarDocotra.php");
+	require_once("paginacionConsulta.php");
+	
+	if (isset($_SESSION["paginacion"])){
+		$paginacion = $_SESSION["paginacion"];
+	}
+	
+	$paginaSeleccionada = isset($_GET["PAG_NUM"]) ? (int)$_GET["PAG_NUM"] : (isset($paginacion) ? (int)$paginacion["PAG_NUM"] : 1);
+	$pagTam = isset($_GET["PAG_TAM"]) ? (int)$_GET["PAG_TAM"] : (isset($paginacion) ? (int)$paginacion["PAG_TAM"] : 3);
+
+	if ($paginaSeleccionada < 1){
+		$paginaSeleccionada = 1;
+	}	
+	if ($pagTam < 1){
+		$pagTam = 3;
+	}
+	
+	unset($_SESSION["paginacion"]);
 	
 	if (isset($_SESSION["paginacion"])){
 		$paginacion = $_SESSION["paginacion"];
@@ -25,7 +41,9 @@
 	unset($_SESSION["paginacion"]);
 	
 	$conexion = crearConexionBD();
+
 	$query = "SELECT * FROM DOCTORA ORDER BY DNI, NOMBRE";
+
 	$totalDoctoras = totalConsulta($conexion, $query);
 	$totalPaginas = (int)($totalDoctoras / $pagTam);
 
@@ -51,6 +69,7 @@
 <head>
   <meta charset="utf-8">
   <title>Gestión de doctoras: Lista de doctoras</title>
+  <link rel="stylesheet" type="text/css" href="css/estilo.css"/>
 </head>
 
 <body>
@@ -61,7 +80,10 @@
 ?>
 
 <main>
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 44f1d41d281c23dffc22b93a8180ac9033c365ab
 	<nav>
 		<div id="enlaces">
 			<?php
@@ -94,9 +116,15 @@
 			foreach($doctoras as $doctora){
 		?>
   	  <tr>
+<<<<<<< HEAD
   	  	<form id='formMostrar' method='POST' action='mostrarDoctora.php' > 
 			<input type='hidden' name='OID_DOCTORA' value='<?php echo $doctora["OID_DOCTORA"]?>'>
 	    <th><input type='submit' value='<?php echo $doctora["CODIGODOCTORA"]; ?>'></th>
+=======
+  	  	<form id='formMostrar' method='POST' action='mostrarDoctora.php' >
+			<input type='hidden' name='OID_DOCTORA' value='<?php echo $doctora["OID_DOCTORA"]?>'>
+	    <th><input type='submit' value='<?php echo $doctora["OID_DOCTORA"]; ?>'></th>
+>>>>>>> 44f1d41d281c23dffc22b93a8180ac9033c365ab
 		</form>
     	    <td><?php echo $doctora["APELLIDOS"]; ?></td>
 	    	<td><?php echo $doctora["NOMBRE"]; ?></td>
