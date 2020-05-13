@@ -11,6 +11,9 @@
 		$formularioCita['fechaCita'] = "";
 		$formularioCita['horaCita'] = "";
 		$formularioCita['consulta'] = "";
+		$formularioCita['paciente'] = "";
+		$formularioCita['doctora'] = "";
+		$formularioCita['tratamiento'] = "";
 	
 		$_SESSION['formularioCita'] = $formularioCita;
 	} else
@@ -49,15 +52,15 @@
 		<fieldset><legend>Datos cita</legend>
 			
 			<div<<label for="paciente">DNI paciente:<em>*</em></label>
-			<input type="text" id="paciente" name="paciente" value="<?php echo $paciente['DNI'];?>" required/><br>
+			<input type="text" id="paciente" name="paciente" value="<?php echo $formularioCita['paciente'];?>" required/><br>
 			</div>
 			
 			<div<<label for="doctora">Codigo doctora:<em>*</em></label>
-			<input type="text" id="doctora" name="doctora" value="<?php echo $doctora['CODIGODOCTORA'];?>" required/><br>
+			<input type="text" id="doctora" name="doctora" value="<?php echo $formularioCita['doctora'];?>" required/><br>
 			</div>
 			
 			<div<<label for="tratamiento">Tratamiento:<em>*</em></label>
-			<input type="text" id="tratamiento" name="tratamiento" value="<?php echo $tratamiento['NOMBRE'];?>" required/><br>
+			<input type="text" id="tratamiento" name="tratamiento" value="<?php echo $formularioCita['tratamiento'];?>" required/><br>
 			</div>
 			
 			<div<<label for="fechaCita">Fecha:<em>*</em></label>
