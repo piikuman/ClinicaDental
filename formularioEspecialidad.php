@@ -25,6 +25,22 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+   <script type="text/javascript">
+  	function validateForm(){
+  		var existErrors = false;
+  		var formulario = document.forms["altaEspecialidad"];
+  		var xc = formulario["nombre"];
+  		var xs = document.getElementById("spanNombre");
+  		xc.className="";
+  		xs.innerHTML="";
+  		if(xc.value == null || xc.value == ""){
+  			xs.innerHTML = "El nombre es obligatorio";
+  			xc.className="error";
+  			existErrors = true;
+  		}
+  		return (!existErrors);
+	}
+  </script>
   <title>Formulario de Especialidades</title>
 </head>
 
@@ -43,12 +59,12 @@
 	?>
 	<?php if(!isset($especialidad)){ ?>
 	<h1>Añadir nueva especialidad</h1>	
-	<form id="altaEspecialidad" method="post" action="validacionEspecialidad.php" novalidate>
+	<form id="altaEspecialidad" method="post" onsubmit="return validateForm()" action="validacionEspecialidad.php" novalidate>
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos Especialidad</legend>
 			
 			<div<<label for="nombre">Nombre:<em>*</em></label>
-			<input type="text" id="nombre" name="nombre" value="<?php echo $formularioEspecialidad['nombre'];?>" required/>
+			<input type="text" id="nombre" name="nombre" value="<?php echo $formularioEspecialidad['nombre'];?>" required/><span id="spanNombre"></span>
 			</div>
 
 			
@@ -61,13 +77,13 @@
 	</form>
 	<?php }else{ ?>
 	<h1>Actualizar especialidad <?php echo $especialidad['OID_ESPECIALIDAD'];?></h1>	
-	<form id="actualizarEspecialidad" method="post" action="validacionEspecialidad.php">
+	<form id="actualizarEspecialidad" method="post" onsubmit="return validateForm()" action="validacionEspecialidad.php">
 		<input id="OID_ESPECIALIDAD" name="OID_ESPECIALIDAD" type="hidden" value="<?php echo $especialidad['OID_ESPECIALIDAD']?>" />
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos especialidad</legend>
 			
 			<div<<label for="nombre">Nombre:<em>*</em></label>
-			<input type="text" id="nombre" name="nombre" value="<?php echo $especialidad['nombre'];?>" required/>
+			<input type="text" id="nombre" name="nombre" value="<?php echo $especialidad['nombre'];?>" required/><span id="spanNombre"></span>
 		</div>
 			
 		</fieldset>

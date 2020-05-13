@@ -26,6 +26,40 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+    <script type="text/javascript">
+  	function validateForm(){
+  		var existErrors = false;
+  		var formulario = document.forms["altaPaciente"];
+  		var xc = formulario["nombre"];
+  		var xs = document.getElementById("spanNombre");
+  		xc.className="";
+  		xs.innerHTML="";
+  		if(xc.value == null || xc.value == ""){
+  			xs.innerHTML = "El nombre es obligatorio";
+  			xc.className="error";
+  			existErrors = true;
+  		}
+  		var xc = formulario["coste"];
+  		var xs = document.getElementById("spanCoste");
+  		xc.className="";
+  		xs.innerHTML="";
+  		if(xc.value == null || xc.value == ""){
+  			xs.innerHTML = "El coste es obligatorio";
+  			xc.className="error";
+  			existErrors = true;
+  		}
+  		var xc = formulario["especialidad"];
+  		var xs = document.getElementById("spanEspecialidad");
+  		xc.className="";
+  		xs.innerHTML="";
+  		if(xc.value == null || xc.value == ""){
+  			xs.innerHTML = "El especialidad es obligatorio";
+  			xc.className="error";
+  			existErrors = true;
+  		}
+  		return (!existErrors);
+	}
+  </script>
   <title>Formulario de tratamientos</title>
 </head>
 
@@ -44,20 +78,20 @@
 	?>
 	<?php if(!isset($tratamiento)){ ?>
 	<h1>Añadir nuevo tratamiento</h1>	
-	<form id="altaTratamiento" method="post" action="validacionTratamientos.php" novalidate>
+	<form id="altaTratamiento" method="post" onsubmit="return validateForm()" action="validacionTratamientos.php" novalidate>
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos tratamiento</legend>
 			
 			<div<<label for="nombre">Nombre:<em>*</em></label>
-			<input type="text" id="nombre" name="nombre" value="<?php echo $formularioTratamiento['nombre'];?>"/>
+			<input type="text" id="nombre" name="nombre" value="<?php echo $formularioTratamiento['nombre'];?>"/><span id="spanNombre"></span>
 			</div>
 
 			<div><label for="coste">Coste:<em>*</em></label>
-			<input id="coste" name="coste" type="text" size="17" value="<?php echo $formularioTratamiento['coste'];?>"/>€<br>
+			<input id="coste" name="coste" type="text" size="17" value="<?php echo $formularioTratamiento['coste'];?>"/>€<br><span id="spanCoste"></span>
 			</div>
 			
 			<div><label for="especialidad">Especialidad:<em>*</em></label>
-			<input id="especialidad" name="especialidad" type="text" size="17" value="<?php echo $formularioTratamiento['especialidad'];?>"/><br>
+			<input id="especialidad" name="especialidad" type="text" size="17" value="<?php echo $formularioTratamiento['especialidad'];?>"/><br><span id="spanEspecialidad"></span>
 			</div>
 			
 		</fieldset>
@@ -69,21 +103,21 @@
 	</form>
 	<?php }else{ ?>
 	<h1>Actualizar tratamiento <?php echo $tratamiento['OID_TRATAMIENTO'];?></h1>	
-	<form id="actualizarCita" method="post" action="validacionTratamientos.php">
+	<form id="actualizarCita" method="post" onsubmit="return validateForm()" action="validacionTratamientos.php">
 		<input id="OID_TRATAMIENTO" name="OID_TRATAMIENTO" type="hidden" value="<?php echo $tratamiento['OID_TRATAMIENTO']?>" />
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos tratamiento</legend>
 			
 			<div<<label for="nombre">Nombre:<em>*</em></label>
-			<input type="text" id="nombre" name="nombre" value="<?php echo $tratamiento['nombre'];?>" required/>
+			<input type="text" id="nombre" name="nombre" value="<?php echo $tratamiento['nombre'];?>" required/><span id="spanNombre"></span>
 			</div>
 
 			<div><label for="coste">Coste:<em>*</em></label>
-			<input id="coste" name="coste" type="text" size="17" value="<?php echo $tratamiento['coste'];?>" required/>€<br>
+			<input id="coste" name="coste" type="text" size="17" value="<?php echo $tratamiento['coste'];?>" required/>€<span id="spanCoste"></span><br>
 			</div>
 			
 			<div><label for="especialidad">Especialidad:<em>*</em></label>
-			<input id="especialidad" name="especialidad" type="text" size="17" value="<?php echo $tratamiento['especialidad'];?>" required/><br>
+			<input id="especialidad" name="especialidad" type="text" size="17" value="<?php echo $tratamiento['especialidad'];?>" required/><span id="spanEspecialidad"></span><br>
 			</div>
 			
 		</fieldset>
