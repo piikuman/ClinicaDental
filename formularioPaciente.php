@@ -40,10 +40,15 @@
   		var formulario = document.forms["altaPaciente"];
   		var xc = formulario["dni"];
   		var xs = document.getElementById("spanDNI");
+  		var re = /^[0-9]{8}[A-Za-z]{1}$/;
   		xc.className="";
   		xs.innerHTML="";
   		if(xc.value == null || xc.value == ""){
   			xs.innerHTML = "El DNI es obligatorio";
+  			xc.className="error";
+  			existErrors = true;
+  		}else if((!re.test(xc.value))){
+  			xs.innerHTML = "El DNI deben ser 8 dígitos y una letra";
   			xc.className="error";
   			existErrors = true;
   		}
@@ -76,10 +81,15 @@
   		}
   		var xc = formulario["correo"];
   		var xs = document.getElementById("spanCorreo");
+  		var co = /^(\w|[\.-])+(@\b((gmail.)|(hotmail.))?((com)|(es)))$/i;
   		xc.className="";
   		xs.innerHTML="";
   		if(xc.value == null || xc.value == ""){
   			xs.innerHTML = "El correo es obligatorio";
+  			xc.className="error";
+  			existErrors = true;
+  		}else if((!co.test(xc.value))){
+  			xs.innerHTML = "El formato del correo no es correcto, debe ser hotmail o gmail, y el dominio .com o .es";
   			xc.className="error";
   			existErrors = true;
   		}
@@ -119,6 +129,18 @@
   			xc.className="error";
   			existErrors = true;
   		}
+  		var xc = formulario["telefonoTutor"];
+  		var xs = document.getElementById("spanTelefono");
+  		var re = /^[0-9]{9}$/;
+  		xc.className="";
+  		xs.innerHTML="";
+  		if (xc.value != "") {
+  			if((!re.test(xc.value))){
+  				xs.innerHTML = "El teléfono no es correcto";
+  				xc.className="error";
+  				existErrors = true;
+  			}
+  		}
   		return (!existErrors);
 	}
   </script>
@@ -146,7 +168,7 @@
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos personales</legend>
 			<div><label for="dni">DNI<em>*</em></label>
-			<input id="dni" name="dni" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $formularioPaciente['dni'];?>"><span id="spanDNI"></span>
+			<input id="dni" name="dni" type="text" placeholder="12345678X" value="<?php echo $formularioPaciente['dni'];?>"><span id="spanDNI"></span>
 			</div>
 
 			<div><label for="nombre">Nombre:<em>*</em></label>
@@ -186,7 +208,7 @@
 			</div>
 			
 			<div><label for="telefonoTutor">Telefono Tutor:</label>
-			<input id="telefonoTutor" name="telefonoTutor" type="number" size="80" value="<?php echo $formularioPaciente['telefonoTutor'];?>"/>
+			<input id="telefonoTutor" name="telefonoTutor" type="tel" size="80" value="<?php echo $formularioPaciente['telefonoTutor'];?>"/><span id="spanTelefono"></span>
 			</div>
 		</fieldset>
 		
@@ -194,23 +216,18 @@
 			<button id="añadir" name="añadir" type="submit"><img src="images/botonOkey.png" width="20" height="20"></button>
 		</div>
 	</form>
-	<form id="volverPaciente" method="post" action="validacionPaciente.php">
-		<div>
-			<button id="cancelarAñadir" name="cancelarAñadir" type="submit"><img src="images/returnButton.png" width="20" height="20"></button>
-		</div>
-	</form>
 	<?php }else{ ?>
 	<h1>Actualizar paciente <?php echo $paciente['OID_PACIENTE'];?></h1>	
-	<form id="actualizarPaciente" method="post" action="validacionPaciente.php">
+	<form id="altaPaciente" method="post" onsubmit="return validateForm()" action="validacionPaciente.php">
 		<input id="OID_PACIENTE" name="OID_PACIENTE" type="hidden" value="<?php echo $paciente['OID_PACIENTE']?>" />
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos personales</legend>
 		<div><label for="dni">DNI<em>*</em></label>
-		<input id="dni" name="dni" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $paciente['dni'];?>" required>
+		<input id="dni" name="dni" type="text" placeholder="12345678X" value="<?php echo $paciente['dni'];?>"/>
 		</div>
 
 		<div><label for="nombre">Nombre:<em>*</em></label>
-		<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $paciente['nombre'];?>" required/>
+		<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $paciente['nombre'];?>"/>
 		</div>
 	
 		<div><label for="apellidos">Apellidos:</label>
@@ -222,7 +239,7 @@
 		</div>
 
 		<div><label for="correo">Correo:<em>*</em></label>
-		<input id="correo" name="correo"  type="correo" placeholder="usuario@dominio.extension" value="<?php echo $paciente['correo'];?>" required/><br>
+		<input id="correo" name="correo"  type="correo" placeholder="usuario@dominio.extension" value="<?php echo $paciente['correo'];?>"/><br>
 		</div>
 				
 		<div><label for="poblacion">Poblacion:</label>
@@ -263,6 +280,11 @@
 		</div>	
 	</form>
 	<?php } ?>
+	<form id="volverPaciente" method="post" action="validacionPaciente.php">
+		<div>
+			<button id="cancelarAñadir" name="cancelarAñadir" type="submit"><img src="images/returnButton.png" width="20" height="20"></button>
+		</div>
+	</form>
 	<?php
 		include_once("pie.php");
 	?>
