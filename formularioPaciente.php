@@ -78,8 +78,6 @@
   			xs.innerHTML = "La fecha nacimiento es obligatoria";
   			xc.className="error";
   			existErrors = true;
-  		}else if(){
-  			
   		}
   		var xc = formulario["correo"];
   		var xs = document.getElementById("spanCorreo");
@@ -91,7 +89,7 @@
   			xc.className="error";
   			existErrors = true;
   		}else if((!co.test(xc.value))){
-  			xs.innerHTML = "El formato del correo no es correcto, debe ser hotmail o gmail";
+  			xs.innerHTML = "El formato del correo no es correcto, debe ser hotmail o gmail, y el dominio .com o .es";
   			xc.className="error";
   			existErrors = true;
   		}
@@ -133,12 +131,15 @@
   		}
   		var xc = formulario["telefonoTutor"];
   		var xs = document.getElementById("spanTelefono");
+  		var re = /^[0-9]{9}$/;
   		xc.className="";
   		xs.innerHTML="";
-  		if ((xc.value != "") && xc.length!=9) {
-  			xs.innerHTML = "El teléfono no es correcto";
-  			xc.className="error";
-  			existErrors = true;
+  		if (xc.value != "") {
+  			if((!re.test(xc.value))){
+  				xs.innerHTML = "El teléfono no es correcto";
+  				xc.className="error";
+  				existErrors = true;
+  			}
   		}
   		return (!existErrors);
 	}
