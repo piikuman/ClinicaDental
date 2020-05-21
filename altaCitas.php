@@ -38,6 +38,9 @@
 	<?php
 		include_once("cabecera.php");
 	?>
+	<?php
+		include_once("menu.php");
+	?>
 
 	<main>
 		<?php if (altaCita($conexion, $nuevaCita, $paciente["OID_PACIENTE"], $doctora["OID_DOCTORA"], $tratamiento["OID_TRATAMIENTO"])) {  
@@ -47,7 +50,8 @@
 			   		Pulsa <a href="listaCitas.php">aquí</a> para acceder a la gestión de citas.
 				</div>
 		<?php } else { ?>
-				<h1>La cita ya esta ocupada.</h1>
+				<h1>No se pudo añadir la cita con exitó.</h1>
+				<h3>Los cita ya está ocupada.</h3>
 				<div >	
 					Pulsa <a href="formularioCitas.php">aquí</a> para volver al formulario.
 				</div>

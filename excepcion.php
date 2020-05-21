@@ -17,29 +17,21 @@
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="css/estilo.css" />
   <title>Gestión de biblioteca: ¡Se ha producido un problema!</title>
-</head>
-<body>	
-	
-<?php	
-	include_once("cabecera.php"); 
-?>	
-
+</head>	
 	<div>
+		<img src="images/Excepcion.png" width="800" alt="400" />
 		<h2>Ups!</h2>
 		<?php if ($destino<>"") { ?>
 		<p>Ocurrió un problema durante el procesado de los datos. Pulse <a href="<?php echo $destino ?>">aquí</a> para volver a la página principal.</p>
 		<?php } else { ?>
-		<p>Ocurrió un problema para acceder a la base de datos.</p>
+		<p>Ocurrió un problema.</p>
 		<?php } ?>
 	</div>
 		
 	<div class='excepcion'>	
-		<?php echo "Información relativa al problema: $excepcion;" ?>
+		<?php if(isset($excepcion)){
+			echo "Información relativa al problema: $excepcion;";
+		}?>
 	</div>
-
-<?php	
-	include_once("pie.php");
-?>	
-
 </body>
 </html>

@@ -33,6 +33,9 @@
 	<?php
 		include_once("cabecera.php");
 	?>
+	<?php
+		include_once("menu.php");
+	?>
 
 	<main>
 		<?php if (altaTratamiento($conexion, $nuevoTratamiento, $especialidad["OID_ESPECIALIDAD"])) {  
@@ -42,8 +45,9 @@
 			   		Pulsa <a href="listaTratamientos.php">aquí</a> para acceder a la lista de tratamientos.
 				</div>
 		<?php } else { ?>
-				<h1>El tratamiento ya existe.</h1>
-				<div >	
+				<h1>No se pudo añadir el tratamiento con exitó.</h1>
+				<h3>El tratamiento ya está registrado.</h3>
+				<div >		
 					Pulsa <a href="formularioTratamientos.php">aquí</a> para volver al formulario.
 				</div>
 		<?php } ?>

@@ -33,17 +33,48 @@ function consultarTodosPacientes($conexion) {
     return $conexion->query($consulta);
 }
 
-function buscaPaciente($conexion,$nombre) {
-		
+function buscaPaciente($conexion,$dni) {		
 	try {
 		$consulta = 'SELECT OID_PACIENTE FROM PACIENTE WHERE DNI = :DNI';
 		$stmt=$conexion->prepare($consulta);
-		$stmt->bindParam(':DNI',$nombre);
+		$stmt->bindParam(':DNI',$dni);
 		$stmt->execute();
 		return $stmt -> fetch();
 	} catch(PDOException $e) {
 		return $e->getMessage();
     }
+}
+
+function validacionDNIPaciente($conexion,$dni) {		
+	try {
+		$consulta = 'SELECT COUNT(*) AS TOTAL FROM (SELECT * FROM PACIENTE WHERE DNI = :DNI)';
+		$stmt=$conexion->prepare($consulta);
+		$stmt->bindParam(':DNI',$dni);
+		$stmt->execute();
+		$result = $stmt->fetch();
+		$total = $result['TOTAL'];
+		return  $total;
+	}
+	catch ( PDOException $e ) {
+		$_SESSION['excepcion'] = $e->GetMessage();
+		header("Location: excepcion.php");
+	}
+}
+
+function validacionCorreoPaciente($conexion,$correo) {		
+	try {
+		$consulta = 'SELECT COUNT(*) AS TOTAL FROM (SELECT * FROM PACIENTE WHERE CORREO = :CORREO)';
+		$stmt=$conexion->prepare($consulta);
+		$stmt->bindParam(':CORREO',$correo);
+		$stmt->execute();
+		$result = $stmt->fetch();
+		$total = $result['TOTAL'];
+		return  $total;
+	}
+	catch ( PDOException $e ) {
+		$_SESSION['excepcion'] = $e->GetMessage();
+		header("Location: excepcion.php");
+	}
 }
 
 function getInfoPaciente($conexion, $OID_PACIENTE) {
