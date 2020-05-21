@@ -3,6 +3,9 @@ session_start();
 
 if (!isset($_SESSION['login']))
 			Header("Location: login.php");
+else if("admin" != $_SESSION['login']){
+		Header("Location: inicio.php");
+}
 
 require_once ('gestionarUsuario.php');
 require_once ('gestionBD.php');

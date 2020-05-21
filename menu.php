@@ -1,4 +1,9 @@
 <link rel="stylesheet" type="text/css" href="css/estilo.css"/>
+
+<?php
+$admin = $_SESSION['login'];
+?>
+
 <aside>
 	<nav id="menu">
 		<ul>
@@ -8,7 +13,9 @@
 			<a href="listaDoctora.php" class="menu">Doctoras</a>
 			<a href="listaTratamientos.php" class="menu">Tratamientos</a>
 			<a href="listaEspecialidad.php" class="menu">Especialidades</a>
-			<a href="administracion.php" class="menu">Administración</a>
+			<?php if("admin"==$admin){?>
+				<a href="administracion.php" class="menu">Administración</a>
+			<?php } ?>
 		  	<a href="about.php" class="menu">Sobre nosotros</a>
 		</ul>
 		

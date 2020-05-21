@@ -25,6 +25,22 @@ function consultarUsuario($conexion,$email,$pass) {
 	
 }
 
+function validacionCorreoUsuario($conexion,$correo) {		
+	try {
+		$consulta = 'SELECT COUNT(*) AS TOTAL FROM (SELECT * FROM USUARIO WHERE CORREO = :CORREO)';
+		$stmt=$conexion->prepare($consulta);
+		$stmt->bindParam(':CORREO',$correo);
+		$stmt->execute();
+		$result = $stmt->fetch();
+		$total = $result['TOTAL'];
+		return  $total;
+	}
+	catch ( PDOException $e ) {
+		$_SESSION['excepcion'] = $e->GetMessage();
+		header("Location: excepcion.php");
+	}
+}
+
 function consultarTodosUsuarios($conexion) {
 	$consulta = "SELECT * FROM USUARIO"
 		. " ORDER BY OID_USUARIO";

@@ -1,4 +1,4 @@
 <footer id="pie">
-	<img src="images/nombre_clinica.webp" alt="Clinica Dental Isabel LLedó"><br/>
-	&copy; IISSI 2020
+	<img src="images/SopaVeneno.png" width="200" alt="200"/><br />
+	&copy; PSV - Ingeniería de Software - IISSI2 2020
 </footer>
