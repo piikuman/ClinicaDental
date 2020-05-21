@@ -3,6 +3,9 @@
 	
 	if (!isset($_SESSION['login']))
 			Header("Location: login.php");
+	else if("admin" != $_SESSION['login']){
+		Header("Location: inicio.php");
+	}
 	
 	if(isset($_SESSION['usuario'])){
 		$usuario = $_SESSION['usuario'];
