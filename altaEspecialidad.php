@@ -31,6 +31,9 @@
 	<?php
 		include_once("cabecera.php");
 	?>
+	<?php
+		include_once("menu.php");
+	?>
 
 	<main>
 		<?php if (altaEspecialidad($conexion, $nuevaEspecialidad)) {  
@@ -40,8 +43,9 @@
 			   		Pulsa <a href="listaEspecialidad.php">aquí</a> para acceder a la gestión de biblioteca.
 				</div>
 		<?php } else { ?>
-				<h1>La especialidad ya existe.</h1>
-				<div >	
+				<h1>No se pudo añadir la especialidad con exitó.</h1>
+				<h3>La especialidad ya está registrada.</h3>
+				<div >		
 					Pulsa <a href="formularioEspecialidad.php">aquí</a> para volver al formulario.
 				</div>
 		<?php } ?>

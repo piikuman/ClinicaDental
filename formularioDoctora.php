@@ -36,6 +36,112 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+  <script type="text/javascript">
+  	function validateForm(){
+  		var existErrors = false;
+  		var formulario = document.forms["altaDoctora"];
+  		var xc = formulario["dni"];
+  		var xs = document.getElementById("spanDNI");
+  		xc.className="";
+  		xs.innerHTML="";
+  		if(xc.value == null || xc.value == ""){
+  			xs.innerHTML = "El DNI es obligatorio";
+  			xc.className="error";
+  			existErrors = true;
+  		}
+  		var xc = formulario["nombre"];
+  		var xs = document.getElementById("spanNombre");
+  		xc.className="";
+  		xs.innerHTML="";
+  		if(xc.value == null || xc.value == ""){
+  			xs.innerHTML = "El nombre es obligatorio";
+  			xc.className="error";
+  			existErrors = true;
+  		}
+  		var xc = formulario["apellidos"];
+  		var xs = document.getElementById("spanApellidos");
+  		xc.className="";
+  		xs.innerHTML="";
+  		if(xc.value == null || xc.value == ""){
+  			xs.innerHTML = "Los apellidos son obligatorios";
+  			xc.className="error";
+  			existErrors = true;
+  		}
+  		var xc = formulario["fechaNacimiento"];
+  		var xs = document.getElementById("spanFechaNac");
+  		xc.className="";
+  		xs.innerHTML="";
+  		if(xc.value == null || xc.value == ""){
+  			xs.innerHTML = "La fecha de nacimiento es obligatoria";
+  			xc.className="error";
+  			existErrors = true;
+  		}
+  		var xc = formulario["poblacion"];
+  		var xs = document.getElementById("spanPoblacion");
+  		xc.className="";
+  		xs.innerHTML="";
+  		if(xc.value == null || xc.value == ""){
+  			xs.innerHTML = "La poblacion es obligatoria";
+  			xc.className="error";
+  			existErrors = true;
+  		}
+  		var xc = formulario["direccion"];
+  		var xs = document.getElementById("spanDireccion");
+  		xc.className="";
+  		xs.innerHTML="";
+  		if(xc.value == null || xc.value == ""){
+  			xs.innerHTML = "La direccion es obligatoria";
+  			xc.className="error";
+  			existErrors = true;
+  		}
+  		var xc = formulario["fechaAlta"];
+  		var xs = document.getElementById("spanFechaAlta");
+  		xc.className="";
+  		xs.innerHTML="";
+  		if(xc.value == null || xc.value == ""){
+  			xs.innerHTML = "La fecha de alta es obligatoria";
+  			xc.className="error";
+  			existErrors = true;
+  		}
+  		var xc = formulario["telefono"];
+  		var xs = document.getElementById("spanTelefono");
+  		xc.className="";
+  		xs.innerHTML="";
+  		if(xc.value == null || xc.value == ""){
+  			xs.innerHTML = "El telefono es obligatorio";
+  			xc.className="error";
+  			existErrors = true;
+  		}
+  		var xc = formulario["sueldo"];
+  		var xs = document.getElementById("spanSueldo");
+  		xc.className="";
+  		xs.innerHTML="";
+  		if(xc.value == null || xc.value == ""){
+  			xs.innerHTML = "El sueldo es obligatorio";
+  			xc.className="error";
+  			existErrors = true;
+  		}
+  		var xc = formulario["codigoDoctora"];
+  		var xs = document.getElementById("spanCodigo");
+  		xc.className="";
+  		xs.innerHTML="";
+  		if(xc.value == null || xc.value == ""){
+  			xs.innerHTML = "El codigo es obligatorio";
+  			xc.className="error";
+  			existErrors = true;
+  		}
+  		var xc = formulario["especialidad"];
+  		var xs = document.getElementById("spanEspecialidad");
+  		xc.className="";
+  		xs.innerHTML="";
+  		if(xc.value == null || xc.value == ""){
+  			xs.innerHTML = "La especialidad es obligatoria";
+  			xc.className="error";
+  			existErrors = true;
+  		}
+  		return (!existErrors);
+	}
+  </script>
   <title>Formulario de doctoras</title> 
 </head>
 
@@ -54,52 +160,52 @@
 	?>
 	<?php if(!isset($doctora)){ ?>
 	<h1>Añadir nueva doctora</h1>		
-	<form id="altaDoctora" method="post" action="validacionDoctora.php">
+	<form id="altaDoctora" method="post" onsubmit="return validateForm()" action="validacionDoctora.php">
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos personales</legend>
 			
 			<div><label for="dni">DNI<em>*</em></label>
-			<input id="dni" name="dni" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $formularioDoctora['dni'];?>">
+			<input id="dni" name="dni" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $formularioDoctora['dni'];?>"><span id="spanDNI"></span>
 			</div>
 
 			<div><label for="nombre">Nombre:<em>*</em></label>
-			<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $formularioDoctora['nombre'];?>"/>
+			<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $formularioDoctora['nombre'];?>"/><span id="spanNombre"></span>
 			</div>
 
 			<div><label for="apellidos">Apellidos:</label>
-			<input id="apellidos" name="apellidos" type="text" size="80" value="<?php echo $formularioDoctora['apellidos'];?>"/>
+			<input id="apellidos" name="apellidos" type="text" size="80" value="<?php echo $formularioDoctora['apellidos'];?>"/><span id="spanApellidos"></span>
 			</div>
 			
 			<div><label for="fechaNacimiento">Fecha de nacimiento:</label>
-			<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $formularioDoctora['fechaNacimiento'];?>"/>
+			<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $formularioDoctora['fechaNacimiento'];?>"/><span id="spanFechaNac"></span>
 			</div>
 			
 			<div><label for="poblacion">Poblacion:</label>
-			<input id="poblacion" name="poblacion" type="text" size="80" value="<?php echo $formularioDoctora['poblacion'];?>"/>
+			<input id="poblacion" name="poblacion" type="text" size="80" value="<?php echo $formularioDoctora['poblacion'];?>"/><span id="spanPoblacion"></span>
 			</div>
 			
 			<div><label for="direccion">Direccion:</label>
-			<input id="direccion" name="direccion" type="text" size="80" value="<?php echo $formularioDoctora['direccion'];?>"/>
+			<input id="direccion" name="direccion" type="text" size="80" value="<?php echo $formularioDoctora['direccion'];?>"/><span id="spanDireccion"></span>
 			</div>
 			
 			<div><label for="fechaAlta">Fecha Alta:</label>
-			<input id="fechaAlta" name="fechaAlta" type="date" size="80" value="<?php echo $formularioDoctora['fechaAlta'];?>"/>
+			<input id="fechaAlta" name="fechaAlta" type="date" size="80" value="<?php echo $formularioDoctora['fechaAlta'];?>"/><span id="spanFechaAlta"></span>
 			</div>
 			
 			<div><label for="telefono">Telefono:</label>
-			<input id="telefono" name="telefono" type="text" size="80" value="<?php echo $formularioDoctora['telefono'];?>"/>
+			<input id="telefono" name="telefono" type="text" size="80" value="<?php echo $formularioDoctora['telefono'];?>"/><span id="spanTelefono"></span>
 			</div>
 			
 			<div><label for="sueldo">Sueldo:</label>
-			<input id="sueldo" name="sueldo" type="text" size="80" value="<?php echo $formularioDoctora['sueldo'];?>"/>
+			<input id="sueldo" name="sueldo" type="text" size="80" value="<?php echo $formularioDoctora['sueldo'];?>"/><span id="spanSueldo"></span>
 			</div>
 			
 			<div><label for="codigoDoctora">Codigo doctora:</label>
-			<input id="codigoDoctora" name="codigoDoctora" type="text" size="80" value="<?php echo $formularioDoctora['codigoDoctora'];?>"/>
+			<input id="codigoDoctora" name="codigoDoctora" type="text" size="80" value="<?php echo $formularioDoctora['codigoDoctora'];?>"/><span id="spanCodigo"></span>
 			</div>
 			
 			<div><label for="especialidad">Especialidad:</label>
-			<input id="especialidad" name="especialidad" type="text" size="80" value="<?php echo $formularioDoctora['especialidad'];?>"/>
+			<input id="especialidad" name="especialidad" type="text" size="80" value="<?php echo $formularioDoctora['especialidad'];?>"/><span id="spanEspecialidad"></span>
 			</div>
 		</fieldset>
 		
@@ -110,20 +216,20 @@
 	</form>
 	<?php }else{ ?>
 	<h1>Actualizar doctora</h1>	
-	<form id="actualizarDoctora" method="post" action="validacionDoctora.php">
+	<form id="actualizarDoctora" method="post" onsubmit="return validateForm()" action="validacionDoctora.php">
 		<input id="OID_DOCTORA" name="OID_DOCTORA" type="hidden" value="<?php echo $doctora['OID_DOCTORA'];?>"/>
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos personales</legend>
 		<div><label for="dni">DNI<em>*</em></label>
-			<input id="dni" name="dni" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $doctora['dni'];?>" required>
+			<input id="dni" name="dni" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $doctora['dni'];?>" required><span id="spanDNI"></span>
 			</div>
 
 			<div><label for="nombre">Nombre:<em>*</em></label>
-			<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $doctora['nombre'];?>" required/>
+			<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $doctora['nombre'];?>" required/><span id="spanNombre"></span>
 			</div>
 
 			<div><label for="apellidos">Apellidos:</label>
-			<input id="apellidos" name="apellidos" type="text" size="80" value="<?php echo $doctora['apellidos'];?>"/>
+			<input id="apellidos" name="apellidos" type="text" size="80" value="<?php echo $doctora['apellidos'];?>"/><span id="spanApellidos"></span>
 			</div>
 			
 			<div><label for="fechaNacimiento">Fecha de nacimiento:</label>

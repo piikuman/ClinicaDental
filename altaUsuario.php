@@ -30,6 +30,9 @@
 	<?php
 		include_once("cabecera.php");
 	?>
+	<?php
+		include_once("menu.php");
+	?>
 
 	<main>
 		<?php if (altaUsuario($conexion, $nuevoUsuario)) {  
@@ -39,8 +42,9 @@
 			   		Pulsa <a href="administracion.php">aquí</a> para acceder a la lista de usuarios.
 				</div>
 		<?php } else { ?>
-				<h1>El usuario ya existe en la base de datos.</h1>
-				<div >	
+				<h1>No se pudo añadir el usuario con exitó.</h1>
+				<h3>El usuario ya está registrada.</h3>
+				<div >		
 					Pulsa <a href="formularioUsuario.php">aquí</a> para volver al formulario.
 				</div>
 		<?php } ?>

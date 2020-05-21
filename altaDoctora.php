@@ -31,6 +31,9 @@
 	<?php
 		include_once("cabecera.php");
 	?>
+	<?php
+		include_once("menu.php");
+	?>
 
 	<main>
 		<?php
@@ -44,7 +47,8 @@
 			   		Pulsa <a href="listaDoctora.php">aquí</a> para acceder a la lista de doctoras.
 				</div>
 		<?php } else { ?>
-				<h1>Esta doctora ya existe en la base de datos.</h1>
+				<h1>No se pudo añadir la doctora con exitó.</h1>
+				<h3>La doctora ya está registrada.</h3>
 				<div >	
 					Pulsa <a href="formularioDoctora.php">aquí</a> para volver al formulario.
 				</div>
