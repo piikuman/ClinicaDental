@@ -98,7 +98,7 @@
 			<button id="añadir" name="añadir" type="submit"><img src="images/botonOkey.png" width="20" height="20"></button>
 		</div>
 	</form>
-	<form id="cancelarTratamiento" method="post" onsubmit="return validateForm()" action="validacionTratamientos.php" >
+	<form id="cancelarTratamiento" method="post" action="validacionTratamientos.php" >
 		<button id="cancelarAñadir" name="cancelarAñadir" type="submit"><img src="images/returnButton.png" width="20" height="20"></button>
 	</form>
 	<?php }else{ ?>
