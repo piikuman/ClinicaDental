@@ -30,8 +30,9 @@
   <title>Gestión de biblioteca: Login</title>
 </head>
 
-<body>
 
+<body>
+	<div class="login">
 <?php
 	include_once("cabecera.php");
 ?>
@@ -50,13 +51,15 @@
 		<input type="text" name="email" id="email" /></div>
 		<div><label for="pass">Contraseña: </label>
 		<input type="password" name="pass" id="pass" /></div>
-		<input type="submit" name="submit" value="submit" />
+		<input class="codigo" type="submit" name="submit" value="entrar" />
 	</form>
 </main>
 
 <?php
 	include_once("pie.php");
 ?>
+
+</div>
 </body>
 </html>
 
