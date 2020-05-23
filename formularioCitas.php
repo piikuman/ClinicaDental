@@ -115,39 +115,40 @@
 	?>
 	<?php if(!isset($cita)){ ?>
 	<h1>Añadir nueva cita</h1>	
-	<form id="altaCita" method="post" onsubmit="return validateForm()" action="validacionCitas.php" novalidate>
+	<form id="altaCita" method="post" onsubmit="return validateForm()" action="validacionCitas.php">
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos cita</legend>
 			
 			<div<<label for="paciente">DNI paciente:<em>*</em></label>
-			<input type="text" id="paciente" name="paciente" value="<?php echo $formularioCita['paciente'];?>"/><span id="spanPaciente"></span><br>
+			<input type="text" id="paciente" name="paciente" value="<?php echo $formularioCita['paciente'];?>" required/><span id="spanPaciente"></span><br>
 			</div>
 			
 			<div<<label for="doctora">Codigo doctora:<em>*</em></label>
-			<input type="text" id="doctora" name="doctora" value="<?php echo $formularioCita['doctora'];?>"/><span id="spanDoctora"></span><br>
+			<input type="text" id="doctora" name="doctora" value="<?php echo $formularioCita['doctora'];?>" required/><span id="spanDoctora"></span><br>
 			</div>
 			
 			<div<<label for="tratamiento">Tratamiento:<em>*</em></label>
-			<input type="text" id="tratamiento" name="tratamiento" value="<?php echo $formularioCita['tratamiento'];?>"/><span id="spanTratamiento"></span><br>
+			<input type="text" id="tratamiento" name="tratamiento" value="<?php echo $formularioCita['tratamiento'];?>" required/><span id="spanTratamiento"></span><br>
 			</div>
 			
 			<div<<label for="fechaCita">Fecha:<em>*</em></label>
-			<input type="date" id="fechaCita" name="fechaCita" value="<?php echo $formularioCita['fechaCita'];?>"/><span id="spanFechaCita"></span><br>
+			<input type="date" id="fechaCita" name="fechaCita" value="<?php echo $formularioCita['fechaCita'];?>" required/><span id="spanFechaCita"></span><br>
 			</div>
 
 			<div><label for="horaCita">Hora:<em>*</em></label>
-			<input id="horaCita" name="horaCita" type="text" size="17" value="<?php echo $formularioCita['horaCita'];?>"/><span id="spanHoraCita"></span><br>
+			<input id="horaCita" name="horaCita" type="text" size="17" value="<?php echo $formularioCita['horaCita'];?>" required/><span id="spanHoraCita"></span><br>
 			</div>
 			
 			<div><label for="consulta">Consulta:<em>*</em></label>
-			<input id="consulta" name="consulta" type="text" size="14" value="<?php echo $formularioCita['consulta'];?>"/><span id="spanConsulta"></span>
+			<input id="consulta" name="consulta" type="text" size="14" value="<?php echo $formularioCita['consulta'];?>" required/><span id="spanConsulta"></span>
 			</div>
-		</fieldset>
-		
-		<div><button id="añadir" name="añadir" type="submit"><img src="images/botonOkey.png" width="20" height="20"></button>
-		<button id="cancelarAñadir" name="cancelarAñadir" type="submit" size="4"><img src="images/returnButton.png" width="20" height="20"></button>
+		</fieldset>	
+		<div>
+			<button id="añadir" name="añadir" type="submit"><img src="images/botonOkey.png" width="20" height="20"></button>
 		</div>
-
+	</form>
+	<form id="cancelarCita" method="post" action="validacionCitas.php">
+		<button id="cancelarAñadir" name="cancelarAñadir" type="submit" size="4"><img src="images/returnButton.png" width="20" height="20"></button>
 	</form>
 	<?php }else{ ?>
 	<h1>Actualizar cita <?php echo $cita['OID_CITA'];?></h1>	
@@ -157,27 +158,27 @@
 		<fieldset><legend>Datos cita</legend>
 			
 			<div<<label for="paciente">DNI paciente:<em>*</em></label>
-			<input type="text" id="paciente" name="paciente" value="<?php echo $cita['paciente'];?>"/><br>
+			<input type="text" id="paciente" name="paciente" value="<?php echo $cita['paciente'];?>" required/><br>
 			</div>
 			
 			<div<<label for="doctora">Codigo doctora:<em>*</em></label>
-			<input type="text" id="doctora" name="doctora" value="<?php echo $cita['doctora'];?>"/><br>
+			<input type="text" id="doctora" name="doctora" value="<?php echo $cita['doctora'];?>" required/><br>
 			</div>
 			
 			<div<<label for="tratamiento">Tratamiento:<em>*</em></label>
-			<input type="text" id="tratamiento" name="tratamiento" value="<?php echo $cita['tratamiento'];?>"/><br>
+			<input type="text" id="tratamiento" name="tratamiento" value="<?php echo $cita['tratamiento'];?>" required/><br>
 			</div>
 			
 			<div><label for="fechaCita">Fecha:<em>*</em></label>
-			<input type="date" id="fechaCita" name="fechaCita" value="<?php echo $cita['fechaCita'];?>"/>
+			<input type="date" id="fechaCita" name="fechaCita" value="<?php echo $cita['fechaCita'];?>" required/>
 			</div>
 
 			<div><label for="horaCita">Hora:<em>*</em></label>
-			<input id="horaCita" name="horaCita" type="text" size="17" value="<?php echo $cita['horaCita'];?>"/><br>
+			<input id="horaCita" name="horaCita" type="text" size="17" value="<?php echo $cita['horaCita'];?>" required/><br>
 			</div>
 			
 			<div><label for="consulta">Consulta:<em>*</em></label>
-			<input id="consulta" name="consulta" type="text" size="14" value="<?php echo $cita['consulta'];?>"/>
+			<input id="consulta" name="consulta" type="text" size="14" value="<?php echo $cita['consulta'];?>" required/>
 			</div>
 		</fieldset>
 		

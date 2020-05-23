@@ -64,29 +64,28 @@
 <main>
 	
 	<nav>
-		<div id="enlaces">
+		<div class="paginas">
 			<?php
 				for($pagina = 1;$pagina <= $totalPaginas; $pagina++ )
 					if ( $pagina == $paginaSeleccionada) { 	?>
-						<span class="current"><?php echo $pagina; ?></span>
+						<a class="paginaSeleccionada"><?php echo $pagina; ?></a>
 			<?php }	else { ?>
-						<a href="listaTratamiento.php?PAG_NUM=<?php echo $pagina; ?>&PAG_TAM=<?php echo $pagTam; ?>"><?php echo $pagina; ?></a>
+						<a class="paginas" href="listaTratamientos.php?PAG_NUM=<?php echo $pagina; ?>&PAG_TAM=<?php echo $pagTam; ?>"><?php echo $pagina; ?></a>
 			<?php } ?>
-		</div>
-		
-		<form method="get" action="listaTratamiento.php">
-			<input id="PAG_NUM" name="PAG_NUM" type="hidden" value="<?php echo $paginaSeleccionada?>"/>
+		<br/>
+		<form method="get" class="paginas" action="listaTratamientos.php">
 			Mostrando
-			<input id="PAG_TAM" name="PAG_TAM" type="number"
-				min="1" max="<?php echo $totalTratamientos; ?>" value="<?php echo $pagTam?>" autofocus="autofocus" />			
-				tratamientos de <?php echo $totalTratamientos?>
-			<input type="submit" value="Cambiar">
+			<input id="PAG_NUM" name="PAG_NUM" type="hidden" value="<?php echo $paginaSeleccionada?>"/>
+			<input id="PAG_TAM" name="PAG_TAM" type="number" min="1" max="<?php echo $totalTratamientos; ?>" value="<?php echo $pagTam?>"/>			
+				de <?php echo $totalTratamientos?>
+			<input class="paginacion" type="submit" value="Cambiar">
 		</form>
+		</div>
 	</nav>
-	
-	<table class="tratamiento">
+	<a href="formularioTratamientos.php" class="add">Añadir Tratamiento</a>
+	<table>
 	  <tr>
-	    <th scope="row">Código</th>
+	    <th>Código</th>
     	<th>Nombre</th>
 	    <th>Coste</th>
 	  </tr>
@@ -96,14 +95,13 @@
   	  <tr>
   	  	<form id='formMostrarTratamiento' method='POST' action='mostrarTratamientos.php' >
 			<input type='hidden' name='OID_TRATAMIENTO' value='<?php echo $tratamiento["OID_TRATAMIENTO"]?>'>
-	    <th><input type='submit' value='<?php echo $tratamiento["OID_TRATAMIENTO"]; ?>'></th>
+	    <th><input class="codigo" type='submit' value='<?php echo $tratamiento["OID_TRATAMIENTO"]; ?>'></th>
 		</form>
     	    <td><?php echo $tratamiento["NOMBRE"]; ?></td>
 	    	<td><?php echo $tratamiento["COSTE"]; ?></td>
 	  </tr>
 	  <?php } ?>	
 	</table>
-	<a href="formularioTratamientos.php">Añadir Tratamiento</a>
 </main>
 
 <?php

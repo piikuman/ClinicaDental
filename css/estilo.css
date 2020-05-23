@@ -1,40 +1,206 @@
-/*Gnereal*/
-
-html{
- 	background-image: "ClinicaDentalG3\images\logo.png";
-}
-
+/*Genereal*/
 body{
 	color : black;
 	font-family: Helvetica;
-	background-size: cover;
+	background-color: white;
 }
 
-#menu{
-    list-style-type: none;
- 	font-size: 20px;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
- 	background-color: silver;
+title{
+	text-align: center;
+	color : black;
+	font-family: Helvetica;
 }
 
-a.menu{
-	text-decoration: none;
-	color:#000000;
+button{
+	background-color: #C6FAFF;
+  	border: none;
+  	color: white;
+  	padding: 15px 25px;
+  	display: inline-block;
 }
+
+h1{
+	text-align: center;
+	color : black;
+	font-family: Helvetica;
+}
+
+table {
+  border-collapse: collapse;
+  text-align: center;
+  width: 100%;
+  padding: 14px 25px;
+}
+
+th, td {
+  text-align: center;
+  padding: 15px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  	background-color: #b3ecff;
+	font-family: Helvetica;
+  	color: black;
+  	text-align: center;
+  	text-decoration: none;
+  	font-size: 20px;
+}
+
+a{
+  	background-color: white;
+	font-family: Helvetica;
+  	color: black;
+  	text-align: center;
+  	text-decoration: none;
+  	font-size: 20px;
+}
+
+/*
+ * Cabecera y pie de página
+ */
 
 #cabecera{
+	text-align: center;
 	padding:40px;
 }
 
 #pie{
-	float:left;
+	text-align: center;
 	padding:50px;
 }
 
-#disconect{
+div.logo{
+	float:left;
+  	text-align: center;
+  	text-decoration: none;
+  	width:80%;
+}
+
+div.disconect{
 	float:right;
+  	text-align: center;
+  	text-decoration: none;
+  	width:20%;
+}
+
+/*
+ * Menú
+ */
+
+a.menu{
+	background-color: #C6FAFF;
+	font-family: Helvetica;
+  	color:black;
+  	text-align: center;
+  	text-decoration: none;
+  	padding: 14px 25px;
+  	margin: 10px;
+  	width:100%
+  	font-size: 20px;
+}
+
+a.menu:hover:not(.active) {
+	background-color: #83CAE0;
+}
+
+div.menu{
+	background-color: #b3ecff;
+	text-align: center;
+	padding: 14px;
+}
+
+/*
+ * Paginación
+ */
+
+a.paginas:hover:not(.active) {
+	background-color: #83CAE0;
+}
+
+a.paginas {
+	background-color: #C6FAFF;
+  	color: black;
+  	padding: 14px 25px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	margin: 10px;
+}
+
+a.paginaSeleccionada {
+	background-color: white;
+  	color: black;
+  	padding: 14px 25px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	margin: 10px;
+}
+
+div.paginas{
+	text-align: center;
+}
+
+form.paginas{
+  	color: black;
+  	padding: 14px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	margin: 10px;
+}
+
+input.paginacion{
+	border-radius: 4px;
+  background-color: #C6FAFF;
+  border: none;
+  color: black;
+  text-align: center;
+  font-size: 15px;
+  padding: 10px;
+  width: 80px;
+  margin: 5px;
+}
+
+input.paginacion:hover:not(.active) {
+	background-color: #83CAE0;
+}
+
+/*
+ * Inicio
+ */
+
+div.agenda{
+	float:left;
+	width: 50%;
+}
+
+div.recursos{
+	float:left;
+	text-align:center;
+	width: 50%;
+}
+
+/*
+ * Mostrar con citas
+ */
+
+div.informacion{
+	float:left;
+	width: 100%;
+}
+
+div.datos{
+	float:left;
+	width: 50%;
+}
+
+div.citas{
+	float:left;
+	text-align:center;
+	width: 50%;
 }
 
 /* Mensajes de Error */
@@ -43,4 +209,108 @@ div.error {
 	border : 2px solid red;
 	padding : 10px;
 	margin: 10px;
+}
+
+/*
+ * botones (añadir)
+ */
+
+a.add {
+	background-color: #C6FAFF;
+  	color: black;
+  	padding: 14px 25px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	margin: 10px;
+}
+
+a.add:hover:not(.active) {
+	background-color: #83CAE0;
+}
+
+/*
+ * Especialidades
+ */
+
+div.espacialidades{
+	width: 60%;
+}
+
+/*
+ * codigo
+ */
+
+input.codigo {
+	background-color: #b3ecff;
+  	color: black;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+}
+
+input.codigo:hover:not(.active) {
+	background-color: #83CAE0;
+}
+
+/*
+ * administracion
+ */
+
+div.usuarios{
+	float:left;
+	width: 70%;
+}
+
+div.usuarios{
+	float:left;
+	width: 70%;
+}
+div.numeros{
+	float:left;
+	width: 30%;
+}
+
+/*
+ * Login
+ */
+
+div.login{
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+}
+
+/*
+ * Exception
+ */
+
+body.exception{
+  	background-color:black; 
+}
+
+div.exception{
+  	width: 100%;
+}
+
+div.imException{
+	position: relative;
+  	width: 100%;
+  	text-align: center;
+}
+
+div.menException{
+	position: absolute;
+  	color:red;
+  	top: 30%;
+  	width: 100%;
+  	text-align: center;
+  	font-size: 18px;
+}
+
+a.menException{
+	text-decoration: none;
 }

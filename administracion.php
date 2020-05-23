@@ -9,6 +9,11 @@
 	
 	require_once("gestionBD.php");
 	require_once("gestionarUsuario.php");
+	require_once("gestionarCitas.php");
+	require_once("gestionarPaciente.php");
+	require_once("gestionarTratamientos.php");
+	require_once("gestionarDoctora.php");
+	require_once("gestionarEspecialidad.php");
 	require_once("paginacionConsulta.php");
 	
 	if (isset($_SESSION["paginacion"])){
@@ -45,6 +50,11 @@
 	$_SESSION["paginacion"] = $paginacion;
 
 	$usuarios = consultaPaginada($conexion, $query, $paginaSeleccionada, $pagTam);
+	$tratamientos= consultarTotalT($conexion);
+	$pacientes= consultarTotalP($conexion);
+	$citas= consultarTotalC($conexion);
+	$especialidad= consultarTotalE($conexion);
+	$doctoras= consultarTotalD($conexion);
 	cerrarConexionBD($conexion);
 ?>
 
@@ -63,9 +73,13 @@
 ?>
 
 <main>
-	<table class="pacientes">
+	<div class="informacion">
+	<a class="add" href="formularioUsuario.php">Añadir Usuario</a>
+	<br/>
+	<div class="usuarios">
+	<table>
 	  <tr>
-	    <th scope="row">Código</th>
+	    <th>Código</th>
     	<th>Correo</th>
 	  </tr>
   	 <?php
@@ -74,13 +88,23 @@
   	  <tr>
   	  	<form id='formMostrarUsuarios' method='POST' action='mostrarUsuario.php' >
 			<input type='hidden' name='OID_USUARIO' value='<?php echo $usuario["OID_USUARIO"]?>'>
-	    <th><input type='submit' value='<?php echo $usuario["OID_USUARIO"]; ?>'></th>
+	    <th><input class="codigo" type='submit' value='<?php echo $usuario["OID_USUARIO"]; ?>'></th>
 		</form>
     	    <td><?php echo $usuario["CORREO"]; ?></td>
 	  </tr>
 	  <?php } ?>	
 	</table>
-	<a href="formularioUsuario.php">Añadir Usuario</a>
+	</div>
+	<div class="numeros">
+		<ul>
+			<li><h4>Número de pacientes: <?php echo $pacientes; ?></h4></li>
+			<li><h4>Número de doctoras: <?php echo $doctoras; ?></h4></li>
+			<li><h4>Número de tratamientos: <?php echo $tratamientos; ?></h4></li>
+			<li><h4>Número de citas: <?php echo $citas; ?></h4></li>
+			<li><h4>Número de especialidades: <?php echo $especialidad; ?></h4></li>
+		</ul>
+	</div>
+	</div>
 </main>
 
 <?php

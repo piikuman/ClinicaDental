@@ -83,23 +83,23 @@
 		<fieldset><legend>Datos tratamiento</legend>
 			
 			<div<<label for="nombre">Nombre:<em>*</em></label>
-			<input type="text" id="nombre" name="nombre" value="<?php echo $formularioTratamiento['nombre'];?>"/><span id="spanNombre"></span>
+			<input type="text" id="nombre" name="nombre" value="<?php echo $formularioTratamiento['nombre'];?>" required/><span id="spanNombre"></span>
 			</div>
 
 			<div><label for="coste">Coste:<em>*</em></label>
-			<input id="coste" name="coste" type="text" size="17" value="<?php echo $formularioTratamiento['coste'];?>"/>€<span id="spanCoste"></span><br>
+			<input id="coste" name="coste" type="text" size="17" value="<?php echo $formularioTratamiento['coste'];?>" required/>€<span id="spanCoste"></span><br>
 			</div>
 			
 			<div><label for="especialidad">Especialidad:<em>*</em></label>
-			<input id="especialidad" name="especialidad" type="text" size="17" value="<?php echo $formularioTratamiento['especialidad'];?>"/><span id="spanEspecialidad"></span><br>
+			<input id="especialidad" name="especialidad" type="text" size="17" value="<?php echo $formularioTratamiento['especialidad'];?>" required/><span id="spanEspecialidad"></span><br>
 			</div>
-			
 		</fieldset>
-		
-		<div><button id="añadir" name="añadir" type="submit"><img src="images/botonOkey.png" width="20" height="20"></button>
-			<button id="cancelarAñadir" name="cancelarAñadir" type="submit"><img src="images/returnButton.png" width="20" height="20"></button>
+		<div>
+			<button id="añadir" name="añadir" type="submit"><img src="images/botonOkey.png" width="20" height="20"></button>
 		</div>
-
+	</form>
+	<form id="cancelarTratamiento" method="post" action="validacionTratamientos.php" >
+		<button id="cancelarAñadir" name="cancelarAñadir" type="submit"><img src="images/returnButton.png" width="20" height="20"></button>
 	</form>
 	<?php }else{ ?>
 	<h1>Actualizar tratamiento <?php echo $tratamiento['OID_TRATAMIENTO'];?></h1>	

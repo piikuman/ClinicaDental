@@ -17,21 +17,23 @@
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="css/estilo.css" />
   <title>Gestión de biblioteca: ¡Se ha producido un problema!</title>
-</head>	
-	<div>
-		<img src="images/Excepcion.png" width="800" alt="400" />
+</head>
+<body class="exception">
+	<div class="exception">
+		<div class="imException">
+			<img src="images/imExcepcion.png" width="800" alt="400" />
+		</div>
+		<div class="menException">
 		<h2>Ups!</h2>
 		<?php if ($destino<>"") { ?>
 		<p>Ocurrió un problema durante el procesado de los datos. Pulse <a href="<?php echo $destino ?>">aquí</a> para volver a la página principal.</p>
 		<?php } else { ?>
-		<p>Ocurrió un problema.</p>
+		<a class="menException" href="inicio.php">Ocurrió un problema.</a></br>
 		<?php } ?>
-	</div>
-		
-	<div class='excepcion'>	
 		<?php if(isset($excepcion)){
 			echo "Información relativa al problema: $excepcion;";
 		}?>
-	</div>
+		</div>
+	</div>	
 </body>
 </html>

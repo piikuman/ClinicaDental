@@ -1,5 +1,9 @@
 <?php
 	session_start();
+	
+	require_once ('gestionarTratamientos.php');
+	require_once ('gestionarEspecialidad.php');
+	require_once ('gestionBD.php');
 
 	if(isset($_REQUEST['OID_TRATAMIENTO'])){
 		$tratamiento["OID_TRATAMIENTO"] = $_REQUEST["OID_TRATAMIENTO"];
@@ -32,15 +36,35 @@
 	}
 	}
 	
-	function validarDatosTratamiento($nuevoTratamiento){
-		$errores=array();
-		
-		if($nuevoTratamiento["nombre"]=="") 
-			$errores[] = "<p>El nombre del tratamientos no puede estar vacio</p>";
+	function validarDatosTratamiento($tratamiento){
 			
-		if($nuevoTratamiento["coste"]=="") 
-			$errores[] = "<p>El coste del tratamiento no puede estar vacio</p>";
-
+		$errores = array();
+		
+		$conexion = crearConexionBD();
+		if(!(isset($tratamiento["OID_TRATAMIENTO"]))){
+			$oid = -1;
+		}else{
+			$oid = $tratamiento["OID_TRATAMIENTO"];
+		}
+		$totalTratamientoNombre = validacionNombreTratamiento($conexion, $tratamiento["nombre"], $oid);
+		$ExisteEspecialidad = existeEspecialidad($conexion, $tratamiento["especialidad"]);
+		cerrarConexionBD($conexion);
+		
+		if($tratamiento["coste"]==""){
+				$errores[] = "<p>El coste no puede estar vacío</p>";
+		}	
+		
+		if($tratamiento["nombre"]==""){
+			$errores[] = "<p>El nombre no puede estar vacío</p>";
+		}else if($totalTratamientoNombre!=0){
+			$errores[] = "<p>El nombre debe ser único por tratamiento</p>";
+		}
+		
+		if($tratamiento["especialidad"]==""){
+			$errores[] = "<p>La especialidad no puede estar vacía</p>";
+		}else if($ExisteEspecialidad==0){
+			$errores[] = "<p>La especialidad introducida no existe</p>";
+		}
 	
 		return $errores;
 	}
