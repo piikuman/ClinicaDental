@@ -20,6 +20,19 @@ function consultarTodasEspecialidades($conexion) {
     return $conexion->query($consulta);
 }
 
+function consultarTotalE($conexion) {
+ 	try {
+		$consulta = 'SELECT COUNT(*) AS TOTAL FROM (SELECT * FROM ESPECIALIDAD)';
+		$stmt=$conexion->prepare($consulta);
+		$stmt->execute();
+		$result = $stmt->fetch();
+		$total = $result['TOTAL'];
+		return  $total;
+	} catch(PDOException $e) {
+		return $e->getMessage();
+    }
+ }
+
 function getInfoEspecialidad($conexion, $OID_ESPECIALIDAD) {
 	try {
 		$stmt = $conexion -> prepare('SELECT NOMBRE FROM ESPECIALIDAD WHERE OID_ESPECIALIDAD = :OID_ESPECIALIDAD');
@@ -43,6 +56,39 @@ function buscaEspecialidad($conexion,$nombre) {
 	} catch(PDOException $e) {
 		return $e->getMessage();
     }
+}
+
+function validacionNombreEspecialidad($conexion,$nombre,$oid) {		
+	try {
+		$consulta = 'SELECT COUNT(*) AS TOTAL FROM (SELECT * FROM ESPECIALIDAD WHERE NOMBRE = :NOMBRE AND OID_ESPECIALIDAD != :OID_ESPECIALIDAD)';
+		$stmt=$conexion->prepare($consulta);
+		$stmt->bindParam(':NOMBRE',$nombre);
+		$stmt->bindParam(':OID_ESPECIALIDAD',$oid);
+		$stmt->execute();
+		$result = $stmt->fetch();
+		$total = $result['TOTAL'];
+		return  $total;
+	}
+	catch ( PDOException $e ) {
+		$_SESSION['excepcion'] = $e->GetMessage();
+		header("Location: excepcion.php");
+	}
+}
+
+function existeEspecialidad($conexion,$nombre) {		
+	try {
+		$consulta = 'SELECT COUNT(*) AS TOTAL FROM (SELECT * FROM ESPECIALIDAD WHERE NOMBRE = :NOMBRE)';
+		$stmt=$conexion->prepare($consulta);
+		$stmt->bindParam(':NOMBRE',$nombre);
+		$stmt->execute();
+		$result = $stmt->fetch();
+		$total = $result['TOTAL'];
+		return  $total;
+	}
+	catch ( PDOException $e ) {
+		$_SESSION['excepcion'] = $e->GetMessage();
+		header("Location: excepcion.php");
+	}
 }
 
 function actualizarEspecialidad($conexion,$especialidad) {

@@ -1,8 +1,13 @@
 <header id="cabecera">
-	<img src="images/logo.webp" alt="Clinica Dental Isabel LLedó" width="80" height="80">
-	<img src="images/nombre_clinica.webp" alt="Clinica Dental Isabel LLedó" width="800" height="80">
+	<div class="logo">
+	<img src="images/logo.webp" alt="Clinica Dental Isabel LLedó" width="70" height="70">
+	<img src="images/nombre_clinica.webp" alt="Clinica Dental Isabel LLedó" width="700" height="70">
+	</div>
+	<div class="diconect">
 	<?php if (isset($_SESSION['login'])) {	?>		
-			<a href="logout.php" id="disconect"><img src="images/botonEditar.png" width="60" height="60"> </a><br/>
-			<a id="disconect"><?php echo $_SESSION['login']; ?></a>
+			<a href="logout.php" class="disconect"><img src="images/off.png" width="40" height="40"></a><br/>
+			<p><?php echo $_SESSION['login']; ?></p>		
 	<?php } ?>
+	</div>
+	
 </header>

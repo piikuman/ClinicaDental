@@ -43,21 +43,19 @@
 	?>
 	<?php if(!isset($especialidad)){ ?>
 	<h1>Añadir nueva especialidad</h1>	
-	<form id="altaEspecialidad" method="post" action="validacionEspecialidad.php" novalidate>
+	<form id="altaEspecialidad" method="post" action="validacionEspecialidad.php">
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos Especialidad</legend>
-			
 			<div<<label for="nombre">Nombre:<em>*</em></label>
 			<input type="text" id="nombre" name="nombre" value="<?php echo $formularioEspecialidad['nombre'];?>" required/>
-			</div>
-
-			
+			</div>			
 		</fieldset>
-		
-		<div><button id="añadir" name="añadir" type="submit"><img src="images/botonOkey.png" width="20" height="20"></button>
-			<button id="cancelarAñadir" name="cancelarAñadir" type="submit"><img src="images/returnButton.png" width="20" height="20"></button>
+		<div>
+			<button id="añadir" name="añadir" type="submit"><img src="images/botonOkey.png" width="20" height="20"></button>
 		</div>
-
+	</form>
+	<form id="cancelarEspecialidad" method="post" action="validacionEspecialidad.php">
+		<button id="cancelarAñadir" name="cancelarAñadir" type="submit"><img src="images/returnButton.png" width="20" height="20"></button>
 	</form>
 	<?php }else{ ?>
 	<h1>Actualizar especialidad <?php echo $especialidad['OID_ESPECIALIDAD'];?></h1>	
@@ -65,11 +63,9 @@
 		<input id="OID_ESPECIALIDAD" name="OID_ESPECIALIDAD" type="hidden" value="<?php echo $especialidad['OID_ESPECIALIDAD']?>" />
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos especialidad</legend>
-			
-			<div<<label for="nombre">Nombre:<em>*</em></label>
+		<div><label for="nombre">Nombre:<em>*</em></label>
 			<input type="text" id="nombre" name="nombre" value="<?php echo $especialidad['nombre'];?>" required/>
-		</div>
-			
+		</div>	
 		</fieldset>
 		
 		<div>

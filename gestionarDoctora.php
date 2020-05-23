@@ -33,6 +33,19 @@
     return $conexion->query($consulta);
 }
  
+ function consultarTotalD($conexion) {
+ 	try {
+		$consulta = 'SELECT COUNT(*) AS TOTAL FROM (SELECT * FROM DOCTORA)';
+		$stmt=$conexion->prepare($consulta);
+		$stmt->execute();
+		$result = $stmt->fetch();
+		$total = $result['TOTAL'];
+		return  $total;
+	} catch(PDOException $e) {
+		return $e->getMessage();
+    }
+ }
+ 
  function buscaDoctora($conexion,$nombre) {
 		
 	try {
@@ -44,6 +57,55 @@
 	} catch(PDOException $e) {
 		return $e->getMessage();
     }
+}
+
+function existeDoctora($conexion,$codigo) {		
+	try {
+		$consulta = 'SELECT COUNT(*) AS TOTAL FROM (SELECT * FROM DOCTORA WHERE CODIGODOCTORA = :CODIGODOCTORA)';
+		$stmt=$conexion->prepare($consulta);
+		$stmt->bindParam(':CODIGODOCTORA',$codigo);
+		$stmt->execute();
+		$result = $stmt->fetch();
+		$total = $result['TOTAL'];
+		return  $total;
+	}
+	catch ( PDOException $e ) {
+		$_SESSION['excepcion'] = $e->GetMessage();
+		header("Location: excepcion.php");
+	}
+}
+
+function validacionDNIDoctora($conexion,$dni,$oid) {		
+	try {
+		$consulta = 'SELECT COUNT(*) AS TOTAL FROM (SELECT * FROM DOCTORA WHERE DNI = :DNI AND OID_DOCTORA != :OID_DOCTORA)';
+		$stmt=$conexion->prepare($consulta);
+		$stmt->bindParam(':DNI',$dni);
+		$stmt->bindParam(':OID_DOCTORA',$oid);
+		$stmt->execute();
+		$result = $stmt->fetch();
+		$total = $result['TOTAL'];
+		return  $total;
+	}
+	catch ( PDOException $e ) {
+		$_SESSION['excepcion'] = $e->GetMessage();
+		header("Location: excepcion.php");
+	}
+}
+
+function validacionCodigoDoctora($conexion,$codigo) {		
+	try {
+		$consulta = 'SELECT COUNT(*) AS TOTAL FROM (SELECT * FROM DOCTORA WHERE CODIGODOCTORA = :CODIGODOCTORA)';
+		$stmt=$conexion->prepare($consulta);
+		$stmt->bindParam(':CODIGODOCTORA',$codigo);
+		$stmt->execute();
+		$result = $stmt->fetch();
+		$total = $result['TOTAL'];
+		return  $total;
+	}
+	catch ( PDOException $e ) {
+		$_SESSION['excepcion'] = $e->GetMessage();
+		header("Location: excepcion.php");
+	}
 }
  
  function getInfoDoctora($conexion, $OID_DOCTORA) {

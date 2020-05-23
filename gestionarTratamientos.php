@@ -15,6 +15,19 @@
 		header("Location: excepcion.php");
     }	
 }
+ 
+ function consultarTotalT($conexion) {
+ 	try {
+		$consulta = 'SELECT COUNT(*) AS TOTAL FROM (SELECT * FROM TRATAMIENTO)';
+		$stmt=$conexion->prepare($consulta);
+		$stmt->execute();
+		$result = $stmt->fetch();
+		$total = $result['TOTAL'];
+		return  $total;
+	} catch(PDOException $e) {
+		return $e->getMessage();
+    }
+ }	
 
 function consultarTodosTratamientos($conexion) {
 	$consulta = "SELECT * FROM TRATAMIENTO"
@@ -33,6 +46,39 @@ function buscaTratamiento($conexion,$nombre) {
 	} catch(PDOException $e) {
 		return $e->getMessage();
     }
+}
+
+function existeTratamiento($conexion,$nombre) {		
+	try {
+		$consulta = 'SELECT COUNT(*) AS TOTAL FROM (SELECT * FROM TRATAMIENTO WHERE NOMBRE = :NOMBRE)';
+		$stmt=$conexion->prepare($consulta);
+		$stmt->bindParam(':NOMBRE',$nombre);
+		$stmt->execute();
+		$result = $stmt->fetch();
+		$total = $result['TOTAL'];
+		return  $total;
+	}
+	catch ( PDOException $e ) {
+		$_SESSION['excepcion'] = $e->GetMessage();
+		header("Location: excepcion.php");
+	}
+}
+
+function validacionNombreTratamiento($conexion,$nombre,$OID_TRATAMIENTO) {		
+	try {
+		$consulta = 'SELECT COUNT(*) AS TOTAL FROM (SELECT * FROM TRATAMIENTO WHERE NOMBRE = :NOMBRE AND OID_TRATAMIENTO != :OID_TRATAMIENTO)';
+		$stmt=$conexion->prepare($consulta);
+		$stmt->bindParam(':NOMBRE',$nombre);
+		$stmt->bindParam(':OID_TRATAMIENTO',$OID_TRATAMIENTO);
+		$stmt->execute();
+		$result = $stmt->fetch();
+		$total = $result['TOTAL'];
+		return  $total;
+	}
+	catch ( PDOException $e ) {
+		$_SESSION['excepcion'] = $e->GetMessage();
+		header("Location: excepcion.php");
+	}
 }
 
 function getInfoTratamiento($conexion, $codigo) {

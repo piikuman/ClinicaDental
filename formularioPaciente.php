@@ -168,39 +168,39 @@
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos personales</legend>
 			<div><label for="dni">DNI<em>*</em></label>
-			<input id="dni" name="dni" type="text" placeholder="12345678X" value="<?php echo $formularioPaciente['dni'];?>"><span id="spanDNI"></span>
+			<input id="dni" name="dni" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $formularioPaciente['dni'];?>" required/><span id="spanDNI"></span>
 			</div>
 
 			<div><label for="nombre">Nombre:<em>*</em></label>
-			<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $formularioPaciente['nombre'];?>"/><span id="spanNombre"></span>
+			<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $formularioPaciente['nombre'];?>" required/><span id="spanNombre"></span>
 			</div>
 
 			<div><label for="apellidos">Apellidos:</label>
-			<input id="apellidos" name="apellidos" type="text" size="80" value="<?php echo $formularioPaciente['apellidos'];?>"/><span id="spanApellidos"></span>
+			<input id="apellidos" name="apellidos" type="text" size="80" value="<?php echo $formularioPaciente['apellidos'];?>" required/><span id="spanApellidos"></span>
 			</div>
 			
 			<div><label for="fechaNacimiento">Fecha de nacimiento:</label>
-			<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $formularioPaciente['fechaNacimiento'];?>"/><span id="spanFechaNacimiento"></span>
+			<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $formularioPaciente['fechaNacimiento'];?>" required/><span id="spanFechaNacimiento"></span>
 			</div>
 
 			<div><label for="correo">Correo:<em>*</em></label>
-			<input id="correo" name="correo"  type="correo" placeholder="usuario@dominio.extension" value="<?php echo $formularioPaciente['correo'];?>"/><span id="spanCorreo"></span>
+			<input id="correo" name="correo"  type="correo" placeholder="usuario@dominio.extension" value="<?php echo $formularioPaciente['correo'];?>" required/><span id="spanCorreo"></span>
 			</div>
 			
 			<div><label for="poblacion">Poblacion:</label>
-			<input id="poblacion" name="poblacion" type="text" size="80" value="<?php echo $formularioPaciente['poblacion'];?>"/><span id="spanPoblacion"></span>
+			<input id="poblacion" name="poblacion" type="text" size="80" value="<?php echo $formularioPaciente['poblacion'];?>" required/><span id="spanPoblacion"></span>
 			</div>
 			
 			<div><label for="direccion">Direccion:</label>
-			<input id="direccion" name="direccion" type="text" size="80" value="<?php echo $formularioPaciente['direccion'];?>"/><span id="spanDireccion"></span>
+			<input id="direccion" name="direccion" type="text" size="80" value="<?php echo $formularioPaciente['direccion'];?>" required/><span id="spanDireccion"></span>
 			</div>
 			
 			<div><label for="fechaAlta">Fecha Alta:</label>
-			<input id="fechaAlta" name="fechaAlta" type="date" size="80" value="<?php echo $formularioPaciente['fechaAlta'];?>"/><span id="spanFechaAlta"></span>
+			<input id="fechaAlta" name="fechaAlta" type="date" size="80" value="<?php echo $formularioPaciente['fechaAlta'];?>" required/><span id="spanFechaAlta"></span>
 			</div>
 			
 			<div><label for="seguro">Seguro:</label>
-			<input id="seguro" name="seguro" type="text" size="80" value="<?php echo $formularioPaciente['seguro'];?>"/><span id="spanSeguro"></span>
+			<input id="seguro" name="seguro" type="text" size="80" value="<?php echo $formularioPaciente['seguro'];?>" required/><span id="spanSeguro"></span>
 			</div>
 			
 			<div><label for="nombreTutor">Nombre Tutor:</label>
@@ -211,10 +211,12 @@
 			<input id="telefonoTutor" name="telefonoTutor" type="tel" size="80" value="<?php echo $formularioPaciente['telefonoTutor'];?>"/><span id="spanTelefono"></span>
 			</div>
 		</fieldset>
-		
 		<div>
 			<button id="añadir" name="añadir" type="submit"><img src="images/botonOkey.png" width="20" height="20"></button>
 		</div>
+	</form>
+	<form id="volverPaciente" method="post" action="validacionPaciente.php">
+			<button id="cancelarAñadir" name="cancelarAñadir" type="submit"><img src="images/returnButton.png" width="20" height="20"></button>
 	</form>
 	<?php }else{ ?>
 	<h1>Actualizar paciente <?php echo $paciente['OID_PACIENTE'];?></h1>	
@@ -223,39 +225,39 @@
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos personales</legend>
 		<div><label for="dni">DNI<em>*</em></label>
-		<input id="dni" name="dni" type="text" placeholder="12345678X" value="<?php echo $paciente['dni'];?>"/>
+		<input id="dni" name="dni" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $paciente['dni'];?>" required/>
 		</div>
 
 		<div><label for="nombre">Nombre:<em>*</em></label>
-		<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $paciente['nombre'];?>"/>
+		<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $paciente['nombre'];?>" required/>
 		</div>
 	
 		<div><label for="apellidos">Apellidos:</label>
-		<input id="apellidos" name="apellidos" type="text" size="80" value="<?php echo $paciente['apellidos'];?>"/>
+		<input id="apellidos" name="apellidos" type="text" size="80" value="<?php echo $paciente['apellidos'];?>" required/>
 		</div>
 				
 		<div><label for="fechaNacimiento">Fecha de nacimiento:</label>
-		<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $paciente['fechaNacimiento'];?>"/>
+		<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $paciente['fechaNacimiento'];?>" required/>
 		</div>
 
 		<div><label for="correo">Correo:<em>*</em></label>
-		<input id="correo" name="correo"  type="correo" placeholder="usuario@dominio.extension" value="<?php echo $paciente['correo'];?>"/><br>
+		<input id="correo" name="correo"  type="correo" placeholder="usuario@dominio.extension" value="<?php echo $paciente['correo'];?>" required/><br>
 		</div>
 				
 		<div><label for="poblacion">Poblacion:</label>
-		<input id="poblacion" name="poblacion" type="text" size="80" value="<?php echo $paciente['poblacion'];?>"/>
+		<input id="poblacion" name="poblacion" type="text" size="80" value="<?php echo $paciente['poblacion'];?>" required/>
 		</div>
 			
 		<div><label for="direccion">Direccion:</label>
-		<input id="direccion" name="direccion" type="text" size="80" value="<?php echo $paciente['direccion'];?>"/>
+		<input id="direccion" name="direccion" type="text" size="80" value="<?php echo $paciente['direccion'];?>" required/>
 		</div>
 			
 		<div><label for="fechaAlta">Fecha Alta:</label>
-		<input id="fechaAlta" name="fechaAlta" type="date" size="80" value="<?php echo $paciente['fechaAlta'];?>"/>
+		<input id="fechaAlta" name="fechaAlta" type="date" size="80" value="<?php echo $paciente['fechaAlta'];?>" required/>
 		</div>
 			
 		<div><label for="seguro">Seguro:</label>
-		<input id="seguro" name="seguro" type="text" size="80" value="<?php echo $paciente['seguro'];?>"/>
+		<input id="seguro" name="seguro" type="text" size="80" value="<?php echo $paciente['seguro'];?>" required/>
 		</div>
 			
 		<div><label for="nombreTutor">Nombre Tutor:</label>
@@ -280,11 +282,6 @@
 		</div>	
 	</form>
 	<?php } ?>
-	<form id="volverPaciente" method="post" action="validacionPaciente.php">
-		<div>
-			<button id="cancelarAñadir" name="cancelarAñadir" type="submit"><img src="images/returnButton.png" width="20" height="20"></button>
-		</div>
-	</form>
 	<?php
 		include_once("pie.php");
 	?>

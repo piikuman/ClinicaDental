@@ -27,6 +27,51 @@
     return $conexion->query($consulta);
 }
  
+ function consultarTotalC($conexion) {
+ 	try {
+		$consulta = 'SELECT COUNT(*) AS TOTAL FROM (SELECT * FROM CITA)';
+		$stmt=$conexion->prepare($consulta);
+		$stmt->execute();
+		$result = $stmt->fetch();
+		$total = $result['TOTAL'];
+		return  $total;
+	} catch(PDOException $e) {
+		return $e->getMessage();
+    }
+ }
+ 
+ function consultarTodasCitasHoy($conexion, $fecha){
+ 		$fechaCita = date('d/m/Y', strtotime($fecha));	
+ 		$consulta = "SELECT * FROM CITA WHERE FECHACITA = :FECHACITA"
+			. " ORDER BY HORACITA";
+		$stmt=$conexion->prepare($consulta);
+		$stmt->bindParam(':FECHACITA',$fechaCita);
+		$stmt->execute();
+        return $stmt;
+ }
+ 
+ function validacionCita($conexion,$fecha,$hora,$con,$oid) {
+	
+	$fechaCita = date('d/m/Y', strtotime($fecha));
+	
+	try {
+		$consulta = 'SELECT COUNT(*) AS TOTAL FROM (SELECT * FROM CITA WHERE FECHACITA = :FECHACITA AND HORACITA = :HORACITA AND CONSULTA = :CONSULTA AND OID_CITA != :OID_CITA)';
+		$stmt=$conexion->prepare($consulta);
+		$stmt->bindParam(':FECHACITA',$fechaCita);
+		$stmt->bindParam(':HORACITA',$hora);
+		$stmt->bindParam(':CONSULTA',$con);
+		$stmt->bindParam(':OID_CITA',$oid);
+		$stmt->execute();
+		$result = $stmt->fetch();
+		$total = $result['TOTAL'];
+		return  $total;
+	}
+	catch ( PDOException $e ) {
+		$_SESSION['excepcion'] = $e->GetMessage();
+		header("Location: excepcion.php");
+	}
+}
+ 
  function getInfoCita($conexion, $OID_CITA) {
 	try {
 		$stmt = $conexion -> prepare('SELECT FECHACITA, HORACITA, CONSULTA, OID_PACIENTE, OID_DOCTORA, OID_TRATAMIENTO FROM CITA WHERE OID_CITA = :OID_CITA');

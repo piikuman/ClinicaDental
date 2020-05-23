@@ -114,6 +114,9 @@
 			<button id="añadir" name="añadir" type="submit"><img src="images/botonOkey.png" width="20" height="20"></button>
 		</div>
 	</form>
+	<form id="altaUsuario" method="post" action="validacionUsuario.php">
+		<button id="cancelarAñadir" name="cancelarAñadir" type="submit"><img src="images/returnButton.png" width="20" height="20"></button>
+	</form>
 	<?php }else{ ?>
 	<h1>Actualizar usuario <?php echo $usuario['OID_USUARIO'];?></h1>	
 	<form id="actualizarUsuario" method="post" action="validacionUsuario.php">
@@ -138,9 +141,6 @@
 		</div>	
 	</form>
 	<?php } ?>
-	<form id="altaUsuario" method="post" action="validacionUsuario.php">
-		<button id="cancelarAñadir" name="cancelarAñadir" type="submit"><img src="images/returnButton.png" width="20" height="20"></button>
-	</form>
 	<?php
 		include_once("pie.php");
 	?>

@@ -4,8 +4,7 @@
 $admin = $_SESSION['login'];
 ?>
 
-<aside>
-	<nav id="menu">
+<div class="menu">
 		<ul>
 			<a href="inicio.php" class="menu">Inicio</a>
 			<a href="listaPaciente.php" class="menu">Pacientes</a>
@@ -18,6 +17,5 @@ $admin = $_SESSION['login'];
 			<?php } ?>
 		  	<a href="about.php" class="menu">Sobre nosotros</a>
 		</ul>
-		
-	</nav>
-</aside>
+</div>
+<br />

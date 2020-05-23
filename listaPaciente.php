@@ -63,29 +63,30 @@
 
 <main>
 	<nav>
-		<div id="enlaces">
+		<div class="paginas">
 			<?php
 				for($pagina = 1;$pagina <= $totalPaginas; $pagina++ )
 					if ( $pagina == $paginaSeleccionada) { 	?>
-						<span class="current"><?php echo $pagina; ?></span>
+						<a class="paginaSeleccionada"><?php echo $pagina; ?></a>
 			<?php }	else { ?>
-						<a href="listaPaciente.php?PAG_NUM=<?php echo $pagina; ?>&PAG_TAM=<?php echo $pagTam; ?>"><?php echo $pagina; ?></a>
+						<a class="paginas" href="listaPaciente.php?PAG_NUM=<?php echo $pagina; ?>&PAG_TAM=<?php echo $pagTam; ?>"><?php echo $pagina; ?></a>
 			<?php } ?>
-		</div>
 		
-		<form method="get" action="listaPaciente.php">
-			<input id="PAG_NUM" name="PAG_NUM" type="hidden" value="<?php echo $paginaSeleccionada?>"/>
+		<br/>	
+		
+		<form method="get" class="paginas" action="listaPaciente.php">
 			Mostrando
-			<input id="PAG_TAM" name="PAG_TAM" type="number"
-				min="1" max="<?php echo $totalPacientes; ?>" value="<?php echo $pagTam?>" autofocus="autofocus" />			
-				pacientes de <?php echo $totalPacientes?>
-			<input type="submit" value="Cambiar">
+			<input id="PAG_NUM" name="PAG_NUM" type="hidden" value="<?php echo $paginaSeleccionada?>"/>
+			<input id="PAG_TAM" name="PAG_TAM" type="number" min="1" max="<?php echo $totalPacientes; ?>" value="<?php echo $pagTam?>"/>			
+				de <?php echo $totalPacientes?>
+			<input class="paginacion" type="submit" value="Cambiar">
 		</form>
+		</div>
 	</nav>
-	
-	<table class="pacientes">
+	<a href="formularioPaciente.php" class="add">Añadir Paciente</a>
+	<table>
 	  <tr>
-	    <th scope="row">Código</th>
+	    <th>Código</th>
     	<th>Apellidos</th>
 	    <th>Nombre</th>
     	<th>DNI</th>
@@ -96,7 +97,7 @@
   	  <tr>
   	  	<form id='formMostrar' method='POST' action='mostrarPaciente.php' >
 			<input type='hidden' name='OID_PACIENTE' value='<?php echo $paciente["OID_PACIENTE"]?>'>
-	    <th><input type='submit' value='<?php echo $paciente["OID_PACIENTE"]; ?>'></th>
+	    <th><input class="codigo" type='submit' value='<?php echo $paciente["OID_PACIENTE"]; ?>'></th>
 		</form>
     	    <td><?php echo $paciente["APELLIDOS"]; ?></td>
 	    	<td><?php echo $paciente["NOMBRE"]; ?></td>
@@ -104,7 +105,6 @@
 	  </tr>
 	  <?php } ?>	
 	</table>
-	<a href="formularioPaciente.php">Añadir Paciente</a>
 </main>
 
 <?php

@@ -1,9 +1,13 @@
 <?php
 	session_start();
+	
+	require_once ('gestionarEspecialidad.php');
+	require_once ('gestionBD.php');
 
 	if(isset($_REQUEST['OID_ESPECIALIDAD'])){
 		$especialidad["OID_ESPECIALIDAD"] = $_REQUEST["OID_ESPECIALIDAD"];
 		$especialidad["nombre"] = $_REQUEST["nombre"];
+		$especialidad["act"]= TRUE;
 		
 		
 		$_SESSION["especialidad"] = $especialidad;
@@ -32,9 +36,21 @@
 	function validarDatosEspecialidad($especialidad){
 		$errores=array();
 		
-		if($especialidad["nombre"]=="") 
-			$errores[] = "<p>El nombre de la especialidad no puede estar vacio</p>";
-
+		$conexion = crearConexionBD();
+		if(!(isset($especialidad["OID_ESPECIALIDAD"]))){
+			$oid = -1;
+		}else{
+			$oid = $especialidad["OID_ESPECIALIDAD"];
+		}
+		$totalEspecialidadesNombre = validacionNombreEspecialidad($conexion,$especialidad["nombre"],$oid);
+		cerrarConexionBD($conexion);
+		
+		if($especialidad["nombre"]==""){
+			$errores[] = "<p>La especialidad no puede estar vacía</p>";
+		}else if($totalEspecialidadesNombre != 0){
+			$errores[] = "<p>La especialidad introducida ya ha sido registrada</p>";
+		}
+		
 		return $errores;
 	}
 ?>

@@ -25,11 +25,12 @@ function consultarUsuario($conexion,$email,$pass) {
 	
 }
 
-function validacionCorreoUsuario($conexion,$correo) {		
+function validacionCorreoUsuario($conexion,$correo,$oid) {		
 	try {
-		$consulta = 'SELECT COUNT(*) AS TOTAL FROM (SELECT * FROM USUARIO WHERE CORREO = :CORREO)';
+		$consulta = 'SELECT COUNT(*) AS TOTAL FROM (SELECT * FROM USUARIO WHERE CORREO = :CORREO AND OID_USUARIO != :OID_USUARIO)';
 		$stmt=$conexion->prepare($consulta);
 		$stmt->bindParam(':CORREO',$correo);
+		$stmt->bindParam(':OID_USUARIO',$oid);
 		$stmt->execute();
 		$result = $stmt->fetch();
 		$total = $result['TOTAL'];

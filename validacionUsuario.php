@@ -9,7 +9,7 @@
 		$usuario["correo"] = $_REQUEST["correo"];
 		$usuario["password"] = $_REQUEST["password"];
 		$usuario["conpass"] = $_REQUEST["conpass"];
-		$usuario["act"] = TRUE;
+		$usuario["OID_USUARIO"] = $_REQUEST['OID_USUARIO'];
 		
 		$_SESSION["usuario"] = $usuario;
 		
@@ -40,21 +40,21 @@
 		$errores=array();
 		
 		$conexion = crearConexionBD();
-		$totalUsuarioCorreo = validacionCorreoUsuario($conexion,$usuario["correo"]);
+		if(!(isset($usuario["OID_USUARIO"]))){
+			$oid = -1;
+		}else{
+			$oid = $usuario["OID_USUARIO"];
+		}
+		$totalUsuarioCorreo = validacionCorreoUsuario($conexion,$usuario["correo"],$oid);
 		cerrarConexionBD($conexion);
 		
 		if($usuario["password"]=="") 
 			$errores[] = "<p>La contraseña no puede estar vacía</p>";
-		if(!(isset($usuario["act"]))){
-			if($usuario["correo"]==""){
-				$errores[] = "<p>La contraseña no puede estar vacío</p>";
-		 	}else if($totalUsuarioCorreo!=0){
-				$errores[] = "<p>El correo debe ser único por usuario</p>";
-			}
-		}else{
-			if($usuario["correo"]==""){
-				$errores[] = "<p>La contraseña no puede estar vacío</p>";
-		 	}
+		
+		if($usuario["correo"]==""){
+			$errores[] = "<p>La contraseña no puede estar vacío</p>";
+		}else if($totalUsuarioCorreo!=0){
+			$errores[] = "<p>El correo debe ser único por usuario</p>";
 		}	
 			
 	
