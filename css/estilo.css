@@ -283,3 +283,34 @@ div.login{
   text-align: center;
   font-size: 18px;
 }
+
+/*
+ * Exception
+ */
+
+body.exception{
+  	background-color:black; 
+}
+
+div.exception{
+  	width: 100%;
+}
+
+div.imException{
+	position: relative;
+  	width: 100%;
+  	text-align: center;
+}
+
+div.menException{
+	position: absolute;
+  	color:red;
+  	top: 30%;
+  	width: 100%;
+  	text-align: center;
+  	font-size: 18px;
+}
+
+a.menException{
+	text-decoration: none;
+}
