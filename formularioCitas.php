@@ -6,6 +6,7 @@
 	
 	if(isset($_SESSION['cita'])){
 		$cita = $_SESSION['cita'];
+		$fechaCita = date('d/m/Y', strtotime($cita["fechaCita"]));
 		unset($_SESSION['cita']);
 	} else if(!isset($_SESSION['formularioCita'])) {
 		$formularioCita['fechaCita'] = "";
@@ -22,6 +23,16 @@
 	if (isset($_SESSION["errores"]))
 		$errores = $_SESSION["errores"];
 		unset($_SESSION["errores"]);
+		
+	$horas=array(
+     "10:00" => '10:00',
+     "10:30" => '10:30',
+     "11:00" => '11:00', 
+     "11:30" => '11:30',
+     "12:00" => '12:00',
+     "12:30" => '12:30', 
+     "13:00" => '13:00',
+           );
 ?>
 
 <!DOCTYPE html>
@@ -136,11 +147,22 @@
 			</div>
 
 			<div><label for="horaCita">Hora:<em>*</em></label>
-			<input id="horaCita" name="horaCita" type="text" size="17" value="<?php echo $formularioCita['horaCita'];?>" required/><span id="spanHoraCita"></span><br>
+				<select id="horaCita" name="horaCita" required />
+   					<option value="<?php echo $formularioCita['horaCita'];?>"><?php echo $formularioCita['horaCita'];?></option>
+ 		 		<?php
+  					foreach($horas as $key => $value):
+  						echo '<option value="'.$key.'">'.$value.'</option>';
+ 					endforeach;
+   				?>
+				</select><span id="spanHoraCita"></span><br>
 			</div>
 			
 			<div><label for="consulta">Consulta:<em>*</em></label>
-			<input id="consulta" name="consulta" type="text" size="14" value="<?php echo $formularioCita['consulta'];?>" required/><span id="spanConsulta"></span>
+			<input id="1" name="consulta" type="radio" value="1" <?php if($formularioCita['consulta']=='1') echo ' checked ';?> required/>
+  			<label for="1">Consulta 1</label>
+			<input id="2" name="consulta" type="radio" value="2" <?php if($formularioCita['consulta']=='2') echo ' checked ';?> required/>
+  			<label for="2">Consulta 2</label><br>
+  			<span id="spanConsulta"></span>
 			</div>
 		</fieldset>	
 		<div>
@@ -170,15 +192,26 @@
 			</div>
 			
 			<div><label for="fechaCita">Fecha:<em>*</em></label>
-			<input type="date" id="fechaCita" name="fechaCita" value="<?php echo $cita['fechaCita'];?>" required/>
+			<input type="date" id="fechaCita" name="fechaCita" value="<?php echo $fechaCita;?>" required/>
 			</div>
 
 			<div><label for="horaCita">Hora:<em>*</em></label>
-			<input id="horaCita" name="horaCita" type="text" size="17" value="<?php echo $cita['horaCita'];?>" required/><br>
+				<select id="horaCita" name="horaCita" required />
+   					<option value="<?php echo $cita['horaCita'];?>"><?php echo $cita['horaCita'];?></option>
+ 		 		<?php
+  					foreach($horas as $key => $value):
+  						echo '<option value="'.$key.'">'.$value.'</option>';
+ 					endforeach;
+   				?>
+				</select><span id="spanHoraCita"></span><br>
 			</div>
 			
 			<div><label for="consulta">Consulta:<em>*</em></label>
-			<input id="consulta" name="consulta" type="text" size="14" value="<?php echo $cita['consulta'];?>" required/>
+			<input id="1" name="consulta" type="radio" value="1" <?php if($cita['consulta']=='1') echo ' checked ';?> required/>
+  			<label for="1">Consulta 1</label>
+			<input id="2" name="consulta" type="radio" value="2" <?php if($cita['consulta']=='2') echo ' checked ';?> required/>
+  			<label for="2">Consulta 2</label><br>
+  			<span id="spanConsulta"></span>
 			</div>
 		</fieldset>
 		
