@@ -174,7 +174,7 @@
 	</form>
 	<?php }else{ ?>
 	<h1>Actualizar cita <?php echo $cita['OID_CITA'];?></h1>	
-	<form id="actualizarCita" method="post" action="validacionCitas.php">
+	<form id="altaCita" method="post" action="validacionCitas.php">
 		<input id="OID_CITA" name="OID_CITA" type="hidden" value="<?php echo $cita['OID_CITA']?>" />
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos cita</legend>
