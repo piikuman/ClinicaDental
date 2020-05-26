@@ -6,6 +6,7 @@
 	
 	if(isset($_SESSION['paciente'])){
 		$paciente = $_SESSION['paciente'];
+		$fecha = strtotime("dd-mm-YYYY", $paciente["fechaNacimiento"]);
 		unset($_SESSION['paciente']);
 	} else if(!isset($_SESSION['formularioPaciente'])) {
 		$formularioPaciente['nombre'] = "";
@@ -225,7 +226,7 @@
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos personales</legend>
 		<div><label for="dni">DNI<em>*</em></label>
-		<input id="dni" name="dni" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $paciente['dni'];?>" required/>
+		<input id="dni" name="dni" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $paciente['dni'];?>" required/><span id="spanDNI"></span>
 		</div>
 
 		<div><label for="nombre">Nombre:<em>*</em></label>
@@ -241,7 +242,7 @@
 		</div>
 
 		<div><label for="correo">Correo:<em>*</em></label>
-		<input id="correo" name="correo"  type="correo" placeholder="usuario@dominio.extension" value="<?php echo $paciente['correo'];?>" required/><br>
+		<input id="correo" name="correo"  type="correo" placeholder="usuario@dominio.extension" value="<?php echo $paciente['correo'];?>" required/><span id="spanCorreo"></span>
 		</div>
 				
 		<div><label for="poblacion">Poblacion:</label>

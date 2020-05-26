@@ -27,7 +27,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="css/biblio.css" />
-  <title>Gestión de biblioteca: Login</title>
+  <title>Login</title>
 </head>
 
 

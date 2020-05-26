@@ -67,7 +67,7 @@
 	<br>
 	<br>
 	<a class="redes" href="https://www.facebook.com/1845133489066685/videos/2052995018280530/"><img src="images/facebook.png" width="50" height="50"></a>
-	<a class="redes" href="https://www.instagram.com/"><img src="images/instagram.png" width="50" height="50"></a>
+	<a class="redes" href="https://www.instagram.com/isabellledoclinica/?hl=es""><img src="images/instagram.png" width="50" height="50"></a>
 	<a class="redes" href="https://www.isabellledoclinica.com/"><img src="images/logo.webp" width="50" height="50"></a>
 	</br>
 	<p><i>El instagram está en creación.</i></p>

@@ -103,7 +103,7 @@
 	</form>
 	<?php }else{ ?>
 	<h1>Actualizar tratamiento <?php echo $tratamiento['OID_TRATAMIENTO'];?></h1>	
-	<form id="actualizarCita" method="post" onsubmit="return validateForm()" action="validacionTratamientos.php">
+	<form id="altaTratamiento" method="post" onsubmit="return validateForm()" action="validacionTratamientos.php">
 		<input id="OID_TRATAMIENTO" name="OID_TRATAMIENTO" type="hidden" value="<?php echo $tratamiento['OID_TRATAMIENTO']?>" />
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos tratamiento</legend>
