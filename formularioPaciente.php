@@ -230,15 +230,15 @@
 		</div>
 
 		<div><label for="nombre">Nombre:<em>*</em></label>
-		<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $paciente['nombre'];?>" required/>
+		<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $paciente['nombre'];?>" required/><span id="spanNombre"></span>
 		</div>
 	
 		<div><label for="apellidos">Apellidos:</label>
-		<input id="apellidos" name="apellidos" type="text" size="80" value="<?php echo $paciente['apellidos'];?>" required/>
+		<input id="apellidos" name="apellidos" type="text" size="80" value="<?php echo $paciente['apellidos'];?>" required/><span id="spanApellidos"></span>
 		</div>
 				
 		<div><label for="fechaNacimiento">Fecha de nacimiento:</label>
-		<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $paciente['fechaNacimiento'];?>" required/>
+		<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $paciente['fechaNacimiento'];?>" required/><span id="spanFechaNacimiento"></span>
 		</div>
 
 		<div><label for="correo">Correo:<em>*</em></label>
@@ -246,19 +246,19 @@
 		</div>
 				
 		<div><label for="poblacion">Poblacion:</label>
-		<input id="poblacion" name="poblacion" type="text" size="80" value="<?php echo $paciente['poblacion'];?>" required/>
+		<input id="poblacion" name="poblacion" type="text" size="80" value="<?php echo $paciente['poblacion'];?>" required/><span id="spanPoblacion"></span>
 		</div>
 			
 		<div><label for="direccion">Direccion:</label>
-		<input id="direccion" name="direccion" type="text" size="80" value="<?php echo $paciente['direccion'];?>" required/>
+		<input id="direccion" name="direccion" type="text" size="80" value="<?php echo $paciente['direccion'];?>" required/><span id="spanDireccion"></span>
 		</div>
 			
 		<div><label for="fechaAlta">Fecha Alta:</label>
-		<input id="fechaAlta" name="fechaAlta" type="date" size="80" value="<?php echo $paciente['fechaAlta'];?>" required/>
+		<input id="fechaAlta" name="fechaAlta" type="date" size="80" value="<?php echo $paciente['fechaAlta'];?>" required/><span id="spanFechaAlta"></span>
 		</div>
 			
 		<div><label for="seguro">Seguro:</label>
-		<input id="seguro" name="seguro" type="text" size="80" value="<?php echo $paciente['seguro'];?>" required/>
+		<input id="seguro" name="seguro" type="text" size="80" value="<?php echo $paciente['seguro'];?>" required/><span id="spanSeguro"></span>
 		</div>
 			
 		<div><label for="nombreTutor">Nombre Tutor:</label>
@@ -271,7 +271,7 @@
 			
 		<div><label for="telefonoTutor">Telefono Tutor:</label>
 		<?php if(isset($paciente['telefonoTutor'])) { ?>	
-		<input id="telefonoTutor" name="telefonoTutor" type="text" size="80" value="<?php echo $paciente['telefonoTutor'];?>"/>
+		<input id="telefonoTutor" name="telefonoTutor" type="text" size="80" value="<?php echo $paciente['telefonoTutor'];?>"/><span id="spanTelefono"></span>
 		<?php } else { ?>
 		<input id="telefonoTutor" name="telefonoTutor" type="number" size="80" value=""/>
 		<?php }?>

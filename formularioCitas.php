@@ -180,23 +180,23 @@
 		<fieldset><legend>Datos cita</legend>
 			
 			<div<<label for="paciente">DNI paciente:<em>*</em></label>
-			<input type="text" id="paciente" name="paciente" value="<?php echo $cita['paciente'];?>" required/><br>
+			<input type="text" id="paciente" name="paciente" value="<?php echo $cita['paciente'];?>" required/><br><span id="spanPaciente"></span><br>
 			</div>
 			
 			<div<<label for="doctora">Codigo doctora:<em>*</em></label>
-			<input type="text" id="doctora" name="doctora" value="<?php echo $cita['doctora'];?>" required/><br>
+			<input type="text" id="doctora" name="doctora" value="<?php echo $cita['doctora'];?>" required/><br><span id="spanDoctora"></span><br>
 			</div>
 			
 			<div<<label for="tratamiento">Tratamiento:<em>*</em></label>
-			<input type="text" id="tratamiento" name="tratamiento" value="<?php echo $cita['tratamiento'];?>" required/><br>
+			<input type="text" id="tratamiento" name="tratamiento" value="<?php echo $cita['tratamiento'];?>" required/><br><span id="spanTratamiento"></span><br>
 			</div>
 			
 			<div><label for="fechaCita">Fecha:<em>*</em></label>
-			<input type="date" id="fechaCita" name="fechaCita" value="<?php echo $fechaCita;?>" required/>
+			<input type="date" id="fechaCita" name="fechaCita" value="<?php echo $fechaCita;?>" required/><span id="spanFechaCita"></span><br>
 			</div>
 
 			<div><label for="horaCita">Hora:<em>*</em></label>
-				<select id="horaCita" name="horaCita" required />
+				<select id="horaCita" name="horaCita" required /><span id="spanFechaCita"></span><br>
    					<option value="<?php echo $cita['horaCita'];?>"><?php echo $cita['horaCita'];?></option>
  		 		<?php
   					foreach($horas as $key => $value):

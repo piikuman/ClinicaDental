@@ -226,7 +226,7 @@
 			</div>
 
 			<div><label for="nombre">Nombre:<em>*</em></label>
-			<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $doctora['nombre'];?>" required/><span id="spanNombre"></span>
+			<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $doctora['nombre'];?>" required/><span id="spanNombre"></span><span id="spanNombre"></span>
 			</div>
 
 			<div><label for="apellidos">Apellidos:</label>
@@ -234,31 +234,31 @@
 			</div>
 			
 			<div><label for="fechaNacimiento">Fecha de nacimiento:</label>
-			<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $doctora['fechaNacimiento'];?>" required/>
+			<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $doctora['fechaNacimiento'];?>" required/><span id="spanFechaNac"></span>
 			</div>
 			
 			<div><label for="poblacion">Poblacion:</label>
-			<input id="poblacion" name="poblacion" type="text" size="80" value="<?php echo $doctora['poblacion'];?>" required/>
+			<input id="poblacion" name="poblacion" type="text" size="80" value="<?php echo $doctora['poblacion'];?>" required/><span id="spanPoblacion"></span>
 			</div>
 			
 			<div><label for="direccion">Direccion:</label>
-			<input id="direccion" name="direccion" type="text" size="80" value="<?php echo $doctora['direccion'];?>" required/>
+			<input id="direccion" name="direccion" type="text" size="80" value="<?php echo $doctora['direccion'];?>" required/><span id="spanDireccion"></span>
 			</div>
 			
 			<div><label for="fechaAlta">Fecha Alta:</label>
-			<input id="fechaAlta" name="fechaAlta" type="date" size="80" value="<?php echo $doctora['fechaAlta'];?>" required/>
+			<input id="fechaAlta" name="fechaAlta" type="date" size="80" value="<?php echo $doctora['fechaAlta'];?>" required/><span id="spanFechaAlta"></span>
 			</div>
 			
 			<div><label for="telefono">Telefono:</label>
-			<input id="telefono" name="telefono" type="text" size="80" value="<?php echo $doctora['telefono'];?>" required/>
+			<input id="telefono" name="telefono" type="text" size="80" value="<?php echo $doctora['telefono'];?>" required/><span id="spanTelefono"></span>
 			</div>
 			
 			<div><label for="sueldo">Sueldo:</label>
-			<input id="sueldo" name="sueldo" type="text" size="80" value="<?php echo $doctora['sueldo'];?>" required/>
+			<input id="sueldo" name="sueldo" type="text" size="80" value="<?php echo $doctora['sueldo'];?>" required/><span id="spanSueldo"></span>
 			</div>
 			
 			<div><label for="especialidad">Especialidad:</label>
-			<input id="especialidad" name="especialidad" type="text" size="80" value="<?php echo $doctora['especialidad'];?>" required/>
+			<input id="especialidad" name="especialidad" type="text" size="80" value="<?php echo $doctora['especialidad'];?>" required/><span id="spanEspecialidad"></span>
 			</div>
 			</fieldset>
 		<div>
