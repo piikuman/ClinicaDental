@@ -126,21 +126,21 @@
 	</form>
 	<?php }else{ ?>
 	<h1>Actualizar usuario <?php echo $usuario['OID_USUARIO'];?></h1>	
-	<form id="actualizarUsuario" method="post" action="validacionUsuario.php">
+	<form id="altaUsuario" method="post" onsubmit="return validateForm()" action="validacionUsuario.php">
 		<input id="OID_USUARIO" name="OID_USUARIO" type="hidden" value="<?php echo $usuario['OID_USUARIO']?>" />
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos usuario</legend>
 			<div class="col-10 col-tab-10">
 		<div><label for="correo">Correo:<em>*</em></label>
-		<input id="correo" name="correo"  type="correo" placeholder="usuario@dominio.extension" value="<?php echo $usuario['correo'];?>" required/><br>
+		<input id="correo" name="correo"  type="correo" placeholder="usuario@dominio.extension" value="<?php echo $usuario['correo'];?>" required/><span id="spanCorreo"></span><br>
 		</div>
 				
 		<div><label for="password">Password:<em>*</em></label>
-		<input id="password" name="password" type="password" size="80"/>
+		<input id="password" name="password" type="password" required/><span id="spanPassword"></span>
 		</div>
 			
 		<div><label for="conpass">Confirm password:<em>*</em></label>
-		<input id="conpass" name="conpass" type="password" size="80"/>
+		<input id="conpass" name="conpass" type="password" required/><span id="spanConpass"></span>
 		</div>
 		</div>
 		</fieldset>

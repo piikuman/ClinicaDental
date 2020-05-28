@@ -1,37 +1,57 @@
 <?php
-	session_start();
-	
-	require_once("gestionBD.php");
-	require_once("gestionarCitas.php");
-	require_once("gestionarPaciente.php");
-	require_once("gestionarDoctora.php");
-	require_once("paginacionConsulta.php");
-	
-	$conexion = crearConexionBD();
-	$fecha=date("Y-m-d");
-	$todasCitas = consultarTodasCitasHoy($conexion,$fecha);
-	cerrarConexionBD($conexion);
+session_start();
 
-		if (!isset($_SESSION['login']))
-			Header("Location: login.php");
-		
+require_once("gestionBD.php");
+require_once("gestionarCitas.php");
+require_once("gestionarPaciente.php");
+require_once("gestionarDoctora.php");
+require_once("paginacionConsulta.php");
+
+$conexion = crearConexionBD();
+$fecha=date("Y-m-d");
+$todasCitas = consultarTodasCitasHoy($conexion,$fecha);
+cerrarConexionBD($conexion);
+
+if (!isset($_SESSION['login']))
+Header("Location: login.php");
+
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <script type="text/javascript">
+  function reloj(){
+ 
+  hoy = new Date();
+  dia = hoy.getDate();
+  mes = hoy.getMonth()+1;
+  ano = hoy.getFullYear();
+  hora = hoy.getHours()-1;
+  minutos = hoy.getMinutes();
+ 
+
+  fecha = "Hoy es: " + dia + "/" + mes + "/" + ano + ", " + hora + ":" + minutos;
+  document.getElementById('clock').innerHTML = fecha;
+ 
+ 
+ 
+  //document.getElementById('clock').innerHTML = new Date();
+  }
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="css/estilo.css" />
   <link rel="icon" href="images/logo.webp">
   <title>Inicio</title>
 </head>
-
-<body>
-	<?php
-		include_once("cabecera.php");
-		include_once("menu.php");
-	?>
+<body onload="setInterval('reloj()', 200 );">
+<?php
+include_once("cabecera.php");
+include_once("menu.php");
+?>
+<h1 id="clock"></h1>
 <div class="inicio">
 	<div class="col 5 col-tab-5">
 	<h1>Agenda para hoy</h1>
@@ -75,4 +95,4 @@
 	</div>
 	</div>
 </body>
-</html>	
+</html> 

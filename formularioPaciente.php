@@ -231,6 +231,7 @@
 		<input id="OID_PACIENTE" name="OID_PACIENTE" type="hidden" value="<?php echo $paciente['OID_PACIENTE']?>" />
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos personales</legend>
+
 			<div class="col-10 col-tab-10">
 		<div><label for="dni">DNI<em>*</em></label>
 		<input id="dni" name="dni" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $paciente['dni'];?>" required/><span id="spanDNI"></span>
@@ -248,27 +249,27 @@
 		<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $fechaNacimiento;?>" required/>
 		</div>
 
-		<div><label for="correo">Correo:<em>*</em></label>
-		<input id="correo" name="correo"  type="correo" placeholder="usuario@dominio.extension" value="<?php echo $paciente['correo'];?>" required/><span id="spanCorreo"></span>
-		</div>
-				
-		<div><label for="poblacion">Poblacion:</label>
-		<input id="poblacion" name="poblacion" type="text" size="80" value="<?php echo $paciente['poblacion'];?>" required/>
-		</div>
+			<div><label for="correo">Correo:<em>*</em></label>
+			<input id="correo" name="correo"  type="correo" placeholder="usuario@dominio.extension" value="<?php echo $paciente['correo'];?>" required/><span id="spanCorreo"></span>
+			</div>
 			
-		<div><label for="direccion">Direccion:</label>
-		<input id="direccion" name="direccion" type="text" size="80" value="<?php echo $paciente['direccion'];?>" required/>
-		</div>
+			<div><label for="poblacion">Poblacion:</label>
+			<input id="poblacion" name="poblacion" type="text" size="80" value="<?php echo $paciente['poblacion'];?>" required/><span id="spanPoblacion"></span>
+			</div>
 			
-		<div><label for="fechaAlta">Fecha Alta:</label>
-		<input id="fechaAlta" name="fechaAlta" type="date" size="80" value="<?php echo $fechaAlta;?>" required/>
-		</div>
+			<div><label for="direccion">Direccion:</label>
+			<input id="direccion" name="direccion" type="text" size="80" value="<?php echo $paciente['direccion'];?>" required/><span id="spanDireccion"></span>
+			</div>
 			
-		<div><label for="seguro">Seguro:</label>
-		<input id="seguro" name="seguro" type="text" size="80" value="<?php echo $paciente['seguro'];?>" required/>
-		</div>
+			<div><label for="fechaAlta">Fecha Alta:</label>
+			<input id="fechaAlta" name="fechaAlta" type="date" size="80" value="<?php echo $paciente['fechaAlta'];?>" required/><span id="spanFechaAlta"></span>
+			</div>
 			
-		<div><label for="nombreTutor">Nombre Tutor:</label>
+			<div><label for="seguro">Seguro:</label>
+			<input id="seguro" name="seguro" type="text" size="80" value="<?php echo $paciente['seguro'];?>" required/><span id="spanSeguro"></span>
+			</div>
+			
+			<div><label for="nombreTutor">Nombre Tutor:</label>
 		<?php if(isset($paciente['nombreTutor'])) { ?>	
 		<input id="nombreTutor" name="nombreTutor" type="text" size="80" value="<?php echo $paciente['nombreTutor'];?>"/>
 		<?php } else { ?>
@@ -281,7 +282,7 @@
 		<input id="telefonoTutor" name="telefonoTutor" type="text" size="80" value="<?php echo $paciente['telefonoTutor'];?>"/>
 		<?php } else { ?>
 		<input id="telefonoTutor" name="telefonoTutor" type="number" size="80" value=""/>
-		<?php }?>
+		<?php }?><span id="spanTelefono"></span>
 		</div>
 		</div>
 		</fieldset>
@@ -298,4 +299,4 @@
 	
 	</body>
 </html>
-
+	
