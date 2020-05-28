@@ -63,8 +63,11 @@ if (!isset($_SESSION['login'])){
 <!DOCTYPE HTML>
 <html lang='es'>
 	<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+  <link rel="icon" href="images/logo.webp">
 		<title>Perfil de doctora</title>
-		<meta charset='utf-8' />
 	</head>
 	<body>
 		<?php include_once ('cabecera.php'); ?>
@@ -72,7 +75,7 @@ if (!isset($_SESSION['login'])){
 
 		<main>
 			<div class="informacion">
-				<div class="datos">
+				<div class="col-4 col-tab-4">
 					<h1><b>Doctora <?php echo $datos["CODIGODOCTORA"] ?></b></h1>
 					<form id='actualizarDoctora' method='POST' action='controladorDoctora.php'>
 					<input id="OID_DOCTORA" name="OID_DOCTORA" type="hidden" value="<?php echo $codigo?>"/>
@@ -107,8 +110,8 @@ if (!isset($_SESSION['login'])){
 				<button id="cancelar" name="cancelar" type="submit" size="4"><img src="images/returnButton.png" width="20" height="20"></button>
 				</form>
 			</div>
-			<div class="citas">
-				<h1 class="agenda">Citas atendidas por <?php echo $datos["NOMBRE"];?></h1>
+			<div class="col-6 col-tab-6">
+				<h1>Citas atendidas por <?php echo $datos["NOMBRE"];?></h1>
 				<nav>
 					<div class="paginas">
 						<?php

@@ -20,8 +20,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+  <link rel="icon" href="images/logo.webp">
   <title>Inicio</title>
 </head>
 
@@ -30,10 +32,11 @@
 		include_once("cabecera.php");
 		include_once("menu.php");
 	?>
-	<div class="agenda">
-	<h1 class="agenda">Agenda para hoy</h1>
+<div class="inicio">
+	<div class="col 5 col-tab-5">
+	<h1>Agenda para hoy</h1>
 	<a href="formularioCitas.php" class="add">Añadir Cita</a>
-	<table class="citas">
+	<table>
 	  <tr>
 	    <th>Código</th>
 	    <th>Hora cita</th>
@@ -59,21 +62,17 @@
 	  <?php } ?>	
 	</table>
 	</div>
-	<div class="recursos">
-	<h1 class="redes">Redes sociales</h1>
-	<video class="video" width="400" controls>
+	<div class="col 5 col-tab-5">
+	<h1>Redes sociales</h1>
+	<video width="500" controls>
   		<source src="images/video.mp4" type="video/mp4">
 	</video>
-	<br>
-	<br>
-	<a class="redes" href="https://www.facebook.com/1845133489066685/videos/2052995018280530/"><img src="images/facebook.png" width="50" height="50"></a>
-	<a class="redes" href="https://www.instagram.com/isabellledoclinica/?hl=es""><img src="images/instagram.png" width="50" height="50"></a>
-	<a class="redes" href="https://www.isabellledoclinica.com/"><img src="images/logo.webp" width="50" height="50"></a>
-	</br>
+	<br />
+	<a href="https://www.facebook.com/1845133489066685/videos/2052995018280530/"><img src="images/facebook.png" width="50" height="50"></a>
+	<a href="https://www.instagram.com/isabellledoclinica/?hl=es"><img src="images/instagram.png" width="50" height="50"></a>
+	<a href="https://www.isabellledoclinica.com/"><img src="images/logo.webp" width="50" height="50"></a>
 	<p><i>El instagram está en creación.</i></p>
 	</div>
-	<?php
-		include_once("pie.php");
-	?>
+	</div>
 </body>
 </html>	

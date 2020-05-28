@@ -6,6 +6,8 @@
 	
 	if(isset($_SESSION['doctora'])){
 		$doctora = $_SESSION['doctora'];
+		$fechaNacimiento = date('Y-m-d', strtotime($doctora["fechaNacimiento"]));
+		$fechaAlta = date('Y-m-d', strtotime($doctora["fechaAlta"]));
 		unset($_SESSION['doctora']);
 		
 	}else if (!isset($_SESSION['formularioDoctora'])) {
@@ -234,7 +236,7 @@
 			</div>
 			
 			<div><label for="fechaNacimiento">Fecha de nacimiento:</label>
-			<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $doctora['fechaNacimiento'];?>" required/>
+			<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $fechaNacimiento;?>" required/>
 			</div>
 			
 			<div><label for="poblacion">Poblacion:</label>
@@ -246,7 +248,7 @@
 			</div>
 			
 			<div><label for="fechaAlta">Fecha Alta:</label>
-			<input id="fechaAlta" name="fechaAlta" type="date" size="80" value="<?php echo $doctora['fechaAlta'];?>" required/>
+			<input id="fechaAlta" name="fechaAlta" type="date" size="80" value="<?php echo $fechaAlta;?>" required/>
 			</div>
 			
 			<div><label for="telefono">Telefono:</label>

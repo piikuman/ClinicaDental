@@ -49,11 +49,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <title>Gestión de pacientes: Lista de pacientes</title>
-  <link rel="stylesheet" type="text/css" href="css/estilo.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+  <link rel="icon" href="images/logo.webp">
+  <title>Lista Pacientes</title>
 </head>
-
 <body>
 
 <?php

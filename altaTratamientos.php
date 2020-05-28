@@ -25,7 +25,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+  <link rel="icon" href="images/logo.webp">
   <title>Gestión de Tratamientos: Tratamiento apuntado con exito</title>
 </head>
 
