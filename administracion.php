@@ -7,6 +7,9 @@
 		Header("Location: inicio.php");
 	}
 	
+	if (isset($_SESSION['usuario']))
+			unset($_SESSION['usuario']);
+	
 	require_once("gestionBD.php");
 	require_once("gestionarUsuario.php");
 	require_once("gestionarCitas.php");

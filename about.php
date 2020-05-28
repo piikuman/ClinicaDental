@@ -22,7 +22,7 @@
 	include_once("menu.php");
 ?>
 <main>
-
+<div class="informacion">
 <h2>Información de la aplicación</h2>
 
 <p>Esta web está desarrollado por cuatro alumnos de Ingeniería Informática del 
@@ -54,6 +54,7 @@ dependiendo de los tratamientos que se deban realizar en la misma.</li>
 <br/>
 
 <p>Para más información de como hemos hecho la aplicación, visitar la <a href="https://rodas5.us.es/items/3596dcbf-8628-40d9-b9af-403962c55488/1/" target="_blank"> página de la asignatura</a></p>
+</div>
 </main>
 
 <?php	

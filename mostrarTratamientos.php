@@ -23,8 +23,11 @@ if (!isset($_SESSION['login'])){
 <!DOCTYPE HTML>
 <html lang='es'>
 	<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+  <link rel="icon" href="images/logo.webp">
 		<title>Perfil del tratamiento</title>
-		<meta charset='utf-8' />
 	</head>
 	<body>
 		<?php include_once ('cabecera.php'); ?>
@@ -32,6 +35,7 @@ if (!isset($_SESSION['login'])){
 
 		<main>
 			<article>
+				<div class="mostrar">
 				<div>
 					<h1><b>Tratamiento de codigo <?php echo $codigo?></b></h1>
 					<form id='actualizarTratameinto' method='POST' action='controladorTratamientos.php'>
@@ -50,6 +54,7 @@ if (!isset($_SESSION['login'])){
 				<button id="eliminar" name="eliminar" type="submit" size="4"><img src="images/botonEliminar.png" width="20" height="20"></button>
 				<button id="cancelar" name="cancelar" type="submit" size="4"><img src="images/returnButton.png" width="20" height="20"></button>
 				</form>
+				</div>
 			</div>					
 			</article>
 			<br/>
