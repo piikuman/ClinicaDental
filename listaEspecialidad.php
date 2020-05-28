@@ -18,7 +18,11 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<title>Gestion de especialidades: Lista de especialidades</title>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<link rel="stylesheet" type="text/css" href="css/estilo.css" />
+  	<link rel="icon" href="images/logo.webp">
+  	<title></title>
+	<title>Lista Especialidades</title>
  </head>
  
  <body>

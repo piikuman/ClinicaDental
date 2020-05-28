@@ -6,7 +6,8 @@
 	
 	if(isset($_SESSION['paciente'])){
 		$paciente = $_SESSION['paciente'];
-		$fecha = strtotime("dd-mm-YYYY", $paciente["fechaNacimiento"]);
+		$fechaNacimiento = date('Y-m-d', strtotime($paciente["fechaNacimiento"]));
+		$fechaAlta = date('Y-m-d', strtotime($paciente["fechaAlta"]));
 		unset($_SESSION['paciente']);
 	} else if(!isset($_SESSION['formularioPaciente'])) {
 		$formularioPaciente['nombre'] = "";
@@ -238,7 +239,7 @@
 		</div>
 				
 		<div><label for="fechaNacimiento">Fecha de nacimiento:</label>
-		<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $paciente['fechaNacimiento'];?>" required/>
+		<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $fechaNacimiento;?>" required/>
 		</div>
 
 		<div><label for="correo">Correo:<em>*</em></label>
@@ -254,7 +255,7 @@
 		</div>
 			
 		<div><label for="fechaAlta">Fecha Alta:</label>
-		<input id="fechaAlta" name="fechaAlta" type="date" size="80" value="<?php echo $paciente['fechaAlta'];?>" required/>
+		<input id="fechaAlta" name="fechaAlta" type="date" size="80" value="<?php echo $fechaAlta;?>" required/>
 		</div>
 			
 		<div><label for="seguro">Seguro:</label>

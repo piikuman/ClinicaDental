@@ -6,7 +6,7 @@
 	
 	if(isset($_SESSION['cita'])){
 		$cita = $_SESSION['cita'];
-		$fechaCita = date('d/m/Y', strtotime($cita["fechaCita"]));
+		$fechaCita = date('Y-m-d', strtotime($cita["fechaCita"]));
 		unset($_SESSION['cita']);
 	} else if(!isset($_SESSION['formularioCita'])) {
 		$formularioCita['fechaCita'] = "";
