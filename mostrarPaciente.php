@@ -74,7 +74,7 @@ if (!isset($_SESSION['login'])){
 		<?php include_once ('menu.php'); ?>
 
 		<main>
-			<div class="informacion">
+			<div class="mostrar">
 				<div class="col-4 col-tab-4">
 					<h1><?php echo $datos["APELLIDOS"]; ?>, <?php echo $datos["NOMBRE"];?></h1>
 					<form id='actualizarPaciente' method='POST' action='controladorPaciente.php'>
@@ -144,7 +144,7 @@ if (!isset($_SESSION['login'])){
 						</form>
 					</div>
 				</nav>
-				<table class="citas">
+				<table>
 	 				<tr>
 	    				<th>Código</th>
 	    				<th>Fecha cita</th>

@@ -64,7 +64,7 @@
 	</div>
 	<div class="col 5 col-tab-5">
 	<h1>Redes sociales</h1>
-	<video width="500" controls>
+	<video width="600" controls>
   		<source src="images/video.mp4" type="video/mp4">
 	</video>
 	<br />

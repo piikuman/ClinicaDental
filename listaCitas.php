@@ -4,6 +4,10 @@
 	if (!isset($_SESSION['login']))
 			Header("Location: login.php");
 	
+	if (isset($_SESSION['cita']))
+			unset($_SESSION['cita']);
+	
+	
 	require_once("gestionBD.php");
 	require_once("gestionarCitas.php");
 	require_once("gestionarDoctora.php");

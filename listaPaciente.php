@@ -4,6 +4,9 @@
 	if (!isset($_SESSION['login']))
 			Header("Location: login.php");
 	
+	if (isset($_SESSION['paciente']))
+			unset($_SESSION['paciente']);
+	
 	require_once("gestionBD.php");
 	require_once("gestionarPaciente.php");
 	require_once("paginacionConsulta.php");
@@ -107,10 +110,6 @@
 	  <?php } ?>	
 	</table>
 </main>
-
-<?php
-	include_once("pie.php");
-?>
 
 </body>
 </html>

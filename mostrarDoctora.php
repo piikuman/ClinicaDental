@@ -74,7 +74,7 @@ if (!isset($_SESSION['login'])){
 		<?php include_once ('menu.php'); ?>
 
 		<main>
-			<div class="informacion">
+			<div class="mostrar">
 				<div class="col-4 col-tab-4">
 					<h1><b>Doctora <?php echo $datos["CODIGODOCTORA"] ?></b></h1>
 					<form id='actualizarDoctora' method='POST' action='controladorDoctora.php'>

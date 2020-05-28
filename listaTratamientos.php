@@ -8,6 +8,9 @@
 	require_once("gestionarTratamientos.php");
 	require_once("paginacionConsulta.php");
 	
+	if (isset($_SESSION['tratamiento']))
+			unset($_SESSION['tratamiento']);
+	
 	if (isset($_SESSION["paginacion"])){
 		$paginacion = $_SESSION["paginacion"];
 	}

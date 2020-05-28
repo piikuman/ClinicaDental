@@ -4,6 +4,9 @@
 	if (!isset($_SESSION['login']))
 			Header("Location: login.php");
 	
+	if (isset($_SESSION['especialidad']))
+			unset($_SESSION['especialidad']);
+	
 	require_once("gestionBD.php");
 	require_once("gestionarEspecialidad.php");
 	require_once("paginacionConsulta.php");
