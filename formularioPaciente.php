@@ -6,6 +6,8 @@
 	
 	if(isset($_SESSION['paciente'])){
 		$paciente = $_SESSION['paciente'];
+		$fechaNacimiento = date('Y-m-d', strtotime($paciente["fechaNacimiento"]));
+		$fechaAlta = date('Y-m-d', strtotime($paciente["fechaAlta"]));
 		unset($_SESSION['paciente']);
 	} else if(!isset($_SESSION['formularioPaciente'])) {
 		$formularioPaciente['nombre'] = "";
@@ -32,8 +34,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="css/estilo.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+  <link rel="icon" href="images/logo.webp">
   <script type="text/javascript">
   	function validateForm(){
   		var existErrors = false;
@@ -151,6 +155,7 @@
 	
 	<?php
 		include_once("cabecera.php");
+		include_once("menu.php");
 	?>
 	
 	<?php 
@@ -161,12 +166,13 @@
     		echo "</div>";
   		}
 	?>
-	
+	<div class="form">
 	<?php if(!isset($paciente)){ ?>
 	<h1>Añadir nuevo paciente</h1>		
-	<form id="altaPaciente" method="post" onsubmit="return validateForm()" action="validacionPaciente.php">
+	<form id="altaPaciente" method="post" onsubmit="return validateForm()" action="validacionPaciente.php" nonValidate>
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos personales</legend>
+			<div class="col-10 col-tab-10">
 			<div><label for="dni">DNI<em>*</em></label>
 			<input id="dni" name="dni" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $formularioPaciente['dni'];?>" required/><span id="spanDNI"></span>
 			</div>
@@ -210,6 +216,7 @@
 			<div><label for="telefonoTutor">Telefono Tutor:</label>
 			<input id="telefonoTutor" name="telefonoTutor" type="tel" size="80" value="<?php echo $formularioPaciente['telefonoTutor'];?>"/><span id="spanTelefono"></span>
 			</div>
+			</div>
 		</fieldset>
 		<div>
 			<button id="añadir" name="añadir" type="submit"><img src="images/botonOkey.png" width="20" height="20"></button>
@@ -224,21 +231,23 @@
 		<input id="OID_PACIENTE" name="OID_PACIENTE" type="hidden" value="<?php echo $paciente['OID_PACIENTE']?>" />
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos personales</legend>
-			<div><label for="dni">DNI<em>*</em></label>
-			<input id="dni" name="dni" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $paciente['dni'];?>" required/><span id="spanDNI"></span>
-			</div>
 
-			<div><label for="nombre">Nombre:<em>*</em></label>
-			<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $paciente['nombre'];?>" required/><span id="spanNombre"></span>
-			</div>
+			<div class="col-10 col-tab-10">
+		<div><label for="dni">DNI<em>*</em></label>
+		<input id="dni" name="dni" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $paciente['dni'];?>" required/><span id="spanDNI"></span>
+		</div>
 
-			<div><label for="apellidos">Apellidos:</label>
-			<input id="apellidos" name="apellidos" type="text" size="80" value="<?php echo $paciente['apellidos'];?>" required/><span id="spanApellidos"></span>
-			</div>
-			
-			<div><label for="fechaNacimiento">Fecha de nacimiento:</label>
-			<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $paciente['fechaNacimiento'];?>" required/><span id="spanFechaNacimiento"></span>
-			</div>
+		<div><label for="nombre">Nombre:<em>*</em></label>
+		<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $paciente['nombre'];?>" required/>
+		</div>
+	
+		<div><label for="apellidos">Apellidos:</label>
+		<input id="apellidos" name="apellidos" type="text" size="80" value="<?php echo $paciente['apellidos'];?>" required/>
+		</div>
+				
+		<div><label for="fechaNacimiento">Fecha de nacimiento:</label>
+		<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $fechaNacimiento;?>" required/>
+		</div>
 
 			<div><label for="correo">Correo:<em>*</em></label>
 			<input id="correo" name="correo"  type="correo" placeholder="usuario@dominio.extension" value="<?php echo $paciente['correo'];?>" required/><span id="spanCorreo"></span>
@@ -275,6 +284,7 @@
 		<input id="telefonoTutor" name="telefonoTutor" type="number" size="80" value=""/>
 		<?php }?><span id="spanTelefono"></span>
 		</div>
+		</div>
 		</fieldset>
 		
 		<div>
@@ -282,6 +292,7 @@
 		</div>	
 	</form>
 	<?php } ?>
+	</div>
 	<?php
 		include_once("pie.php");
 	?>

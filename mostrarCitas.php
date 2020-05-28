@@ -27,8 +27,11 @@ if (!isset($_SESSION['login'])){
 <!DOCTYPE HTML>
 <html lang='es'>
 	<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+  <link rel="icon" href="images/logo.webp">
 		<title>Perfil de cita</title>
-		<meta charset='utf-8' />
 	</head>
 	<body>
 		<?php include_once ('cabecera.php'); ?>
@@ -36,13 +39,14 @@ if (!isset($_SESSION['login'])){
 
 		<main>
 			<article>
-				<div>
+				<div class="mostrar">
+					<div>
 					<h1><b>Cita del dia <?php echo $datos["FECHACITA"]; ?> con hora <?php echo $datos["HORACITA"]; ?></b></h1>
 					<form id='actualizarCitas' method='POST' action='controladorCitas.php'>
 					<input id="OID_CITA" name="OID_CITA" type="hidden" value="<?php echo $codigo?>"	
 						<div>
 							<h2><b>Datos de la cita</b></h2>
-							<hr></hr>
+							<hr></hr></br>
 							<input id="OID_CITA" name="OID_CITA" type="hidden" value=" <?php echo $codigo ?>"/>
 							<p><b>Paciente:</b> <?php echo $paciente["NOMBRE"]; ?> <?php echo $paciente["APELLIDOS"]; ?></p>
 							<input id="paciente" name="paciente" type="hidden" value="<?php echo $paciente["DNI"]; ?>"/>
@@ -61,6 +65,7 @@ if (!isset($_SESSION['login'])){
 				<button id="eliminar" name="eliminar" type="submit" size="4"><img src="images/botonEliminar.png" width="20" height="20"></button>
 				<button id="cancelar" name="cancelar" type="submit" size="4"><img src="images/returnButton.png" width="20" height="20"></button>
 				</form>
+				</div>
 			</div>					
 			</article>
 			<br/>

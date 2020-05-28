@@ -4,6 +4,9 @@
 	if (!isset($_SESSION['login']))
 			Header("Location: login.php");
 	
+	if (isset($_SESSION['doctora']))
+			unset($_SESSION['doctora']);
+	
 	require_once("gestionBD.php");
 	require_once("gestionarDoctora.php");
 	require_once("paginacionConsulta.php"); 
@@ -49,8 +52,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <title>Gestión de doctoras: Lista de doctoras</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+  <link rel="icon" href="images/logo.webp">
+  <title>Lista Doctoras</title>
 </head>
 
 <body>

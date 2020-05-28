@@ -4,6 +4,10 @@
 	if (!isset($_SESSION['login']))
 			Header("Location: login.php");
 	
+	if (isset($_SESSION['cita']))
+			unset($_SESSION['cita']);
+	
+	
 	require_once("gestionBD.php");
 	require_once("gestionarCitas.php");
 	require_once("gestionarDoctora.php");
@@ -52,8 +56,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <title>Gestión de citas: Lista de citas</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+  <link rel="icon" href="images/logo.webp">
+  <title>Lista citas</title>
 </head>
 
 <body>

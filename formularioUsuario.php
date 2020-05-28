@@ -26,8 +26,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+  <link rel="icon" href="images/logo.webp">
   <script type="text/javascript">
   	function validateForm(){
   		var existErrors = false;
@@ -82,6 +84,7 @@
 <body>
 	<?php
 		include_once("cabecera.php");
+		include_once("menu.php");
 	?>
 	
 	<?php 
@@ -90,23 +93,27 @@
 			echo "<h4> Errores en el formulario:</h4>";
     		foreach($errores as $error) echo $error; 
     		echo "</div>";
-  		}
-	?>
+  		}?>
+  		
+	<div class="form">
+	
 	<?php if(!isset($usuario)){ ?>
 	<h1>Añadir nuevo usuario</h1>		
 	<form id="altaUsuario" method="post" onsubmit="return validateForm()" action="validacionUsuario.php">
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos usuario</legend>
+			<div class="col-10 col-tab-10">
 			<div><label for="correo">Correo:<em>*</em></label>
 			<input id="correo" name="correo"  type="correo" placeholder="usuario@dominio.extension" value="<?php echo $formulario['correo'];?>"/><span id="spanCorreo"></span>
 			</div>
 			
-			<div><label for="password">Password:</label>
+			<div><label for="password">Password:<em>*</em></label>
 			<input id="password" name="password" type="password" size="80"/><span id="spanPassword"></span>
 			</div>
 			
-			<div><label for="conpass">Confirm password:</label>
+			<div><label for="conpass">Confirm password:<em>*</em></label>
 			<input id="conpass" name="conpass" type="password" size="80"/><span id="spanConpass"></span>
+			</div>
 			</div>
 		</fieldset>
 		
@@ -123,16 +130,18 @@
 		<input id="OID_USUARIO" name="OID_USUARIO" type="hidden" value="<?php echo $usuario['OID_USUARIO']?>" />
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos usuario</legend>
+			<div class="col-10 col-tab-10">
 		<div><label for="correo">Correo:<em>*</em></label>
 		<input id="correo" name="correo"  type="correo" placeholder="usuario@dominio.extension" value="<?php echo $usuario['correo'];?>" required/><span id="spanCorreo"></span><br>
 		</div>
 				
-		<div><label for="password">Password:</label>
-		<input id="password" name="password" type="password" size="80"/><span id="spanPassword"></span>
+		<div><label for="password">Password:<em>*</em></label>
+		<input id="password" name="password" type="password" required/><span id="spanPassword"></span>
 		</div>
 			
-		<div><label for="conpass">Confirm password:</label>
-		<input id="conpass" name="conpass" type="password" size="80"/><span id="spanConpass"></span>
+		<div><label for="conpass">Confirm password:<em>*</em></label>
+		<input id="conpass" name="conpass" type="password" required/><span id="spanConpass"></span>
+		</div>
 		</div>
 		</fieldset>
 		
@@ -141,6 +150,8 @@
 		</div>	
 	</form>
 	<?php } ?>
+	
+	</div>
 	<?php
 		include_once("pie.php");
 	?>

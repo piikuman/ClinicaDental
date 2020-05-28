@@ -4,6 +4,9 @@
 	if (!isset($_SESSION['login']))
 			Header("Location: login.php");
 	
+	if (isset($_SESSION['especialidad']))
+			unset($_SESSION['especialidad']);
+	
 	require_once("gestionBD.php");
 	require_once("gestionarEspecialidad.php");
 	require_once("paginacionConsulta.php");
@@ -18,7 +21,11 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<title>Gestion de especialidades: Lista de especialidades</title>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<link rel="stylesheet" type="text/css" href="css/estilo.css" />
+  	<link rel="icon" href="images/logo.webp">
+  	<title></title>
+	<title>Lista Especialidades</title>
  </head>
  
  <body>

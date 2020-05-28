@@ -25,19 +25,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="css/biblio.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+  <link rel="icon" href="images/logo.webp">
   <title>Login</title>
 </head>
 
 
 <body>
-	<div class="login">
-<?php
-	include_once("cabecera.php");
-?>
-
-<main>
 	
 	<?php if (isset($login)) {
 		echo "<div class=\"error\">";
@@ -45,19 +41,31 @@
 		echo "</div>";
 	}	
 	?>
-	
-	<form action="login.php" method="post">
-		<div><label for="email">Email: </label>
-		<input type="text" name="email" id="email" /></div>
-		<div><label for="pass">Contraseña: </label>
-		<input type="password" name="pass" id="pass" /></div>
-		<input class="codigo" type="submit" name="submit" value="entrar" />
-	</form>
-</main>
 
-<?php
-	include_once("pie.php");
-?>
+<main class="login">
+	
+	<div class="clinica-intro">
+            <div class="logo">
+             <img src="images/logo.webp" alt="logo">
+         </div>
+            <div class="texto-clinica">
+                <p>¡Bienvenidos a Clínica Dental Isabel Lledó!</p>
+            </div>
+    </div>
+	
+	<div class="logo-intro">
+	<div class="login-form">
+	<h1>Inicia Sesión</h1>
+	<form action="login.php" method="post">
+		<div><label for="email">Email </label>
+		<input type="text" name="email" id="email" /></div>
+		<div><label for="pass">Contraseña </label>
+		<input type="password" name="pass" id="pass" /></div>
+		<input class="codigo" type="submit" name="submit" value="Entrar" />
+	</form>
+	</div>
+	</div>
+</main>
 
 </div>
 </body>

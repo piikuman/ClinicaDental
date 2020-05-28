@@ -23,8 +23,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+  <link rel="icon" href="images/logo.webp">
   <script type="text/javascript">
   	function validateForm(){
   		var existErrors = false;
@@ -47,6 +49,7 @@
 <body>
 	<?php
 		include_once("cabecera.php");
+		include_once("menu.php");
 	?>
 	
 	<?php 
@@ -57,14 +60,17 @@
     		echo "</div>";
   		}
 	?>
+	<div class="form">
 	<?php if(!isset($especialidad)){ ?>
 	<h1>Añadir nueva especialidad</h1>	
 	<form id="altaEspecialidad" method="post" onsubmit="return validateForm()" action="validacionEspecialidad.php">
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos Especialidad</legend>
-			<div<<label for="nombre">Nombre:<em>*</em></label>
+			<div class="col-10 col-tab-10">
+			<div><label for="nombre">Nombre:<em>*</em></label>
 			<input type="text" id="nombre" name="nombre" value="<?php echo $formularioEspecialidad['nombre'];?>" required/><span id="spanNombre"></span>
-			</div>			
+			</div>
+		</div>			
 		</fieldset>
 		<div>
 			<button id="añadir" name="añadir" type="submit"><img src="images/botonOkey.png" width="20" height="20"></button>
@@ -79,6 +85,7 @@
 		<input id="OID_ESPECIALIDAD" name="OID_ESPECIALIDAD" type="hidden" value="<?php echo $especialidad['OID_ESPECIALIDAD']?>" />
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos especialidad</legend>
+			<div class="col-10 col-tab-10">
 		<div><label for="nombre">Nombre:<em>*</em></label>
 			<input type="text" id="nombre" name="nombre" value="<?php echo $especialidad['nombre'];?>" required/><span id="spanNombre"></span>
 		</div>	
@@ -89,6 +96,7 @@
 		</div>	
 	</form>
 	<?php } ?>
+	</div>
 	<?php
 		include_once("pie.php");
 	?>

@@ -7,6 +7,9 @@
 		Header("Location: inicio.php");
 	}
 	
+	if (isset($_SESSION['usuario']))
+			unset($_SESSION['usuario']);
+	
 	require_once("gestionBD.php");
 	require_once("gestionarUsuario.php");
 	require_once("gestionarCitas.php");
@@ -61,8 +64,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <title>Gestión de usuarios: Lista de usuarioss</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+  <link rel="icon" href="images/logo.webp">
+  <title>Administracion</title>
 </head>
 
 <body>
@@ -76,7 +82,7 @@
 	<div class="informacion">
 	<a class="add" href="formularioUsuario.php">Añadir Usuario</a>
 	<br/>
-	<div class="usuarios">
+	<div class="col-5 col-tab-5">
 	<table>
 	  <tr>
 	    <th>Código</th>
@@ -95,14 +101,33 @@
 	  <?php } ?>	
 	</table>
 	</div>
-	<div class="numeros">
-		<ul>
-			<li><h4>Número de pacientes: <?php echo $pacientes; ?></h4></li>
-			<li><h4>Número de doctoras: <?php echo $doctoras; ?></h4></li>
-			<li><h4>Número de tratamientos: <?php echo $tratamientos; ?></h4></li>
-			<li><h4>Número de citas: <?php echo $citas; ?></h4></li>
-			<li><h4>Número de especialidades: <?php echo $especialidad; ?></h4></li>
-		</ul>
+	<div class="col-5 col-tab-5">
+		<table>
+			<tr>
+	    		<th>Información</th>
+    			<th>Datos</th>
+	  		</tr>
+	  		<tr>
+	  			<th>Número de pacientes</th>
+	  			<td><?php echo $pacientes; ?></td>
+			</tr>
+	  		<tr>
+	  			<th>Número de doctoras</th>
+	  			<td><?php echo $doctoras; ?></td>
+			</tr>
+	  		<tr>
+	  			<th>Número de tratamientos</th>
+	  			<td><?php echo $tratamientos; ?></td>
+			</tr>
+	  		<tr>
+	  			<th>Número de citas</th>
+				<td><?php echo $citas; ?></td>
+			</tr>
+	  		<tr>
+	  			<th>Número de especialidades</th>
+				<td><?php echo $especialidad; ?></td>
+			</tr>
+		</table>
 	</div>
 	</div>
 </main>

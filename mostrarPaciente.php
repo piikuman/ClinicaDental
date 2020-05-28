@@ -63,16 +63,19 @@ if (!isset($_SESSION['login'])){
 <!DOCTYPE HTML>
 <html lang='es'>
 	<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+  <link rel="icon" href="images/logo.webp">
 		<title>Perfil de paciente</title>
-		<meta charset='utf-8' />
 	</head>
 	<body>
 		<?php include_once ('cabecera.php'); ?>
 		<?php include_once ('menu.php'); ?>
 
 		<main>
-			<div class="informacion">
-				<div class="datos">
+			<div class="mostrar">
+				<div class="col-4 col-tab-4">
 					<h1><?php echo $datos["APELLIDOS"]; ?>, <?php echo $datos["NOMBRE"];?></h1>
 					<form id='actualizarPaciente' method='POST' action='controladorPaciente.php'>
 					<input id="OID_PACIENTE" name="OID_PACIENTE" type="hidden" value="<?php echo $codigo?>">
@@ -119,8 +122,8 @@ if (!isset($_SESSION['login'])){
 				<button id="cancelar" name="cancelar" type="submit" size="4"><img src="images/returnButton.png" width="20" height="20"></button>
 				</form>
 			</div>
-			<div class="citas">
-				<h1 class="agenda">Citas de <?php echo $datos["NOMBRE"];?></h1>
+			<div class="col-6 col-tab-6">
+				<h1>Citas de <?php echo $datos["NOMBRE"];?></h1>
 				<nav>
 					<div class="paginas">
 						<?php
@@ -141,7 +144,7 @@ if (!isset($_SESSION['login'])){
 						</form>
 					</div>
 				</nav>
-				<table class="citas">
+				<table>
 	 				<tr>
 	    				<th>Código</th>
 	    				<th>Fecha cita</th>

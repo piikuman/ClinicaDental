@@ -8,6 +8,9 @@
 	require_once("gestionarTratamientos.php");
 	require_once("paginacionConsulta.php");
 	
+	if (isset($_SESSION['tratamiento']))
+			unset($_SESSION['tratamiento']);
+	
 	if (isset($_SESSION["paginacion"])){
 		$paginacion = $_SESSION["paginacion"];
 	}
@@ -50,8 +53,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <title>Gestión de tratamientos: Lista de tratamientos</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+  <link rel="icon" href="images/logo.webp">
+  <title>Lista Tratamientos</title>
 </head>
 
 <body>

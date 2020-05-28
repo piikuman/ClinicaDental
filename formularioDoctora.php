@@ -6,6 +6,8 @@
 	
 	if(isset($_SESSION['doctora'])){
 		$doctora = $_SESSION['doctora'];
+		$fechaNacimiento = date('Y-m-d', strtotime($doctora["fechaNacimiento"]));
+		$fechaAlta = date('Y-m-d', strtotime($doctora["fechaAlta"]));
 		unset($_SESSION['doctora']);
 		
 	}else if (!isset($_SESSION['formularioDoctora'])) {
@@ -34,8 +36,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+  <link rel="icon" href="images/logo.webp">
   <script type="text/javascript">
   	function validateForm(){
   		var existErrors = false;
@@ -148,6 +152,7 @@
 <body>
 	<?php
 		include_once("cabecera.php");
+		include_once("menu.php");
 	?>
 	
 	<?php 
@@ -158,11 +163,13 @@
     		echo "</div>";
   		}
 	?>
+	<div class="form">
 	<?php if(!isset($doctora)){ ?>
 	<h1>Añadir nueva doctora</h1>		
 	<form id="altaDoctora" method="post" onsubmit="return validateForm()" action="validacionDoctora.php">
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos personales</legend>
+			<div class="col-10 col-tab-10">
 			
 			<div><label for="dni">DNI<em>*</em></label>
 			<input id="dni" name="dni" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $formularioDoctora['dni'];?>"><span id="spanDNI"></span>
@@ -207,6 +214,7 @@
 			<div><label for="especialidad">Especialidad:</label>
 			<input id="especialidad" name="especialidad" type="text" size="80" value="<?php echo $formularioDoctora['especialidad'];?>" required/><span id="spanEspecialidad"></span>
 			</div>
+		</div>
 		</fieldset>		
 		<div>
 			<button id="añadir" name="añadir" type="submit"><img src="images/botonOkey.png" width="20" height="20"></button>
@@ -221,6 +229,7 @@
 		<input id="OID_DOCTORA" name="OID_DOCTORA" type="hidden" value="<?php echo $doctora['OID_DOCTORA'];?>"/>
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos personales</legend>
+			<div class="col-10 col-tab-10">
 		<div><label for="dni">DNI<em>*</em></label>
 			<input id="dni" name="dni" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $doctora['dni'];?>" required><span id="spanDNI"></span>
 			</div>
@@ -234,7 +243,7 @@
 			</div>
 			
 			<div><label for="fechaNacimiento">Fecha de nacimiento:</label>
-			<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $doctora['fechaNacimiento'];?>" required/><span id="spanFechaNac"></span>
+			<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $fechaNacimiento;?>" required/>" required/><span id="spanFechaNac"></span>
 			</div>
 			
 			<div><label for="poblacion">Poblacion:</label>
@@ -246,7 +255,7 @@
 			</div>
 			
 			<div><label for="fechaAlta">Fecha Alta:</label>
-			<input id="fechaAlta" name="fechaAlta" type="date" size="80" value="<?php echo $doctora['fechaAlta'];?>" required/><span id="spanFechaAlta"></span>
+			<input id="fechaAlta" name="fechaAlta" type="date" size="80" value="<?php echo $fechaAlta;?>" required/><span id="spanFechaAlta"></span>
 			</div>
 			
 			<div><label for="telefono">Telefono:</label>
@@ -260,12 +269,14 @@
 			<div><label for="especialidad">Especialidad:</label>
 			<input id="especialidad" name="especialidad" type="text" size="80" value="<?php echo $doctora['especialidad'];?>" required/><span id="spanEspecialidad"></span>
 			</div>
+		</div>
 			</fieldset>
 		<div>
 			<button id="actualizar" name="actualizar" type="submit"><img src="images/botonEditar.png" width="20" height="20"></button>
 		</div>	
 	</form>
 	<?php } ?>
+	</div>
 	<?php
 		include_once("pie.php");
 	?>
