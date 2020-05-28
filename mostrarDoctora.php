@@ -153,7 +153,6 @@ if (!isset($_SESSION['login'])){
 				</table>
 	  			</div>	
 			</div>	
-		<?php include_once ('pie.php'); ?>
 		</main>
 	</body>
 </html>

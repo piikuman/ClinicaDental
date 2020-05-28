@@ -166,7 +166,6 @@ if (!isset($_SESSION['login'])){
 	  			</div>	
 			</div>
 			</div>	
-				<?php include_once ('pie.php'); ?>	
 		</main>
 	</body>
 </html>

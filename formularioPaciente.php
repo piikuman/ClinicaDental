@@ -238,15 +238,15 @@
 		</div>
 
 		<div><label for="nombre">Nombre:<em>*</em></label>
-		<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $paciente['nombre'];?>" required/>
+		<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $paciente['nombre'];?>" required/><span id="spanNombre"></span>
 		</div>
 	
 		<div><label for="apellidos">Apellidos:</label>
-		<input id="apellidos" name="apellidos" type="text" size="80" value="<?php echo $paciente['apellidos'];?>" required/>
+		<input id="apellidos" name="apellidos" type="text" size="80" value="<?php echo $paciente['apellidos'];?>" required/><span id="spanApellidos"></span>
 		</div>
 				
 		<div><label for="fechaNacimiento">Fecha de nacimiento:</label>
-		<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $fechaNacimiento;?>" required/>
+		<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $fechaNacimiento;?>" required/><span id="spanFechaNacimiento"></span>
 		</div>
 
 			<div><label for="correo">Correo:<em>*</em></label>
@@ -262,7 +262,7 @@
 			</div>
 			
 			<div><label for="fechaAlta">Fecha Alta:</label>
-			<input id="fechaAlta" name="fechaAlta" type="date" size="80" value="<?php echo $paciente['fechaAlta'];?>" required/><span id="spanFechaAlta"></span>
+			<input id="fechaAlta" name="fechaAlta" type="date" size="80" value="<?php echo $fechaAlta;?>" required/><span id="spanFechaAlta"></span>
 			</div>
 			
 			<div><label for="seguro">Seguro:</label>

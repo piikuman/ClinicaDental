@@ -180,7 +180,7 @@
 	</form>
 	<?php }else{ ?>
 	<h1>Actualizar cita <?php echo $cita['OID_CITA'];?></h1>	
-	<form id="altaCita" method="post" action="validacionCitas.php">
+	<form id="altaCita" method="post" onsubmit="return validateForm()" action="validacionCitas.php">
 		<input id="OID_CITA" name="OID_CITA" type="hidden" value="<?php echo $cita['OID_CITA']?>" />
 		<p><i>Los campos obligatorios de rellenar están marcados con </i><em>*</em></p>
 		<fieldset><legend>Datos cita</legend>
@@ -203,7 +203,7 @@
 			</div>
 
 			<div><label for="horaCita">Hora:<em>*</em></label>
-				<select id="horaCita" name="horaCita" required /><span id="spanFechaCita"></span><br>
+				<select id="horaCita" name="horaCita" required /><br>
    					<option value="<?php echo $cita['horaCita'];?>"><?php echo $cita['horaCita'];?></option>
  		 		<?php
   					foreach($horas as $key => $value):
@@ -213,12 +213,11 @@
 				</select><span id="spanHoraCita"></span><br>
 			</div><br />
 			
-			<div class="radio"><label for="consulta">Consulta:<em>*</em></label>
+			<div class="radio"><label for="consulta">Consulta:<em>*</em></label><span id="spanConsulta"></span>
 			<input id="1" name="consulta" type="radio" value="1" <?php if($cita['consulta']=='1') echo ' checked ';?> required/>
   			<label for="1">Consulta 1</label>
 			<input id="2" name="consulta" type="radio" value="2" <?php if($cita['consulta']=='2') echo ' checked ';?> required/>
   			<label for="2">Consulta 2</label><br>
-  			<span id="spanConsulta"></span>
 			</div>
 		</div>
 		</fieldset>

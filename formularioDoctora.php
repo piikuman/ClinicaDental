@@ -46,10 +46,15 @@
   		var formulario = document.forms["altaDoctora"];
   		var xc = formulario["dni"];
   		var xs = document.getElementById("spanDNI");
+  		var re = /^[0-9]{8}[A-Za-z]{1}$/;
   		xc.className="";
   		xs.innerHTML="";
   		if(xc.value == null || xc.value == ""){
   			xs.innerHTML = "El DNI es obligatorio";
+  			xc.className="error";
+  			existErrors = true;
+  		}else if((!re.test(xc.value))){
+  			xs.innerHTML = "El DNI deben ser 8 dígitos y una letra";
   			xc.className="error";
   			existErrors = true;
   		}
@@ -125,15 +130,6 @@
   			xc.className="error";
   			existErrors = true;
   		}
-  		var xc = formulario["codigoDoctora"];
-  		var xs = document.getElementById("spanCodigo");
-  		xc.className="";
-  		xs.innerHTML="";
-  		if(xc.value == null || xc.value == ""){
-  			xs.innerHTML = "El codigo es obligatorio";
-  			xc.className="error";
-  			existErrors = true;
-  		}
   		var xc = formulario["especialidad"];
   		var xs = document.getElementById("spanEspecialidad");
   		xc.className="";
@@ -172,46 +168,46 @@
 			<div class="col-10 col-tab-10">
 			
 			<div><label for="dni">DNI<em>*</em></label>
-			<input id="dni" name="dni" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $formularioDoctora['dni'];?>"><span id="spanDNI"></span>
+			<input id="dni" name="dni" type="text" placeholder="12345678X" pattern="^[0-9]{8}[A-Z]" title="Ocho dígitos seguidos de una letra mayúscula" value="<?php echo $formularioDoctora['dni'];?>" required/><span id="spanDNI"></span>
 			</div>
 
 			<div><label for="nombre">Nombre:<em>*</em></label>
 			<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $formularioDoctora['nombre'];?>" required/><span id="spanNombre"></span>
 			</div>
 
-			<div><label for="apellidos">Apellidos:</label>
+			<div><label for="apellidos">Apellidos:<em>*</em></label>
 			<input id="apellidos" name="apellidos" type="text" size="80" value="<?php echo $formularioDoctora['apellidos'];?>" required/><span id="spanApellidos"></span>
 			</div>
 			
-			<div><label for="fechaNacimiento">Fecha de nacimiento:</label>
+			<div><label for="fechaNacimiento">Fecha de nacimiento:<em>*</em></label>
 			<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $formularioDoctora['fechaNacimiento'];?>" required/><span id="spanFechaNac"></span>
 			</div>
 			
-			<div><label for="poblacion">Poblacion:</label>
+			<div><label for="poblacion">Poblacion:<em>*</em></label>
 			<input id="poblacion" name="poblacion" type="text" size="80" value="<?php echo $formularioDoctora['poblacion'];?>" required/><span id="spanPoblacion"></span>
 			</div>
 			
-			<div><label for="direccion">Direccion:</label>
+			<div><label for="direccion">Direccion:<em>*</em></label>
 			<input id="direccion" name="direccion" type="text" size="80" value="<?php echo $formularioDoctora['direccion'];?>" required/><span id="spanDireccion"></span>
 			</div>
 			
-			<div><label for="fechaAlta">Fecha Alta:</label>
+			<div><label for="fechaAlta">Fecha Alta:<em>*</em></label>
 			<input id="fechaAlta" name="fechaAlta" type="date" size="80" value="<?php echo $formularioDoctora['fechaAlta'];?>" required/><span id="spanFechaAlta"></span>
 			</div>
 			
-			<div><label for="telefono">Telefono:</label>
+			<div><label for="telefono">Telefono:<em>*</em></label>
 			<input id="telefono" name="telefono" type="text" size="80" value="<?php echo $formularioDoctora['telefono'];?>" required/><span id="spanTelefono"></span>
 			</div>
 			
-			<div><label for="sueldo">Sueldo:</label>
+			<div><label for="sueldo">Sueldo:<em>*</em></label>
 			<input id="sueldo" name="sueldo" type="text" size="80" value="<?php echo $formularioDoctora['sueldo'];?>" required/><span id="spanSueldo"></span>
 			</div>
 			
-			<div><label for="codigoDoctora">Codigo doctora:</label>
-			<input id="codigoDoctora" name="codigoDoctora" type="text" size="80" value="<?php echo $formularioDoctora['codigoDoctora'];?>" required/><span id="spanCodigo"></span>
+			<div><label for="codigoDoctora">Codigo doctora:<em>*</em></label>
+			<input id="codigoDoctora" name="codigoDoctora" type="text" size="80" value="<?php echo $formularioDoctora['codigoDoctora'];?>" required/>
 			</div>
 			
-			<div><label for="especialidad">Especialidad:</label>
+			<div><label for="especialidad">Especialidad:<em>*</em></label>
 			<input id="especialidad" name="especialidad" type="text" size="80" value="<?php echo $formularioDoctora['especialidad'];?>" required/><span id="spanEspecialidad"></span>
 			</div>
 		</div>
@@ -235,38 +231,38 @@
 			</div>
 
 			<div><label for="nombre">Nombre:<em>*</em></label>
-			<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $doctora['nombre'];?>" required/><span id="spanNombre"></span><span id="spanNombre"></span>
+			<input id="nombre" name="nombre" type="text" size="40" value="<?php echo $doctora['nombre'];?>" required/><span id="spanNombre"></span>
 			</div>
 
-			<div><label for="apellidos">Apellidos:</label>
+			<div><label for="apellidos">Apellidos:<em>*</em></label>
 			<input id="apellidos" name="apellidos" type="text" size="80" value="<?php echo $doctora['apellidos'];?>" required/><span id="spanApellidos"></span>
 			</div>
 			
-			<div><label for="fechaNacimiento">Fecha de nacimiento:</label>
-			<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $fechaNacimiento;?>" required/>" required/><span id="spanFechaNac"></span>
+			<div><label for="fechaNacimiento">Fecha de nacimiento:<em>*</em></label>
+			<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $fechaNacimiento;?>" required/><span id="spanFechaNac"></span>
 			</div>
 			
-			<div><label for="poblacion">Poblacion:</label>
+			<div><label for="poblacion">Poblacion:<em>*</em></label>
 			<input id="poblacion" name="poblacion" type="text" size="80" value="<?php echo $doctora['poblacion'];?>" required/><span id="spanPoblacion"></span>
 			</div>
 			
-			<div><label for="direccion">Direccion:</label>
+			<div><label for="direccion">Direccion:<em>*</em></label>
 			<input id="direccion" name="direccion" type="text" size="80" value="<?php echo $doctora['direccion'];?>" required/><span id="spanDireccion"></span>
 			</div>
 			
-			<div><label for="fechaAlta">Fecha Alta:</label>
+			<div><label for="fechaAlta">Fecha Alta:<em>*</em></label>
 			<input id="fechaAlta" name="fechaAlta" type="date" size="80" value="<?php echo $fechaAlta;?>" required/><span id="spanFechaAlta"></span>
 			</div>
 			
-			<div><label for="telefono">Telefono:</label>
+			<div><label for="telefono">Telefono:<em>*</em></label>
 			<input id="telefono" name="telefono" type="text" size="80" value="<?php echo $doctora['telefono'];?>" required/><span id="spanTelefono"></span>
 			</div>
 			
-			<div><label for="sueldo">Sueldo:</label>
+			<div><label for="sueldo">Sueldo:<em>*</em></label>
 			<input id="sueldo" name="sueldo" type="text" size="80" value="<?php echo $doctora['sueldo'];?>" required/><span id="spanSueldo"></span>
 			</div>
 			
-			<div><label for="especialidad">Especialidad:</label>
+			<div><label for="especialidad">Especialidad:<em>*</em></label>
 			<input id="especialidad" name="especialidad" type="text" size="80" value="<?php echo $doctora['especialidad'];?>" required/><span id="spanEspecialidad"></span>
 			</div>
 		</div>

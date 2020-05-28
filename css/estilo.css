@@ -144,10 +144,20 @@
     text-align: center;
 }
 
-#pie{
+.pie{
 	text-align: center;
-	padding:50px;
+	padding-left: 1em;
+	padding-right: 1em;
 }
+
+.pie img{
+    max-width: 100%;
+    max-height:auto;
+  	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+}
+
 
 @media only screen and (max-width: 1000px) {
     .cabecera{
@@ -232,6 +242,7 @@
 }
 
 .inicio h1{
+	text-align: center;
     padding: 0.5em;
 	color:#83CAE0;
 }

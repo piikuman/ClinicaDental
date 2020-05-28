@@ -27,17 +27,17 @@ Header("Location: login.php");
   dia = hoy.getDate();
   mes = hoy.getMonth()+1;
   ano = hoy.getFullYear();
-  hora = hoy.getHours()-1;
+  hora = hoy.getHours();
   minutos = hoy.getMinutes();
  
-
-  fecha = "Hoy es: " + dia + "/" + mes + "/" + ano + ", " + hora + ":" + minutos;
-  document.getElementById('clock').innerHTML = fecha;
- 
- 
- 
-  //document.getElementById('clock').innerHTML = new Date();
-  }
+	if(minutos>=10){
+		fecha = "Hoy es: " + dia + "/" + mes + "/" + ano + ", " + hora + ":" + minutos;
+  		document.getElementById('clock').innerHTML = fecha;
+	}else{
+		fecha = "Hoy es: " + dia + "/" + mes + "/" + ano + ", " + hora + ":0" + minutos;
+  		document.getElementById('clock').innerHTML = fecha;
+  	}
+	}
   </script>
 
   <meta charset="UTF-8">
@@ -51,8 +51,9 @@ Header("Location: login.php");
 include_once("cabecera.php");
 include_once("menu.php");
 ?>
-<h1 id="clock"></h1>
+
 <div class="inicio">
+	<h1 id="clock"></h1>
 	<div class="col 5 col-tab-5">
 	<h1>Agenda para hoy</h1>
 	<a href="formularioCitas.php" class="add">Añadir Cita</a>
